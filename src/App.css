@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+#prueba{
+  margin: 50px 0px 20px 120px;
+  width: 90%;
+  background-color: #61dafb;
+}
+
+#prueba2 th{
+  text-align: center;
+  vertical-align: middle;
+}
