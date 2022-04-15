@@ -16,7 +16,7 @@ function DataList(){
     const selectOptions = {
         0: 'gmail',
         1: 'hotmail',
-        2: 'outlook', 
+        2: 'outlook',
         4: 'Shanna@melissa.tv'
     };
     

@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import DataList from './component/DataList';
+import Menu from './component/Menu';
 
 function App() {
   return (
     <div className="App">
-      <DataList></DataList>
+      <div id='prueba'>
+        <Menu/>
+        <DataList></DataList>
+      </div>
     </div>
   );
 }
