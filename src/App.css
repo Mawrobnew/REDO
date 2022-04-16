@@ -16,13 +16,14 @@
   height: 100px;
   /* background-color: red; */
   margin: 20px 0px 20px 0px;
-  border: 0.5px;
+  border-radius: 50px;
+  border: 0.1px;
 }
 
 #prueba2 th{
   text-align: center;
   vertical-align: middle;
-  background-color: orange;
+  background-color: red;
 }
 
 #prueba td{
