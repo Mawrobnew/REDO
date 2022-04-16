@@ -22,11 +22,10 @@ function DataList(){
     
     const formatWithIcon = (cell,row) => {
         return(
-            <div></div>
+            <button>Hola</button>
             //<FontAwesomeIcon icon={faUserEdit} size='2x'/>
         )
     }
-    
 
     const columns = [
         {dataField:'id', text:'Id', sort:true, filter: textFilter()},
@@ -36,7 +35,7 @@ function DataList(){
         {dataField:'company.bs', text:'Rol', sort:true, filter: textFilter()},
         {dataField:'address.street', text:'Sucursal', sort:true, filter: textFilter()},
         {dataField:'btn2', text:'Modificar', formatter: formatWithIcon},
-        {dataField:'btn', text:'Borrar',formatter: formatWithIcon} 
+        {dataField:'btn', text:'Borrar', formatter: formatWithIcon}
     ]
     
     const pagination = paginationFactory({
@@ -68,15 +67,23 @@ function DataList(){
 
     }, [])
 
+    const selectRow = {
+        mode: "checkbox"
+    };
+
     return <div>
 
         <BootstrapTable 
         id='prueba2'
         bootstrap4 
-        keyField='id' columns={columns} data={userList}
+        keyField='id' 
+        columns={columns} 
+        data={userList}
         pagination ={pagination}
         filter={filterFactory()}
+        selectRow={selectRow}
         >
+            
         </BootstrapTable>
     </div>
     
