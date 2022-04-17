@@ -20,8 +20,9 @@
     border-radius: 8px;
     padding: 32px 32px 32px 32px;
     font-family: 'Titillium Web', sans-serif;
-    background: #f1f1f1;
+    background: #ffffff;
     border: 20px;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 #closeBtn{
@@ -29,4 +30,13 @@
     float: right;
     background-color: red;
     
+}
+
+#btnModalunUser{
+    background-color: rgb(90, 191, 57);
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px;
+    border: #ffffff;
 }
