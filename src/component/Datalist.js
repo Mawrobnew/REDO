@@ -28,10 +28,10 @@ function DataList(){
     }
 
     const columns = [
-        {dataField:'id', text:'Id', sort:true, filter: textFilter()},
+        {dataField:'id', text:'Id', sort:true, filter: textFilter(),},
         {dataField:'name', text:'Nombre', sort:true, filter: textFilter()},
         {dataField:'email', text:'Correo', sort:true, filter: textFilter()},
-        {dataField:'phone', text:'Telefono', sort:true, filter: selectFilter({options: selectOptions})},
+        {dataField:'phone', text:'Telefono', sort:true, filter: textFilter()},
         {dataField:'company.bs', text:'Rol', sort:true, filter: textFilter()},
         {dataField:'address.street', text:'Sucursal', sort:true, filter: textFilter()},
         {dataField:'btn2', text:'Modificar', formatter: formatWithIcon},
@@ -68,10 +68,10 @@ function DataList(){
     }, [])
 
     const selectRow = {
-        mode: "checkbox"
+        mode:"checkbox"
     };
 
-    return <div>
+    return(
 
         <BootstrapTable 
         id='prueba2'
@@ -81,11 +81,18 @@ function DataList(){
         data={userList}
         pagination ={pagination}
         filter={filterFactory()}
-        selectRow={selectRow}
+        data-show-custom-view-button={true}
+        //striped={true}
+        bordered={ false }
+        condensed={true}
+        hover={true}
+        headerClasses='pruebaHead'
+        bodyClasses='pruebaBody'
+        wrapperClasses='pruebaWrapper'
         >
-            
+            <thead></thead>
         </BootstrapTable>
-    </div>
+    )
     
 }
 
