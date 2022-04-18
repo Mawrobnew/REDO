@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css';
-import DataList from './component/DataList';
+import DataList from './component/Datalist.js';
 import Menu from './component/Menu';
 import Modal from './component/Modal';
 
@@ -18,23 +18,15 @@ function App() {
         <>
           <div style={BUTTON_WRAPPER_STYLES} onClick={() => console.log('clicked')} id='wrapper'>
             <button onClick={() => setIsOpen(true)} id='btnModalunUser'>Open Modal</button>
-
-            <Modal open={isOpen} onClose={() => setIsOpen(false)} ></Modal>
+            <Modal open={isOpen} onClose={() => setIsOpen(false)} />
           </div>
         </>
         <div id='cont_tabla'>
           <Menu/>
-          <DataList></DataList>
+          <DataList/>
         </div>
-
       </div>
-
-
-    
-
     </React.Fragment>
-
-   
   );
 }
 

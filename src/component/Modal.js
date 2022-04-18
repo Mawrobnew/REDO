@@ -1,46 +1,86 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDom from 'react-dom'
 import '../css/modal.css';
+import {Request} from "../utils/WebRequestMiddleware";
 
 
 export default function Modal({ open, children, onClose }) {
-  if (!open) return null
+    const [modalInfo, setModalInfo] = useState({
+        name: '',
+        mail: '',
+        password: '',
+        phone: '',
+        rol: '',
+        branch: '',
+    })
 
+    //TODO: FETCH THIS VALUES FROM THE API LATER
+    const rolInventory = [
+        {id:1, label: "Super Usuario"},
+        {id:2, label: "Trabajo Social"},
+        {id:3, label: "Cajero"},
+    ]
+    const branchInventory = [
+        {id:1, label: "Cuernavaca"},
+        {id:2, label: "Jiutepec"},
+        {id:3, label: "Temixco"},
+    ]
+
+    // updates the state on every change of the inputs or the selects
+    const handleInputChange = (event) =>{
+        const {name,value} = event.target
+        setModalInfo({
+            ...modalInfo,
+            [name]:value
+        })
+    }
+
+    //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
+    const handleSubmit = async (event) => {
+        const result = await Request('POST', '/user', modalInfo)
+        const {done} = result
+        if (done) onClose()
+        event.preventDefault()
+    }
+    //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
+
+    console.log(modalInfo)
+    if (!open) return null
   return ReactDom.createPortal(
-    <>
+    <div>
       <div className='wrapper' />
       <div id='window'>
         <button id='closeBtn' onClick={onClose}>X</button>
         {children}
         <p>Modal de prueba</p>
-        <form>
+        <form onSubmit={handleSubmit}>
             <div id='formulario'>
                 <p>Nombre</p>
-                <input type='text'></input>
+                <input type='text' onChange={handleInputChange} name="name"/>
                 <p>Correo</p>
-                <input type='email'></input>
+                <input type='text' onChange={handleInputChange} name="mail"/>
                 <p>Telefono</p>
-                <input type='number'></input>
+                <input type='text' onChange={handleInputChange} name="phone"/>
                 <p>Contraseña</p>
-                <input type='text'></input>
+                <input type='text' onChange={handleInputChange} name="password"/>
                 <p>Rol</p>
-                <select>
-                    <option>Trabajo Social</option>
-                    <option>Cajero</option>
-                    <option>Super Usuario</option>
+                <select onChange={handleInputChange} name="rol">
+                    {rolInventory.map((rol)=>(
+                        <option value={rol.id}>{rol.label}</option>
+                    ))}
                 </select>
                 <p>Sucursal</p>
-                <select>
-                    <option>Temixco</option>
-                    <option>Cuernavaca</option>
-                    <option>Jiutepec</option>
+                <select onChange={handleInputChange} name="branch">
+                    {branchInventory.map((rol)=>(
+                        <option value={rol.id}>{rol.label}</option>
+                    ))}
                 </select>
-                <p></p>
+                <p/>
                 <button>Crear Usuario</button>
             </div>
         </form>
       </div>
-    </>,
+    </div>,
     document.getElementById('portal')
   )
 }

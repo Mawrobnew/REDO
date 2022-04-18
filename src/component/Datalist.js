@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Request} from "../utils/WebRequestMiddleware";
 //import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
@@ -28,12 +29,12 @@ function DataList(){
     }
 
     const columns = [
-        {dataField:'id', text:'Id', sort:true, filter: textFilter(),},
-        {dataField:'name', text:'Nombre', sort:true, filter: textFilter()},
-        {dataField:'email', text:'Correo', sort:true, filter: textFilter()},
-        {dataField:'phone', text:'Telefono', sort:true, filter: textFilter()},
-        {dataField:'company.bs', text:'Rol', sort:true, filter: textFilter()},
-        {dataField:'address.street', text:'Sucursal', sort:true, filter: textFilter()},
+        {dataField:'Id', text:'Id', sort:true, filter: textFilter(),},
+        {dataField:'Nombre', text:'Nombre', sort:true, filter: textFilter()},
+        {dataField:'Correo', text:'Correo', sort:true, filter: textFilter()},
+        {dataField:'Numero', text:'Telefono', sort:true, filter: textFilter()},
+        {dataField:'Rol', text:'Rol', sort:true, filter: textFilter()},
+        {dataField:'Sucursal', text:'Sucursal', sort:true, filter: textFilter()},
         {dataField:'btn2', text:'Modificar', formatter: formatWithIcon},
         {dataField:'btn', text:'Borrar', formatter: formatWithIcon}
     ]
@@ -58,13 +59,13 @@ function DataList(){
     });
 
 
-    useEffect(()=>{
-
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then(Response => Response.json())
-        .then(result => setUserList(result))
-        .catch(error => console.log(error));
-
+    useEffect(() => {
+        const asyncFetch = async () => {
+            const result = await Request('GET', '/user')
+            const {done, payload} = result
+            if (done) setUserList(payload)
+        }
+        asyncFetch()
     }, [])
 
     const selectRow = {
@@ -90,7 +91,7 @@ function DataList(){
         bodyClasses='pruebaBody'
         wrapperClasses='pruebaWrapper'
         >
-            <thead></thead>
+            <thead/>
         </BootstrapTable>
     )
     
