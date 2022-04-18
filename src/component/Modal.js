@@ -16,14 +16,14 @@ export default function Modal({ open, children, onClose }) {
 
     //TODO: FETCH THIS VALUES FROM THE API LATER
     const rolInventory = [
-        {id:1, label: "Trabajo Social"},
-        {id:2, label: "Cajero"},
-        {id:3, label: "Super Usuario"}
+        {id:1, label: "Super Usuario"},
+        {id:2, label: "Trabajo Social"},
+        {id:3, label: "Cajero"},
     ]
     const branchInventory = [
-        {id:1, label: "Temixco"},
-        {id:2, label: "Cuernavaca"},
-        {id:3, label: "Jiutepec"},
+        {id:1, label: "Cuernavaca"},
+        {id:2, label: "Jiutepec"},
+        {id:3, label: "Temixco"},
     ]
 
     // updates the state on every change of the inputs or the selects
@@ -36,13 +36,10 @@ export default function Modal({ open, children, onClose }) {
     }
 
     //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
-    const handleSubmit = (event) => {
-        const receiveResult =(result)=>{
-            const {done, payload} = result
-            if(done) onClose()
-            //TODO: HANDLE INSERT ERROR SHOWING THE USER DESCRIPTIVE INFORMATION
-        }
-        Request('POST','/user', modalInfo, receiveResult)
+    const handleSubmit = async (event) => {
+        const result = await Request('POST', '/user', modalInfo)
+        const {done} = result
+        if (done) onClose()
         event.preventDefault()
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
