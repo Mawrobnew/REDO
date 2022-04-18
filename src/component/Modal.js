@@ -37,8 +37,13 @@ export default function Modal({ open, children, onClose }) {
 
     //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
     const handleSubmit = (event) => {
-        //Prevents the update of the modal
-      event.preventDefault()
+        const receiveResult =(result)=>{
+            const {done, payload} = result
+            if(done) onClose()
+            //TODO: HANDLE INSERT ERROR SHOWING THE USER DESCRIPTIVE INFORMATION
+        }
+        Request('POST','/user', modalInfo, receiveResult)
+        event.preventDefault()
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
 
