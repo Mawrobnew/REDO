@@ -2,58 +2,58 @@ import '../css/menu.css'
 
 function Menu(){
 
-    return <nav class="main-menu">
-                <ul class="contenido-menu">
+    return <nav className="main-menu">
+                <ul className="contenido-menu">
                     <li>
                         <a href="#">
-                            <i class="fa fa-map-marked-alt fa-2x"></i>
-                            <span class="nav-text" id="mapa-span">
+                            <i className="fa fa-map-marked-alt fa-2x"/>
+                            <span className="nav-text" id="mapa-span">
                                         Mapa
                                     </span>
                         </a>
 
                     </li>
-                    <li class="has-subnav">
+                    <li className="has-subnav">
                         <a href="#">
-                            <i class="fa fa-user-friends fa-2x"></i>
-                            <span class="nav-text" id="recolectores-span">
+                            <i className="fa fa-user-friends fa-2x"/>
+                            <span className="nav-text" id="recolectores-span">
                                         Recolectores
                                     </span>
                         </a>
 
                     </li>
-                    <li class="has-subnav">
+                    <li className="has-subnav">
                         <a href="#">
-                            <i class="fa fa-truck fa-2x"></i>
-                            <span class="nav-text" id="donadores-span">
+                            <i className="fa fa-truck fa-2x"/>
+                            <span className="nav-text" id="donadores-span">
                                         Donadores
                                     </span>
                         </a>
 
                     </li>
-                    <li class="has-subnav">
+                    <li className="has-subnav">
                         <a href="#">
-                            <i class="fa fa-shipping-fast fa-2x"></i>
-                            <span class="nav-text" id="donadores-extraordinarios-span">
+                            <i className="fa fa-shipping-fast fa-2x"/>
+                            <span className="nav-text" id="donadores-extraordinarios-span">
                                         Donadores Extraordinarios
                                     </span>
                         </a>
 
                     </li>
 
-                    <li class="has-subnav">
+                    <li className="has-subnav">
                         <a href="#">
-                            <i class="fa fa-box-open fa-2x"></i>
-                            <span class="nav-text" id="entregas-span">
+                            <i className="fa fa-box-open fa-2x"/>
+                            <span className="nav-text" id="entregas-span">
                                         Entregas
                                     </span>
                         </a>
 
                     </li>
-                    <li class="has-subnav">
+                    <li className="has-subnav">
                         <a href="#">
-                            <i class="fa fa-pallet fa-2x"></i>
-                            <span class="nav-text" id="recolecciones-span">
+                            <i className="fa fa-pallet fa-2x"/>
+                            <span className="nav-text" id="recolecciones-span">
                                         Recolecciones
                                     </span>
                         </a>
@@ -62,11 +62,11 @@ function Menu(){
 
                 </ul>
 
-                <ul class="logout">
+                <ul className="logout">
                     <li>
                         <a href="#">
-                            <i class="fa fa-power-off fa-2x"></i>
-                            <span class="nav-text" id="cerrar-sesion-span">
+                            <i className="fa fa-power-off fa-2x"/>
+                            <span className="nav-text" id="cerrar-sesion-span">
                                         Cerrar Sesión
                                     </span>
                         </a>

@@ -4,7 +4,12 @@ import '../css/modal.css';
 
 
 export default function Modal({ open, children, onClose }) {
-  if (!open) return null
+    if (!open) return null
+    //Prevent the default action of the form
+    const handleSubmit = (event) => {
+        //Prevents the update of the modal
+      event.preventDefault()
+    }
 
   return ReactDom.createPortal(
     <>
@@ -13,16 +18,16 @@ export default function Modal({ open, children, onClose }) {
         <button id='closeBtn' onClick={onClose}>X</button>
         {children}
         <p>Modal de prueba</p>
-        <form>
+        <form onSubmit={handleSubmit}>
             <div id='formulario'>
                 <p>Nombre</p>
-                <input type='text'></input>
+                <input type='text'/>
                 <p>Correo</p>
-                <input type='email'></input>
+                <input type='email'/>
                 <p>Telefono</p>
-                <input type='number'></input>
+                <input type='number'/>
                 <p>Contraseña</p>
-                <input type='text'></input>
+                <input type='text'/>
                 <p>Rol</p>
                 <select>
                     <option>Trabajo Social</option>
@@ -35,7 +40,7 @@ export default function Modal({ open, children, onClose }) {
                     <option>Cuernavaca</option>
                     <option>Jiutepec</option>
                 </select>
-                <p></p>
+                <p/>
                 <button>Crear Usuario</button>
             </div>
         </form>

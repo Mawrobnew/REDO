@@ -90,7 +90,7 @@ function DataList(){
         bodyClasses='pruebaBody'
         wrapperClasses='pruebaWrapper'
         >
-            <thead></thead>
+            <thead/>
         </BootstrapTable>
     )
     
