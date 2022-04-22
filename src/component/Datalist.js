@@ -16,6 +16,8 @@ import {Button} from "react-bootstrap";
 
 function DataList(){
     const [userList, setUserList] = useState([]);
+    const [isOpen, setIsOpen] = useState(false)
+
 
     const selectOptions = {
         0: 'gmail',
@@ -25,9 +27,10 @@ function DataList(){
     };
     
     const formatWithIcon = (cell,row) => {
-        return(
-            <Button>A</Button>
-        )
+        return <div>
+                <Button onClick={()=>{console.log("Opening modal");setIsOpen(true)}}>Boton</Button>
+                <Modal open={isOpen} onClose={() => setIsOpen(false)} />
+        </div>
     }
 
     const columns = [

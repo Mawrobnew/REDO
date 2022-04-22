@@ -23,7 +23,6 @@ function App() {
             <hr></hr>
           </div>
         </>
-        <a class="botonRuta" onClick='openCloseModal(modalRouteID)'>Establecer Ruta</a>
         <M_InsertUsuario></M_InsertUsuario>
         <div id='cont_tabla'>
           <Menu/>
