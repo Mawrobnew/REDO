@@ -9,9 +9,12 @@ import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import Modal from '../component/Modal';
+import '../css/modal.css';
+import {Button} from "react-bootstrap";
+
 
 function DataList(){
-
     const [userList, setUserList] = useState([]);
 
     const selectOptions = {
@@ -23,18 +26,17 @@ function DataList(){
     
     const formatWithIcon = (cell,row) => {
         return(
-            <button>Hola</button>
-            //<FontAwesomeIcon icon={faUserEdit} size='2x'/>
+            <Button>A</Button>
         )
     }
 
     const columns = [
-        {dataField:'Id', text:'Id', sort:true, filter: textFilter(),},
-        {dataField:'Nombre', text:'Nombre', sort:true, filter: textFilter()},
-        {dataField:'Correo', text:'Correo', sort:true, filter: textFilter()},
-        {dataField:'Numero', text:'Telefono', sort:true, filter: textFilter()},
-        {dataField:'Rol', text:'Rol', sort:true, filter: textFilter()},
-        {dataField:'Sucursal', text:'Sucursal', sort:true, filter: textFilter()},
+        {dataField:'Id', text:'Id', sort:true, filterFactory:textFilter()},
+        {dataField:'Nombre', text:'Nombre', sort:true},
+        {dataField:'Correo', text:'Correo', sort:true},
+        {dataField:'Numero', text:'Telefono', sort:true},
+        {dataField:'Rol', text:'Rol', sort:true},
+        {dataField:'Sucursal', text:'Sucursal'},
         {dataField:'btn2', text:'Modificar', formatter: formatWithIcon},
         {dataField:'btn', text:'Borrar', formatter: formatWithIcon}
     ]
@@ -82,8 +84,7 @@ function DataList(){
         data={userList}
         pagination ={pagination}
         filter={filterFactory()}
-        data-show-custom-view-button={true}
-        //striped={true}
+        striped={true}
         bordered={ false }
         condensed={true}
         hover={true}
@@ -91,7 +92,6 @@ function DataList(){
         bodyClasses='pruebaBody'
         wrapperClasses='pruebaWrapper'
         >
-            <thead/>
         </BootstrapTable>
     )
     

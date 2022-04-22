@@ -49,16 +49,14 @@ export default function Modal({ open, children, onClose }) {
   return ReactDom.createPortal(
     <div>
       <div className='wrapper' />
-      <div id='window'>
-        <button id='closeBtn' onClick={onClose}>X</button>
+      <div className='window'>
+        <button className='closeBtn' onClick={onClose}>X</button>
         {children}
-        <p>Modal de prueba</p>
+        <p className='title'>Insertar Usuario Lorem ipsum dolor sit amet1</p>
         <form onSubmit={handleSubmit}>
-            <div id='formulario'>
+            <div className='formulario'>
                 <p>Nombre</p>
-                <input type='text' onChange={handleInputChange} name="name"/>
-                <p>Correo</p>
-                <input type='text' onChange={handleInputChange} name="mail"/>
+                <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
                 <p>Telefono</p>
                 <input type='text' onChange={handleInputChange} name="phone"/>
                 <p>Contraseña</p>
@@ -76,7 +74,7 @@ export default function Modal({ open, children, onClose }) {
                     ))}
                 </select>
                 <p/>
-                <button>Crear Usuario</button>
+                <button className='aceptBtn'>Crear Usuario</button>
             </div>
         </form>
       </div>
