@@ -9,9 +9,10 @@ import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
-import { Button } from "react-bootstrap";
 import Modal from '../component/Modal';
 import '../css/modal.css';
+import M_ModUser from "./M_ModUser";
+import M_DeleteUser from "./M_DeleteUser";
 
 
 function DataList(){
@@ -25,19 +26,22 @@ function DataList(){
         2: 'outlook',
         4: 'Shanna@melissa.tv'
     };
-    
-    const formatWithIcon = (cell,row) => {
-        return  <div>
 
-                </div>
-    }
-    const linkFollow = (cell, row, rowIndex, formatExtraData) => {
+    const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <Modal open={isOpen} onClose={setIsOpen}></Modal>
+                <M_ModUser open={isOpen} onClose={setIsOpen}></M_ModUser>
             </div>
         );
     };
+    const btnDeleteUSer = (cell, row, rowIndex, formatExtraData) => {
+        return (
+            <div>
+                <M_DeleteUser open={isOpen} onClose={setIsOpen}></M_DeleteUser>
+            </div>
+        );
+    };
+
     const columns = [
         {dataField:'Id', text:'Id', sort:true, filterFactory:textFilter()},
         {dataField:'Nombre', text:'Nombre', sort:true},
@@ -45,7 +49,8 @@ function DataList(){
         {dataField:'Numero', text:'Telefono', sort:true},
         {dataField:'Rol', text:'Rol', sort:true},
         {dataField:'Sucursal', text:'Sucursal'},
-        {dataField:'btn2', text:'Modificar', formatter: linkFollow}
+        {dataField:'btn2', text:'Modificar', formatter: btnModUSer},
+        {dataField:'btn2', text:'Eliminar', formatter: btnDeleteUSer}
     ]
     
     const pagination = paginationFactory({

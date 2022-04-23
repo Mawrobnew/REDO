@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import ReactDom from 'react-dom'
 import '../css/modal.css';
 import {Request} from "../utils/WebRequestMiddleware";
 
