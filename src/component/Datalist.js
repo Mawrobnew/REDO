@@ -9,9 +9,9 @@ import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import { Button } from "react-bootstrap";
 import Modal from '../component/Modal';
 import '../css/modal.css';
-import {Button} from "react-bootstrap";
 
 
 function DataList(){
@@ -27,12 +27,25 @@ function DataList(){
     };
     
     const formatWithIcon = (cell,row) => {
-        return <div>
-                <Button onClick={()=>{console.log("Opening modal");setIsOpen(true)}}>Boton</Button>
-                <Modal open={isOpen} onClose={() => setIsOpen(false)} />
-        </div>
-    }
+        return  <div>
 
+                </div>
+    }
+    const linkFollow = (cell, row, rowIndex, formatExtraData) => {
+        return (
+            <div>
+                <Button
+                    onClick={() => {
+                        setIsOpen(true)
+                        console.log("Openning modal")
+                    }}
+                >
+                    Follow
+                </Button>
+                <Modal open={isOpen} onClose={setIsOpen}></Modal>
+            </div>
+        );
+    };
     const columns = [
         {dataField:'Id', text:'Id', sort:true, filterFactory:textFilter()},
         {dataField:'Nombre', text:'Nombre', sort:true},
@@ -40,8 +53,7 @@ function DataList(){
         {dataField:'Numero', text:'Telefono', sort:true},
         {dataField:'Rol', text:'Rol', sort:true},
         {dataField:'Sucursal', text:'Sucursal'},
-        {dataField:'btn2', text:'Modificar', formatter: formatWithIcon},
-        {dataField:'btn', text:'Borrar', formatter: formatWithIcon}
+        {dataField:'btn2', text:'Modificar', formatter: linkFollow}
     ]
     
     const pagination = paginationFactory({
@@ -62,7 +74,6 @@ function DataList(){
             console.log('sizePerPage', sizePerPage)
         }
     });
-
 
     useEffect(() => {
         const asyncFetch = async () => {

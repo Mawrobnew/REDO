@@ -3,7 +3,6 @@ import './App.css';
 import DataList from './component/Datalist.js';
 import Menu from './component/Menu';
 import Modal from './component/Modal';
-import M_InsertUsuario from './component/M_InsertUsuario';
 
 const BUTTON_WRAPPER_STYLES = {
   position: 'relative',
@@ -23,7 +22,6 @@ function App() {
             <hr></hr>
           </div>
         </>
-        <M_InsertUsuario></M_InsertUsuario>
         <div id='cont_tabla'>
           <Menu/>
           <DataList/>
