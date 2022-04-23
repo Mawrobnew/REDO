@@ -20,7 +20,6 @@ function App() {
             <button onClick={() => setIsOpen(true)} id='btnModalunUser'>Open Modal</button>
             <Modal open={isOpen} onClose={() => setIsOpen(false)} />
             <hr></hr>
-          </div>
         </>
         <div id='cont_tabla'>
           <Menu/>

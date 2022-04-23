@@ -34,14 +34,6 @@ function DataList(){
     const linkFollow = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <Button
-                    onClick={() => {
-                        setIsOpen(true)
-                        console.log("Openning modal")
-                    }}
-                >
-                    Follow
-                </Button>
                 <Modal open={isOpen} onClose={setIsOpen}></Modal>
             </div>
         );
