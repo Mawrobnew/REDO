@@ -3,6 +3,9 @@ import './App.css';
 import DataList from './component/Datalist.js';
 import Menu from './component/Menu';
 import Modal from './component/Modal';
+import M_InsertUser from "./component/M_InsertUser";
+import M_Success from "./component/M_Success";
+import M_Fail from "./component/M_Fail";
 
 const BUTTON_WRAPPER_STYLES = {
   position: 'relative',
@@ -12,19 +15,16 @@ const BUTTON_WRAPPER_STYLES = {
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-
-    <React.Fragment>
       <div id='prueba'>
-        <>
-          <div style={BUTTON_WRAPPER_STYLES} onClick={() => console.log('clicked')} id='wrapper'>
-            <button onClick={() => setIsOpen(true)} id='btnModalunUser'>Open Modal</button>
-            <Modal open={isOpen} onClose={() => setIsOpen(false)} />
-          </div>
-        </>
+          <hr></hr>
         <div id='cont_tabla'>
-          <Menu/>
-          <DataList/>
+            <Menu/>
+            <DataList/>
+            <M_InsertUser/>
+            <M_Success/>
+            <M_Fail/>
         </div>
+
       </div>
     </React.Fragment>
   );

@@ -1,4 +1,4 @@
-#wrapper{
+.wrapper{
     position: fixed;
     z-index: 1;
     display: block;
@@ -6,37 +6,108 @@
     left: 0;
     height: 100%;
     width: 100%;
+    background: #ebebebb3;
 }
 
-#window{
+.window{
     position: fixed;
     align-content: center;
-    z-index: 9;
-    width: 50%;
+    z-index: 1;
+    width: 30%;
     max-width: 1200px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 8px;
+    transform: translate(-40%, -50%);
+    border-radius: 10px;
     padding: 32px 32px 32px 32px;
     font-family: 'Titillium Web', sans-serif;
-    background: #ffffff;
-    border: 20px;
-    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.2);
+    background: #fff;
 }
-
-#closeBtn{
-    position:fixed;
+.title{
+    width: 80%;
+    font-size: 28px;
+    align-content: flex-end;
+    margin: -5px 0px 0px 0px;
+    font-weight: bold;
+}
+/*Estilos del formulario, inputs y botones dentro de el*/
+.formulario{
+}
+.formulario p{
+    font-size: 20px;
+    margin: 25px 0px 5px 0px;
+    font-weight: bold;
+}
+.formulario input{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #00b0d3;
+    height: 30px;
+    font-size: 18px;
+}
+.formulario select{
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid #00b0d3;
+    background-color: #ffffff;
+    font-size: 18px;
+}
+.closeBtn{
     float: right;
-    background-color: red;
-    
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #ff2a18;
+    border: none;
+}
+.aceptBtn{
+    float: right;
+    border-radius: 5px;
+    padding: 10px 10px;
+    background-color: #2ecc71;
+    border: none;
+    margin: 20px 0px 0px 0px;
 }
 
-#btnModalunUser{
-    background-color: rgb(90, 191, 57);
-    width: 150px;
-    height: 50px;
+.yesBtn{
+    float: right;
+    border-radius: 5px;
+    padding: 15px 20px;
+    background-color: #2ecc71;
+    border: none;
+    margin: 20px 0px 0px 0px;
+}
+
+.noBtn{
+    float: left;
+    border-radius: 5px;
+    padding: 15px 20px;
+    background-color: #ff3f3f;
+    border: none;
+    margin: 20px 0px 0px 0px;
+}
+/*Botones para fuera del modal para activarlos*/
+#btnModalInsertUser{
+    padding: 10px 15px;
+    background-color: #00d329;
     border-radius: 10px;
+    border: none;
     margin: 10px 0px 10px 0px;
-    border: #ffffff;
+    box-shadow: 2px 1px 2px 1px rgb(0,0,0,0.2);
+}
+#btnModalModUser{
+    padding: 5px 5px;
+    background-color:#FFC300 ;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+}
+#btnModalDeleteUser{
+    padding: 5px 5px;
+    background-color:#ff3f3f ;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
 }

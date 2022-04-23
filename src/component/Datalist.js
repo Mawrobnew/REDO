@@ -9,10 +9,16 @@ import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import Modal from '../component/Modal';
+import '../css/modal.css';
+import M_ModUser from "./M_ModUser";
+import M_DeleteUser from "./M_DeleteUser";
+
 
 function DataList(){
-
     const [userList, setUserList] = useState([]);
+    const [isOpen, setIsOpen] = useState(false)
+
 
     const selectOptions = {
         0: 'gmail',
@@ -20,23 +26,31 @@ function DataList(){
         2: 'outlook',
         4: 'Shanna@melissa.tv'
     };
-    
-    const formatWithIcon = (cell,row) => {
-        return(
-            <button>Hola</button>
-            //<FontAwesomeIcon icon={faUserEdit} size='2x'/>
-        )
-    }
+
+    const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
+        return (
+            <div>
+                <M_ModUser open={isOpen} onClose={setIsOpen}></M_ModUser>
+            </div>
+        );
+    };
+    const btnDeleteUSer = (cell, row, rowIndex, formatExtraData) => {
+        return (
+            <div>
+                <M_DeleteUser open={isOpen} onClose={setIsOpen}></M_DeleteUser>
+            </div>
+        );
+    };
 
     const columns = [
-        {dataField:'Id', text:'Id', sort:true, filter: textFilter(),},
-        {dataField:'Nombre', text:'Nombre', sort:true, filter: textFilter()},
-        {dataField:'Correo', text:'Correo', sort:true, filter: textFilter()},
-        {dataField:'Numero', text:'Telefono', sort:true, filter: textFilter()},
-        {dataField:'Rol', text:'Rol', sort:true, filter: textFilter()},
-        {dataField:'Sucursal', text:'Sucursal', sort:true, filter: textFilter()},
-        {dataField:'btn2', text:'Modificar', formatter: formatWithIcon},
-        {dataField:'btn', text:'Borrar', formatter: formatWithIcon}
+        {dataField:'Id', text:'Id', sort:true, filterFactory:textFilter()},
+        {dataField:'Nombre', text:'Nombre', sort:true},
+        {dataField:'Correo', text:'Correo', sort:true},
+        {dataField:'Numero', text:'Telefono', sort:true},
+        {dataField:'Rol', text:'Rol', sort:true},
+        {dataField:'Sucursal', text:'Sucursal'},
+        {dataField:'btn2', text:'Modificar', formatter: btnModUSer},
+        {dataField:'btn2', text:'Eliminar', formatter: btnDeleteUSer}
     ]
     
     const pagination = paginationFactory({
@@ -57,7 +71,6 @@ function DataList(){
             console.log('sizePerPage', sizePerPage)
         }
     });
-
 
     useEffect(() => {
         const asyncFetch = async () => {
@@ -82,8 +95,7 @@ function DataList(){
         data={userList}
         pagination ={pagination}
         filter={filterFactory()}
-        data-show-custom-view-button={true}
-        //striped={true}
+        striped={true}
         bordered={ false }
         condensed={true}
         hover={true}
@@ -91,7 +103,6 @@ function DataList(){
         bodyClasses='pruebaBody'
         wrapperClasses='pruebaWrapper'
         >
-            <thead/>
         </BootstrapTable>
     )
     
