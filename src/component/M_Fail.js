@@ -13,6 +13,7 @@ export default function M_Fail() {
     return (
         <div>
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
+
             <div className='window'>
                 <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
                 <p className='title'>La operación ha fallado</p>

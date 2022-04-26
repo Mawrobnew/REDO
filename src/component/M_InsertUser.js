@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
 
-
 export default function M_InsertUser() {
     const [modalInfo, setModalInfo] = useState({
         name: '',
@@ -57,6 +56,8 @@ export default function M_InsertUser() {
                         <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
                         <p>Telefono</p>
                         <input type='text' onChange={handleInputChange} name="phone"/>
+                        <p>Correo</p>
+                        <input type='email' onChange={handleInputChange} name="mail"/>
                         <p>Contraseña</p>
                         <input type='text' onChange={handleInputChange} name="password"/>
                         <p>Rol</p>

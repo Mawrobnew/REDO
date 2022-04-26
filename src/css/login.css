@@ -1,0 +1,70 @@
+.wrapperL{
+    position: fixed;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #ED1A3B;
+}
+
+.windowL{
+    position: fixed;
+    align-content: center;
+    z-index: 1;
+    width: 30%;
+    height: 70%;
+    max-width: 1200px;
+    top: 50%;
+    left: 47%;
+    transform: translate(-40%, -50%);
+    border-radius: 10px;
+    padding: 32px 32px;
+    font-family: 'Titillium Web', sans-serif;
+    background: #fff;
+    box-shadow: 5px 5px 10px 3px rgb(0,0,0,0.2);
+}
+.titleL{
+    width: 100%;
+    text-align: center;
+    font-size: 42px;
+    margin: 0px 0px 0px 0px;
+    font-weight: bold;
+}
+hr{
+    width: 100%;
+    border: 2px solid #FF0000;
+    box-shadow: .5px .5px .5px 1px rgb(255,0,0);
+}
+
+/*Estilos del formulario, inputs y botones dentro de el*/
+.formularioL{
+}
+.formularioL p{
+    font-size: 22px;
+    margin: 50px 0px 5px 0px;
+    font-weight: bold;
+}
+.formularioL input{
+    width: 100%;
+    border: none;
+    border: 2px solid #00b0d3;
+    height: 45px;
+    font-size: 20px;
+}
+.aceptBtnL{
+    float: right;
+    border-radius: 5px;
+    padding: 15px 50px;
+    background-color: #2ecc71;
+    border: none;
+    margin: 70px 0px 0px 0px;
+}
+img{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    height: 200px;
+    width: 350px;
+}

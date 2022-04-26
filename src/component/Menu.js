@@ -5,7 +5,7 @@ function Menu(){
     return <nav className="main-menu">
                 <ul className="contenido-menu">
                     <li>
-                        <a href="#">
+                        <a href='../App.js'>
                             <i className="fa fa-map-marked-alt fa-2x"/>
                             <span className="nav-text" id="mapa-span">
                                         Mapa
