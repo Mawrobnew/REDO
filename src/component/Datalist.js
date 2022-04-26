@@ -2,15 +2,12 @@ import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Request} from "../utils/WebRequestMiddleware";
-//import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
-import Modal from '../component/Modal';
-import '../css/modal.css';
 import M_ModUser from "./M_ModUser";
 import M_DeleteUser from "./M_DeleteUser";
 
