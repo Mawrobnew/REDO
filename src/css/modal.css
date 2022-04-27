@@ -96,18 +96,23 @@
     box-shadow: 2px 1px 2px 1px rgb(0,0,0,0.2);
 }
 #btnModalModUser{
-    padding: 5px 5px;
+    padding: 3px 5px;
     background-color:#FFC300 ;
     border-radius: 10px;
     border: none;
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    position: relative;
+    left: 35%;
+
 }
 #btnModalDeleteUser{
-    padding: 5px 5px;
+    padding: 3px 5px;
     background-color:#ff3f3f ;
     border-radius: 10px;
     border: none;
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    position: relative;
+    left: 35%;
 }

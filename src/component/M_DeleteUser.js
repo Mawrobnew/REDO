@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
+import { faUserXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../css/modal.css';
 
 
@@ -43,7 +45,7 @@ export default function M_DeleteUser() {
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalDeleteUser'>Eliminar</button>
+        <button onClick={() => setIsOpen(true)} id='btnModalDeleteUser'><FontAwesomeIcon icon={faUserXmark} size='1x'/></button>
     )
     return (
         <div>

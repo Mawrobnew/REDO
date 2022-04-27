@@ -13,7 +13,7 @@ function Login(){
                     <input type='email' placeholder='Correo electrónico' autoFocus={true}></input>
                     <p>Contraseña</p>
                     <input type='password' minLength={4} maxLength={16} placeholder='********'></input>
-                    <button className='aceptBtn'>Iniciar sesión</button>
+                    <button className='aceptBtnL'>Iniciar sesión</button>
                 </form>
                 </div>
             </div>

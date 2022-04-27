@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
+import {faUserPlus} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function M_InsertUser() {
     const [modalInfo, setModalInfo] = useState({
@@ -44,7 +46,7 @@ export default function M_InsertUser() {
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalInsertUser'>Agregar usuario</button>
+        <button onClick={() => setIsOpen(true)} id='btnModalInsertUser'><FontAwesomeIcon icon={faUserPlus} size='1x'/> Agregar Usuario</button>
     )
     return (
         <div>

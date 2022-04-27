@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
+import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default function M_ModUser() {
@@ -43,7 +45,7 @@ export default function M_ModUser() {
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalModUser'>Modificar</button>
+        <button onClick={() => setIsOpen(true)} id='btnModalModUser'><FontAwesomeIcon icon={faUserEdit} size='1x'/></button>
     )
     return (
         <div>
