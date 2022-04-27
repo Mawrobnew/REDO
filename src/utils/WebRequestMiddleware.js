@@ -1,6 +1,7 @@
 const HOST = "http://localhost:8080/api"
 export const Request = async (method = 'POST', route = '/', data = {}) => {
     //Request configuration
+    console.log(route,method)
     const headers = {"Content-Type": "application/json"}
     const mode = 'cors'
     let init = {method, headers, mode};

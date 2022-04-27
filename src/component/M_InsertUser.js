@@ -35,10 +35,12 @@ export default function M_InsertUser() {
 
     //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
     const handleSubmit = async (event) => {
-        const result = await Request('POST', '/user', modalInfo)
-        const {done} = result
-        if (done) setIsOpen(!isOpen)
         event.preventDefault()
+        const result = await Request('POST', '/user', modalInfo)
+        const {done, errors} = result
+        if (done) setIsOpen(!isOpen)
+        //TODO: DISPLAY IN RED THE ERRORS OF THE FIELDS
+        console.log("TONY THIS ARE THE ERRORS TO BE DISPLAYED",errors)
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
