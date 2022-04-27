@@ -4,13 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Request} from "../utils/WebRequestMiddleware";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import M_ModUser from "./M_ModUser";
 import M_DeleteUser from "./M_DeleteUser";
+import M_InsertUser from "./M_InsertUser";
+import M_Success from "./M_Success";
+import M_Fail from "./M_Fail";
+import '../css/table.css';
 
-
-function DataList(){
+function T_BeneficiaryDocuments(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
@@ -40,14 +43,13 @@ function DataList(){
     const columns = [
         {dataField:'Id', text:'Id', sort:true, filterFactory:textFilter()},
         {dataField:'Nombre', text:'Nombre', sort:true},
-        {dataField:'Correo', text:'Correo', sort:true},
-        {dataField:'Numero', text:'Telefono', sort:true},
-        {dataField:'Rol', text:'Rol', sort:true},
-        {dataField:'Sucursal', text:'Sucursal'},
-        {dataField:'btn2', text:'Modificar', formatter: btnModUSer},
-        {dataField:'btn2', text:'Eliminar', formatter: btnDeleteUSer}
+        {dataField:'Correo', text:'Credencial', sort:true},
+        {dataField:'Numero', text:'Estudio', sort:true},
+        {dataField:'Rol', text:'Estado', sort:true},
+        {dataField:'btn2', text:'Cambiar estado', formatter: btnModUSer},
+        {dataField:'btn2', text:'Documentos', formatter: btnModUSer}
     ]
-    
+
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 10,
@@ -81,46 +83,31 @@ function DataList(){
     };
 
     return(
-
-        <BootstrapTable 
-        id='prueba2'
-        bootstrap4 
-        keyField='id' 
-        columns={columns} 
-        data={userList}
-        pagination ={pagination}
-        filter={filterFactory()}
-        striped={true}
-        bordered={ false }
-        condensed={true}
-        hover={true}
-        headerClasses='pruebaHead'
-        bodyClasses='pruebaBody'
-        wrapperClasses='pruebaWrapper'
-        >
-        </BootstrapTable>
+        <div id='container'>
+            <div id='cont_tabla'>
+                <p className='title'>Documentos beneficiarios</p>
+                <hr></hr>
+                <BootstrapTable
+                    id='prueba2'
+                    bootstrap4
+                    keyField='id'
+                    columns={columns}
+                    data={userList}
+                    pagination ={pagination}
+                    filter={filterFactory()}
+                    striped={true}
+                    bordered={ false }
+                    condensed={true}
+                    hover={true}
+                    headerClasses='TableHead'
+                    bodyClasses='TableBody'
+                    wrapperClasses='pruebaWrapper'
+                >
+                </BootstrapTable>
+            </div>
+        </div>
     )
+
 }
-/*
-<ToolkitProvider
-  keyField="id"
-  data={ products }
-  columns={ columns }
-  search
->
-  {
-    props => (
-      <div>
-        <h3>Input something at below input field:</h3>
-        <SearchBar { ...props.searchProps } />
-        <hr />
-        <BootstrapTable
-          { ...props.baseProps }
-        />
-      </div>
-    )
-  }
-</ToolkitProvider>
-*/
 
-export default DataList;
+export default T_BeneficiaryDocuments;
