@@ -83,7 +83,6 @@ function T_BeneficiaryDocuments(){
     };
 
     return(
-        <div id='container'>
             <div id='cont_tabla'>
                 <p className='title'>Documentos beneficiarios</p>
                 <hr></hr>
@@ -105,7 +104,6 @@ function T_BeneficiaryDocuments(){
                 >
                 </BootstrapTable>
             </div>
-        </div>
     )
 
 }

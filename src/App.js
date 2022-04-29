@@ -9,9 +9,7 @@ function App() {
   return (
       <div>
           <Menu/>
-          <T_User/>
           <T_GlobalBeneficiary/>
-          <T_BeneficiaryDocuments/>
       </div>
   );
 }

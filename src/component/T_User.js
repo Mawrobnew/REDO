@@ -41,7 +41,7 @@ function T_User(){
     };
 
     const columns = [
-        {dataField:'Id', text:'Id', sort:true, filterFactory:textFilter()},
+        {dataField:'Id', text:'Id', sort:true                                                                                           },
         {dataField:'Nombre', text:'Nombre', sort:true},
         {dataField:'Correo', text:'Correo', sort:true},
         {dataField:'Numero', text:'Telefono', sort:true},

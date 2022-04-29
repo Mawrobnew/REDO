@@ -12,6 +12,7 @@ import M_InsertUser from "./M_InsertUser";
 import M_Success from "./M_Success";
 import M_Fail from "./M_Fail";
 import '../css/table.css';
+import T_BeneficiaryDocuments from "./T_BeneficiaryDocuments";
 
 function T_GlobalBeneficiary(){
     const [userList, setUserList] = useState([]);
@@ -107,6 +108,7 @@ function T_GlobalBeneficiary(){
                 </BootstrapTable>
                 <M_InsertUser/>
             </div>
+            <T_BeneficiaryDocuments/>
         </div>
     )
 
