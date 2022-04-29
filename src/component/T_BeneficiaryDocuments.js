@@ -8,9 +8,8 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import M_ModUser from "./M_ModUser";
 import M_DeleteUser from "./M_DeleteUser";
-import M_InsertUser from "./M_InsertUser";
-import M_Success from "./M_Success";
-import M_Fail from "./M_Fail";
+import M_ChangeStatus from './M_ChangeStatus';
+import M_UploadDocuments from './M_UploadDocuments'
 import '../css/table.css';
 
 function T_BeneficiaryDocuments(){
@@ -25,17 +24,17 @@ function T_BeneficiaryDocuments(){
         4: 'Shanna@melissa.tv'
     };
 
-    const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
+    const btnModUStatus = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_ModUser open={isOpen} onClose={setIsOpen}></M_ModUser>
+                <M_ChangeStatus open={isOpen} onClose={setIsOpen}></M_ChangeStatus>
             </div>
         );
     };
-    const btnDeleteUSer = (cell, row, rowIndex, formatExtraData) => {
+    const btnUploadDoc = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_DeleteUser open={isOpen} onClose={setIsOpen}></M_DeleteUser>
+                <M_UploadDocuments open={isOpen} onClose={setIsOpen}></M_UploadDocuments>
             </div>
         );
     };
@@ -46,8 +45,8 @@ function T_BeneficiaryDocuments(){
         {dataField:'Correo', text:'Credencial', sort:true},
         {dataField:'Numero', text:'Estudio', sort:true},
         {dataField:'Rol', text:'Estado', sort:true},
-        {dataField:'btn2', text:'Cambiar estado', formatter: btnModUSer},
-        {dataField:'btn2', text:'Documentos', formatter: btnModUSer}
+        {dataField:'btn2', text:'Cambiar estado', formatter: btnModUStatus},
+        {dataField:'btn2', text:'Documentos', formatter: btnUploadDoc}
     ]
 
     const pagination = paginationFactory({
@@ -82,7 +81,6 @@ function T_BeneficiaryDocuments(){
     };
 
     return(
-        <div id='container'>
             <div id='cont_tabla'>
                 <p className='title'>Documentos beneficiarios</p>
                 <hr></hr>
@@ -104,7 +102,6 @@ function T_BeneficiaryDocuments(){
                 >
                 </BootstrapTable>
             </div>
-        </div>
     )
 
 }

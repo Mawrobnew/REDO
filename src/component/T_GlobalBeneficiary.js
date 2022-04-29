@@ -7,11 +7,11 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import M_ModUser from "./M_ModUser";
-import M_DeleteUser from "./M_DeleteUser";
 import M_InsertUser from "./M_InsertUser";
-import M_Success from "./M_Success";
-import M_Fail from "./M_Fail";
+import M_ModBeneficiary from './M_ModBeneficiary'
 import '../css/table.css';
+import T_BeneficiaryDocuments from "./T_BeneficiaryDocuments";
+import M_UpdateBeneficiary from './M_UpdateBeneficiary'
 
 function T_GlobalBeneficiary(){
     const [userList, setUserList] = useState([]);
@@ -25,17 +25,10 @@ function T_GlobalBeneficiary(){
         4: 'Shanna@melissa.tv'
     };
 
-    const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
+    const btnModBeneficiary = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_ModUser open={isOpen} onClose={setIsOpen}></M_ModUser>
-            </div>
-        );
-    };
-    const btnDeleteUSer = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <M_DeleteUser open={isOpen} onClose={setIsOpen}></M_DeleteUser>
+                <M_ModBeneficiary open={isOpen} onClose={setIsOpen}></M_ModBeneficiary>
             </div>
         );
     };
@@ -48,7 +41,7 @@ function T_GlobalBeneficiary(){
         {dataField:'Rol', text:'Beca', sort:true},
         {dataField:'Sucursal', text:'Frecuencia', sort:true},
         {dataField:'Sucursal', text:'Dia', sort:true},
-        {dataField:'btn2', text:'Modificar', formatter: btnModUSer}
+        {dataField:'btn2', text:'Modificar', formatter: btnModBeneficiary}
     ]
 
     const pagination = paginationFactory({
@@ -104,8 +97,9 @@ function T_GlobalBeneficiary(){
                     wrapperClasses='pruebaWrapper'
                 >
                 </BootstrapTable>
-                <M_InsertUser/>
+                <M_UpdateBeneficiary/>
             </div>
+            <T_BeneficiaryDocuments/>
         </div>
     )
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import './App.css';
 import Menu from './component/Menu';
 import T_User from "./component/T_User";
@@ -19,9 +19,7 @@ let MainPage = ()=>{
 
     return <div>
         <Menu/>
-        <T_User/>
         <T_GlobalBeneficiary/>
-        <T_BeneficiaryDocuments/>
     </div>
 }
 function App() {

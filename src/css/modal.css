@@ -116,3 +116,42 @@
     position: relative;
     left: 35%;
 }
+#btnModalModBen{
+    padding: 3px 5px;
+    background-color:#FFC300;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    position: relative;
+    left: 35%;
+}
+
+#btnModalChangeStatus{
+    padding: 3px 5px;
+    background-color:#fe7e42;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    position: relative;
+    left: 35%;
+}
+#btnModalUploadDocs{
+    padding: 4px 8px;
+    background-color:#0097ff;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    position: relative;
+    left: 35%;
+}
+#btnModalUpdateDocs{
+    padding: 10px 10px;
+    background-color: #00d329;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0px 10px 0px;
+    box-shadow: 2px 1px 2px 1px rgb(0,0,0,0.2);
+}
