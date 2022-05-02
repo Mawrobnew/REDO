@@ -3,10 +3,12 @@ import Logo from '../img/Blanco.png'
 import { useNavigate } from 'react-router-dom';
 import {Request} from "../utils/WebRequestMiddleware"
 import {useEffect, useState} from "react";
+import {Alert} from "react-bootstrap";
 
 function Login(){
     let navigate = useNavigate();
     const [formInfo,setFormInfo] = useState({})
+    const [error, setError] = useState(false)
 
     const handleInputChange = (event) =>{
         const {name,value} = event.target
@@ -23,6 +25,8 @@ function Login(){
         if(done){
             sessionStorage.setItem('token', token)
             navigate("/")
+        }else{
+            setError(true)
         }
     }
     return (
@@ -35,7 +39,10 @@ function Login(){
                     <p>Correo</p>
                     <input type='email' placeholder='Correo electrónico' onChange={handleInputChange} autoFocus={true} name={"mail"}/>
                     <p>Contraseña</p>
-                    <input type='password' minLength={4} maxLength={16} placeholder='********'  onChange={handleInputChange} name={"password"}/>
+                    <input type='password' maxLength={16} placeholder='********'  onChange={handleInputChange} name={"password"}/>
+                    <Alert variant="danger" show={error}>
+                        <Alert.Heading>Correo o contraseña inválidos</Alert.Heading>
+                    </Alert>
                     <button className='aceptBtnL' onClick={HandleLogin}>Iniciar sesión</button>
                 </form>
                 </div>

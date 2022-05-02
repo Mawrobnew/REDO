@@ -19,6 +19,7 @@ let MainPage = ()=>{
 
     return <div>
         <Menu/>
+        <T_User/>
         <T_GlobalBeneficiary/>
     </div>
 }
