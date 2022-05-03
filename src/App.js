@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./component/Login"
 import { useNavigate } from 'react-router-dom';
 
-let MainPage = ()=>{
+let TrabajoSocial = ()=>{
     const navigate = useNavigate();
     useEffect(()=>{
         const token = sessionStorage.getItem("token")
@@ -23,12 +23,32 @@ let MainPage = ()=>{
         <T_GlobalBeneficiary/>
     </div>
 }
+const Cajero = ()=>{
+   return <div>
+       Vista de cajero
+   </div>
+}
+
+const SuperUsuario = ()=>{
+    return <div>
+        Vista de super usuario
+    </div>
+
+}
+const NotFound = ()=>{
+    return <div>
+        404 Pagina no encontrada
+    </div>
+}
 function App() {
   return (
       <Router>
       <Routes>
         <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/" element={<MainPage/>} />
+          <Route exact path="/TrabajoSocial" element={<TrabajoSocial/>} />
+          <Route exact path="/SuperUsuario" element={<SuperUsuario/>}/>
+          <Route exact path="/Cajero" element={<Cajero/>}/>
+          <Route exact path="*" element={<NotFound/>}/>
       </Routes>
     </Router>
   );

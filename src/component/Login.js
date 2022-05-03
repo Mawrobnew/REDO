@@ -21,10 +21,21 @@ function Login(){
         e.preventDefault();
 
         const result = await Request('POST', "/login", formInfo)
-        const {done, token} =result
+        const {done, token, role} =result
         if(done){
             sessionStorage.setItem('token', token)
-            navigate("/")
+            sessionStorage.setItem('role', role)
+            switch (role){
+                case 1:
+                    navigate('/SuperUsuario')
+                    break;
+                case 2:
+                    navigate('/TrabajoSocial')
+                    break;
+                case 3:
+                    navigate('/Cajero')
+                    break;
+            }
         }else{
             setError(true)
         }
