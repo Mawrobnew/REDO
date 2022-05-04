@@ -2,7 +2,7 @@ import '../css/login.css'
 import Logo from '../img/Blanco.png'
 import { useNavigate } from 'react-router-dom';
 import {Request} from "../utils/WebRequestMiddleware"
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Alert} from "react-bootstrap";
 
 function Login(){

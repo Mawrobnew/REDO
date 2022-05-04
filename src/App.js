@@ -1,57 +1,78 @@
-import React, { useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css';
 import Menu from './component/Menu';
 import T_User from "./component/T_User";
 import T_GlobalBeneficiary from "./component/T_GlobalBeneficiary";
 import T_BeneficiaryDocuments from "./component/T_BeneficiaryDocuments";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Redirect, useLocation} from "react-router-dom";
 import Login from "./component/Login"
-import { useNavigate } from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
+import {type} from "@testing-library/user-event/dist/type";
 
-let TrabajoSocial = ()=>{
-    const navigate = useNavigate();
-    useEffect(()=>{
-        const token = sessionStorage.getItem("token")
-        if(token === null) {
-            navigate('/login')
-        }
-    },[])
-
+let TrabajoSocial = () => {
     return <div>
         <Menu/>
         <T_User/>
         <T_GlobalBeneficiary/>
     </div>
 }
-const Cajero = ()=>{
-   return <div>
-       Vista de cajero
-   </div>
+const Cajero = () => {
+    return <div>
+        Vista de cajero
+    </div>
 }
 
-const SuperUsuario = ()=>{
+const SuperUsuario = () => {
     return <div>
         Vista de super usuario
     </div>
 
 }
-const NotFound = ()=>{
+const NotFound = () => {
     return <div>
         404 Pagina no encontrada
     </div>
 }
+export const PrivateRoute = ({ component: Component , roles }) => {
+    const token = sessionStorage.getItem('token');
+    const role = sessionStorage.getItem('role')
+    const location = useLocation()
+    if(token === null && location.pathname !== '/login')
+        return <Navigate to='/login'/>
+
+    if(roles.includes(parseInt(role)))
+        return <Component/>
+
+    return <div>
+        Acceso no autorizado
+    </div>
+}
+
+//THE ID OF THE ROLES
+const SUPERUSUARIO = 1;
+const TRABAJOSOCIAL= 2;
+const CAJERO = 3;
 function App() {
-  return (
-      <Router>
-      <Routes>
-        <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/TrabajoSocial" element={<TrabajoSocial/>} />
-          <Route exact path="/SuperUsuario" element={<SuperUsuario/>}/>
-          <Route exact path="/Cajero" element={<Cajero/>}/>
-          <Route exact path="*" element={<NotFound/>}/>
-      </Routes>
-    </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route exact path="/login" element={<Login/>}/>
+                <Route
+                    path="/superusuario"
+                    element={<PrivateRoute roles={[SUPERUSUARIO]} component={SuperUsuario} />}
+                />
+                <Route
+                    path="/cajero"
+                    element={<PrivateRoute roles={[CAJERO]} component={Cajero} />}
+                />
+                <Route
+                    path="/trabajosocial"
+                    element={<PrivateRoute roles={[TRABAJOSOCIAL]} component={TrabajoSocial} />}
+                />
+                <Route exact path="*" element={<NotFound/>}/>
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
