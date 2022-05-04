@@ -11,17 +11,9 @@ import M_UploadDocuments from './M_UploadDocuments'
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 
-function T_BeneficiaryDocuments(){
+function T_CommunityHistoric(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
-
-
-    const selectOptions = {
-        0: 'gmail',
-        1: 'hotmail',
-        2: 'outlook',
-        4: 'Shanna@melissa.tv'
-    };
 
     const btnModUStatus = (cell, row, rowIndex, formatExtraData) => {
         return (
@@ -39,13 +31,11 @@ function T_BeneficiaryDocuments(){
     };
 
     const columns = [
-        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Credencial', text:'Credencial', sort:true, key:3},
-        {dataField:'EstudioSocioeconomico', text:'Estudio', sort:true, key:4},
-        {dataField:'Status', text:'Estado', sort:true, key:5},
-        {dataField:'btn', text:'Cambiar estado', formatter: btnModUStatus, key:6},
-        {dataField:'btn2', text:'Documentos', formatter: btnUploadDoc, key:7}
+        {dataField:'Folio', text:'Fecha', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'Nombre', text:'Paquetes enviados', sort:true, key:2},
+        {dataField:'Credencial', text:'Comunidad', sort:true, key:3},
+        {dataField:'EstudioSocioeconomico', text:'Encargado', sort:true, key:4},
+        {dataField:'Status', text:'Telefono', sort:true, key:5}
     ]
 
     const pagination = paginationFactory({
@@ -83,7 +73,7 @@ function T_BeneficiaryDocuments(){
 
     return(
         <ToolkitProvider
-            id='T3'
+            id='T7'
             bootstrap4
             keyField='Id'
             columns={columns}
@@ -93,7 +83,7 @@ function T_BeneficiaryDocuments(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Documentos beneficiarios</p>
+                        <p className='title'>Historico de peticiones</p>
                         <hr></hr>
                         <SearchBar { ...props.searchProps } />
                         <ClearSearchButton { ...props.searchProps }/>
@@ -119,4 +109,4 @@ function T_BeneficiaryDocuments(){
 
 }
 
-export default T_BeneficiaryDocuments;
+export default T_CommunityHistoric;

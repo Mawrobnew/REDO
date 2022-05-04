@@ -44,7 +44,7 @@ function DataList(){
         {dataField:'Numero', text:'Telefono', sort:true},
         {dataField:'Rol', text:'Rol', sort:true},
         {dataField:'Sucursal', text:'Sucursal'},
-        {dataField:'btn2', text:'Modificar', formatter: btnModUSer},
+        {dataField:'btn', text:'Modificar', formatter: btnModUSer},
         {dataField:'btn2', text:'Eliminar', formatter: btnDeleteUSer}
     ]
     

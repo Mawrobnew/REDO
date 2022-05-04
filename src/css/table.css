@@ -26,10 +26,12 @@
 }
 
 .TableHead{
-    text-align:center;
+    text-align:left;
     padding: 0px 50px;
     font-size: 17px;
     vertical-align: middle;
     color: #003bb9;
     height: 50px;
+}
+.btnLimpiar{
 }

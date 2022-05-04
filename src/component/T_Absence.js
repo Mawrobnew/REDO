@@ -6,23 +6,19 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
-import M_ModUser from "./M_ModUser";
-import M_InsertUser from "./M_InsertUser";
-import M_ModBeneficiary from './M_ModBeneficiary'
 import '../css/table.css';
-import T_BeneficiaryDocuments from "./T_BeneficiaryDocuments";
-import M_UpdateBeneficiary from './M_UpdateBeneficiary'
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+import T_AbsenceHistoric from './T_AbsenceHistoric';
+import M_AbsencesReason from './M_AbsenceReason';
 
-
-function T_GlobalBeneficiary(){
+function T_Absence(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
-    const btnModBeneficiary = (cell, row, rowIndex, formatExtraData) => {
+    const btnAbsencesReason = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_ModBeneficiary open={isOpen} onClose={setIsOpen}></M_ModBeneficiary>
+                <M_AbsencesReason open={isOpen} onClose={setIsOpen}></M_AbsencesReason>
             </div>
         );
     };
@@ -30,12 +26,8 @@ function T_GlobalBeneficiary(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'FechaRegistro', text:'F registro', sort:true, key:3},
-        {dataField:'FechaVencimiento', text:'F vencimiento', sort:true, key:4},
-        {dataField:'Beca', text:'Beca', sort:true, key:5},
-        {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:6},
-        {dataField:'Dia', text:'Dia', sort:true, key:7},
-        {dataField:'btn2', text:'Modificar', formatter: btnModBeneficiary, key:8}
+        {dataField:'Frecuencia', text:'Telefono', sort:true, key:6},
+        {dataField:'Dia', text:'Cant. Faltas', sort:true, key:7}
     ]
 
     const pagination = paginationFactory({
@@ -69,15 +61,12 @@ function T_GlobalBeneficiary(){
         asyncFetch()
     }, [])
 
-    const selectRow = {
-        mode:"checkbox"
-    };
     const { SearchBar, ClearSearchButton } = Search;
     const { ExportCSVButton } = CSVExport;
 
     return(
         <ToolkitProvider
-            id='T2'
+            id='T8'
             bootstrap4
             keyField='Id'
             columns={columns}
@@ -89,7 +78,7 @@ function T_GlobalBeneficiary(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Beneficiarios</p>
+                            <p className='title'>Faltas</p>
                             <hr></hr>
                             <SearchBar { ...props.searchProps } />
                             <ClearSearchButton { ...props.searchProps }/>
@@ -107,9 +96,8 @@ function T_GlobalBeneficiary(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
-                            <M_UpdateBeneficiary/>
                         </div>
-                        <T_BeneficiaryDocuments/>
+                        <T_AbsenceHistoric/>
                     </div>
                 )
             }
@@ -118,4 +106,4 @@ function T_GlobalBeneficiary(){
 
 }
 
-export default T_GlobalBeneficiary;
+export default T_Absence;
