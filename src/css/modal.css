@@ -103,7 +103,7 @@
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
-    left: 35%;
+    width: 70%;
 
 }
 #btnModalDeleteUser{
@@ -114,7 +114,7 @@
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
-    left: 35%;
+    width: 70%;
 }
 #btnModalModBen{
     padding: 3px 5px;
@@ -124,7 +124,7 @@
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
-    left: 35%;
+    width: 70%;
 }
 
 #btnModalChangeStatus{
@@ -135,7 +135,7 @@
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
-    left: 35%;
+    width: 40%;
 }
 #btnModalUploadDocs{
     padding: 4px 8px;
@@ -145,7 +145,7 @@
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
-    left: 35%;
+    width: 50%;
 }
 #btnModalUpdateDocs{
     padding: 10px 10px;
@@ -154,4 +154,49 @@
     border: none;
     margin: 10px 0px 10px 0px;
     box-shadow: 2px 1px 2px 1px rgb(0,0,0,0.2);
+}
+#btnModalAttendance{
+    padding: 3px 5px;
+    background-color:#fe7e42;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    position: relative;
+    width: 50%;
+}
+#btnModalCreateCommunity{
+    padding: 10px 10px;
+    background-color: #00d329;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0px 10px 0px;
+    box-shadow: 2px 1px 2px 1px rgb(0,0,0,0.2);
+}
+#btnModalCreateCommittee{
+    padding: 10px 10px;
+    background-color: #FFC300;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0px 10px 10px;
+    box-shadow: 2px 1px 2px 1px rgb(0,0,0,0.2);
+}
+#btnModalCreatePetition{
+    padding: 10px 10px;
+    background-color: #c9a8ff;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0px 10px 10px;
+    box-shadow: 2px 1px 2px 1px rgb(0,0,0,0.2);
+}
+
+#btnAbsenceReason{
+    padding: 3px 5px;
+    background-color:#fe7e42;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    position: relative;
+    width: 50%;
 }

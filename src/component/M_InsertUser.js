@@ -76,7 +76,7 @@ export default function M_InsertUser() {
                                 <option value={rol.id}>{rol.label}</option>
                             ))}
                         </select>
-                        <button className='aceptBtn'>Crear Usuario</button>
+                        <button className='aceptBtn'>Crear usuario</button>
                     </div>
                 </form>
             </div>

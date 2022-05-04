@@ -5,7 +5,7 @@ import { faFileArchive } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-export default function M_UploadDocuments() {
+export default function M_UploadDocsCommunityAttendance() {
     const [modalInfo, setModalInfo] = useState({
         name: '',
         mail: '',
@@ -55,10 +55,8 @@ export default function M_UploadDocuments() {
                 <p className='title'>Subir documentos</p>
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
-                        <p>Credencial</p>
+                        <p>Lista de asistencia</p>
                         <input type="file" id="" name="" accept=".pdf"/>
-                        <p>Estudio socioeconómico</p>
-                        <input type="file" id="" name="" accept=".jpg, .jpeg, .png, .pdf"/>
                         <button className='aceptBtn'>Enviar</button>
                     </div>
                 </form>

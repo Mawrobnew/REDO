@@ -1,19 +1,23 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import './App.css';
 import Menu from './component/Menu';
 import T_User from "./component/T_User";
 import T_GlobalBeneficiary from "./component/T_GlobalBeneficiary";
-import T_BeneficiaryDocuments from "./component/T_BeneficiaryDocuments";
 import {BrowserRouter as Router, Routes, Route, Redirect, useLocation} from "react-router-dom";
 import Login from "./component/Login"
 import {Navigate} from 'react-router-dom';
-import {type} from "@testing-library/user-event/dist/type";
+import T_Attendance from "./component/T_Attendance";
+import T_CommunityAssistance from "./component/T_CommunityAssistance";
+import T_Absence from "./component/T_Absence";
 
 let TrabajoSocial = () => {
     return <div>
         <Menu/>
         <T_User/>
         <T_GlobalBeneficiary/>
+        <T_Attendance/>
+        <T_CommunityAssistance/>
+        <T_Absence/>
     </div>
 }
 const Cajero = () => {

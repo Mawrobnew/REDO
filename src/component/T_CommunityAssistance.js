@@ -6,36 +6,34 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
-import M_ModUser from "./M_ModUser";
-import M_InsertUser from "./M_InsertUser";
-import M_ModBeneficiary from './M_ModBeneficiary'
 import '../css/table.css';
-import T_BeneficiaryDocuments from "./T_BeneficiaryDocuments";
-import M_UpdateBeneficiary from './M_UpdateBeneficiary'
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+import T_CommunityHistoric from "./T_CommunityHistoric";
+import M_CreateCommunity from "./M_CreateCommunity";
+import M_CreateCommittee from "./M_CreateCommittee";
+import M_UploadDocsCommunityAttendance from "./M_UploadDocsCommunityAttendance";
+import M_CreatePetition from "./M_CreatePetition";
 
 
-function T_GlobalBeneficiary(){
+function T_CommunityAssistance(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
-    const btnModBeneficiary = (cell, row, rowIndex, formatExtraData) => {
+    const btnDocsAttendance = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_ModBeneficiary open={isOpen} onClose={setIsOpen}></M_ModBeneficiary>
+                <M_UploadDocsCommunityAttendance open={isOpen} onClose={setIsOpen}></M_UploadDocsCommunityAttendance>
             </div>
         );
     };
 
     const columns = [
-        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'FechaRegistro', text:'F registro', sort:true, key:3},
-        {dataField:'FechaVencimiento', text:'F vencimiento', sort:true, key:4},
-        {dataField:'Beca', text:'Beca', sort:true, key:5},
-        {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:6},
-        {dataField:'Dia', text:'Dia', sort:true, key:7},
-        {dataField:'btn2', text:'Modificar', formatter: btnModBeneficiary, key:8}
+        {dataField:'Folio', text:'Fecha Inicial', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'Nombre', text:'Fecha Final', sort:true, key:2},
+        {dataField:'Frecuencia', text:'Comunidad', sort:true, key:6},
+        {dataField:'Dia', text:'Paquetes Totales', sort:true, key:7},
+        {dataField:'Status', text:'Asistencias Totales', sort:true, key:8},
+        {text:'Listas de asistencia', formatter: btnDocsAttendance}
     ]
 
     const pagination = paginationFactory({
@@ -69,15 +67,12 @@ function T_GlobalBeneficiary(){
         asyncFetch()
     }, [])
 
-    const selectRow = {
-        mode:"checkbox"
-    };
     const { SearchBar, ClearSearchButton } = Search;
     const { ExportCSVButton } = CSVExport;
 
     return(
         <ToolkitProvider
-            id='T2'
+            id='T6'
             bootstrap4
             keyField='Id'
             columns={columns}
@@ -89,7 +84,7 @@ function T_GlobalBeneficiary(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Beneficiarios</p>
+                            <p className='title'>Asistencia de comunidades</p>
                             <hr></hr>
                             <SearchBar { ...props.searchProps } />
                             <ClearSearchButton { ...props.searchProps }/>
@@ -107,9 +102,11 @@ function T_GlobalBeneficiary(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
-                            <M_UpdateBeneficiary/>
+                            <M_CreateCommunity/>
+                            <M_CreateCommittee/>
+                            <M_CreatePetition/>
                         </div>
-                        <T_BeneficiaryDocuments/>
+                        <T_CommunityHistoric/>
                     </div>
                 )
             }
@@ -118,4 +115,4 @@ function T_GlobalBeneficiary(){
 
 }
 
-export default T_GlobalBeneficiary;
+export default T_CommunityAssistance;

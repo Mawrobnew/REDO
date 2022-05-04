@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
-import { faFileArchive } from '@fortawesome/free-solid-svg-icons'
+import {faBoxOpen} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
-export default function M_UploadDocuments() {
+export default function M_CreatePetition(){
     const [modalInfo, setModalInfo] = useState({
         name: '',
         mail: '',
@@ -38,28 +37,40 @@ export default function M_UploadDocuments() {
 
     //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
     const handleSubmit = async (event) => {
-        const result = await Request('POST', '/user', modalInfo)
-        const {done} = result
-        if (done) setIsOpen(!isOpen)
         event.preventDefault()
+        const result = await Request('POST', '/user', modalInfo)
+        const {done, errors} = result
+        if (done) setIsOpen(!isOpen)
+        //TODO: DISPLAY IN RED THE ERRORS OF THE FIELDS
+        console.log("TONY THIS ARE THE ERRORS TO BE DISPLAYED",errors)
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalUploadDocs'><FontAwesomeIcon icon={faFileArchive} size='1x'/></button>
+        <button onClick={() => setIsOpen(true)} id='btnModalCreatePetition'><FontAwesomeIcon icon={faBoxOpen} size='2x'/> Petición de paquetes</button>
     )
     return (
         <div>
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
             <div className='window'>
                 <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
-                <p className='title'>Subir documentos</p>
+                <p className='title'>Crear una comunidad</p>
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
-                        <p>Credencial</p>
-                        <input type="file" id="" name="" accept=".pdf"/>
-                        <p>Estudio socioeconómico</p>
-                        <input type="file" id="" name="" accept=".jpg, .jpeg, .png, .pdf"/>
-                        <button className='aceptBtn'>Enviar</button>
+                        <p>Comunidad</p>
+                        <select onChange={handleInputChange} name="rol">
+                            {rolInventory.map((rol)=>(
+                                <option value={rol.id}>{rol.label}</option>
+                            ))}
+                        </select>
+                        <p>Número de paquetes</p>
+                        <input type={"number"} max={999} min={1}/>
+                        <p>Encargado de comité</p>
+                        <select onChange={handleInputChange} name="rol">
+                            {rolInventory.map((rol)=>(
+                                <option value={rol.id}>{rol.label}</option>
+                            ))}
+                        </select>
+                        <button className='aceptBtn'>Crear petición</button>
                     </div>
                 </form>
             </div>
