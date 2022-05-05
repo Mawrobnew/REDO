@@ -8,32 +8,26 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import T_CommunityHistoric from "./T_CommunityHistoric";
-import M_CreateCommunity from "./M_CreateCommunity";
-import M_CreateCommittee from "./M_CreateCommittee";
-import M_UploadDocsCommunityAttendance from "./M_UploadDocsCommunityAttendance";
-import M_CreatePetition from "./M_CreatePetition";
+import M_ChangeStatusInactive from './M_ChangeStatusInactive'
 
-
-function T_CommunityAssistance(){
+function T_Inactive(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
-    const btnDocsAttendance = (cell, row, rowIndex, formatExtraData) => {
+    const btnModBeneficiary = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_UploadDocsCommunityAttendance open={isOpen} onClose={setIsOpen}></M_UploadDocsCommunityAttendance>
+                <M_ChangeStatusInactive open={isOpen} onClose={setIsOpen}></M_ChangeStatusInactive>
             </div>
         );
     };
 
     const columns = [
-        {dataField:'Folio', text:'Fecha Inicial', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Fecha Final', sort:true, key:2},
-        {dataField:'Frecuencia', text:'Comunidad', sort:true, key:6},
-        {dataField:'Dia', text:'Paquetes Totales', sort:true, key:7},
-        {dataField:'Status', text:'Asistencias Totales', sort:true, key:8},
-        {text:'Listas de asistencia', formatter: btnDocsAttendance, key: 9}
+        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
+        {dataField:'FechaVencimiento', text:'F vencimiento', sort:true, key:4},
+        {dataField:'Beca', text:'# de faltas', sort:true, key:5},
+        {dataField:'btn2', text:'Activar', formatter: btnModBeneficiary, key:8}
     ]
 
     const pagination = paginationFactory({
@@ -67,12 +61,15 @@ function T_CommunityAssistance(){
         asyncFetch()
     }, [])
 
+    const selectRow = {
+        mode:"checkbox"
+    };
     const { SearchBar, ClearSearchButton } = Search;
     const { ExportCSVButton } = CSVExport;
 
     return(
         <ToolkitProvider
-            id='T6'
+            id='T2'
             bootstrap4
             keyField='Id'
             columns={columns}
@@ -84,7 +81,7 @@ function T_CommunityAssistance(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Asistencia de comunidades</p>
+                            <p className='title'>Beneficiarios ináctivos</p>
                             <hr></hr>
                             <SearchBar { ...props.searchProps } />
                             <ClearSearchButton { ...props.searchProps }/>
@@ -102,17 +99,11 @@ function T_CommunityAssistance(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
-                            <M_CreateCommunity/>
-                            <M_CreateCommittee/>
-                            <M_CreatePetition/>
                         </div>
-                        <T_CommunityHistoric/>
                     </div>
                 )
             }
         </ToolkitProvider>
     )
-
 }
-
-export default T_CommunityAssistance;
+export default T_Inactive;

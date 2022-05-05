@@ -63,7 +63,7 @@ export default function M_CreatePetition(){
                             ))}
                         </select>
                         <p>Número de paquetes</p>
-                        <input type={"number"} max={999} min={1}/>
+                        <input type={"number"} max={999} min={1} required/>
                         <p>Encargado de comité</p>
                         <select onChange={handleInputChange} name="rol">
                             {rolInventory.map((rol)=>(

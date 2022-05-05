@@ -63,7 +63,7 @@ export default function M_AbsenceReason(){
                             ))}
                         </select>
                         <p>Otro</p>
-                        <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={' ...'}/>
+                        <input type='text' onChange={handleInputChange} name="" autoFocus={true} placeholder={' ...'} maxLength={30}/>
                         <button className='aceptBtn'>Crear comunidad</button>
                     </div>
                 </form>

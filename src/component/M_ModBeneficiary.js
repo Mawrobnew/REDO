@@ -56,9 +56,9 @@ export default function M_ModBeneficiary() {
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Nombre</p>
-                        <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
+                        <input required type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
                         <p>Telefono</p>
-                        <input type='text' onChange={handleInputChange} name="phone"/>
+                        <input required type='text' onChange={handleInputChange} name="phone"/>
                         <p>Beca</p>
                         <select onChange={handleInputChange} name="branch">
                             {branchInventory.map((rol)=>(

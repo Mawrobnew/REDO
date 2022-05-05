@@ -56,7 +56,7 @@ export default function M_UpdateBeneficiary() {
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Lista de beneficiarios</p>
-                        <input type="file" id="" name="" accept=".text/csv"/>
+                        <input required type="file" id="" name="" accept=".text/csv"/>
                         <button className='aceptBtn'>Enviar</button>
                     </div>
                 </form>

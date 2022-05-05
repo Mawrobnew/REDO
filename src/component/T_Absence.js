@@ -26,8 +26,8 @@ function T_Absence(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Frecuencia', text:'Telefono', sort:true, key:6},
-        {dataField:'Dia', text:'Cant. Faltas', sort:true, key:7}
+        {dataField:'Frecuencia', text:'Telefono', sort:true, key:3},
+        {dataField:'Dia', text:'Cant. Faltas', sort:true, key:4}
     ]
 
     const pagination = paginationFactory({

@@ -56,9 +56,9 @@ export default function M_UploadDocuments() {
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Credencial</p>
-                        <input type="file" id="" name="" accept=".pdf"/>
+                        <input required type="file" id="" name="" accept=".pdf"/>
                         <p>Estudio socioeconómico</p>
-                        <input type="file" id="" name="" accept=".jpg, .jpeg, .png, .pdf"/>
+                        <input required type="file" id="" name="" accept=".jpg, .jpeg, .png, .pdf"/>
                         <button className='aceptBtn'>Enviar</button>
                     </div>
                 </form>

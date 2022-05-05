@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
-import '../css/modal.css';
-import { faFileArchive } from '@fortawesome/free-solid-svg-icons'
+import { faUserCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../css/modal.css';
 
 
-export default function M_UploadDocsCommunityAttendance() {
+export default function M_ChangeStatus() {
     const [modalInfo, setModalInfo] = useState({
         name: '',
         mail: '',
@@ -45,19 +45,19 @@ export default function M_UploadDocsCommunityAttendance() {
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalUploadDocs'><FontAwesomeIcon icon={faFileArchive} size='1x'/></button>
+        <button onClick={() => setIsOpen(true)} id='btnModalChangeStatus'><FontAwesomeIcon icon={faUserCheck} size='1x'/></button>
     )
     return (
         <div>
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
             <div className='window'>
-                <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
-                <p className='title'>Subir documentos</p>
+                <p className='title'>Activar beneficiario</p>
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
-                        <p>Lista de asistencia</p>
-                        <input required type="file" id="" name="" accept=".pdf"/>
-                        <button className='aceptBtn'>Enviar</button>
+                        <p>Nombre</p>
+                        <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
+                        <button className='yesBtn'>Si</button>
+                        <button className='noBtn' onClick={()=>{setIsOpen(false)}}>No</button>
                     </div>
                 </form>
             </div>

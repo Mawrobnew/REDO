@@ -8,32 +8,18 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import T_CommunityHistoric from "./T_CommunityHistoric";
-import M_CreateCommunity from "./M_CreateCommunity";
-import M_CreateCommittee from "./M_CreateCommittee";
-import M_UploadDocsCommunityAttendance from "./M_UploadDocsCommunityAttendance";
-import M_CreatePetition from "./M_CreatePetition";
+import M_CreateJustification from "./M_CreateJustification";
 
-
-function T_CommunityAssistance(){
+function T_Justification(){
     const [userList, setUserList] = useState([]);
-    const [isOpen, setIsOpen] = useState(false)
-
-    const btnDocsAttendance = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <M_UploadDocsCommunityAttendance open={isOpen} onClose={setIsOpen}></M_UploadDocsCommunityAttendance>
-            </div>
-        );
-    };
 
     const columns = [
-        {dataField:'Folio', text:'Fecha Inicial', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Fecha Final', sort:true, key:2},
-        {dataField:'Frecuencia', text:'Comunidad', sort:true, key:6},
-        {dataField:'Dia', text:'Paquetes Totales', sort:true, key:7},
-        {dataField:'Status', text:'Asistencias Totales', sort:true, key:8},
-        {text:'Listas de asistencia', formatter: btnDocsAttendance, key: 9}
+        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
+        {dataField:'Telefono', text:'Telefono', sort:true, key:3},
+        {dataField:'', text:'Fecha', sort:true, key:4},
+        {dataField:'Status', text:'# de justificación', sort:true, key:5},
+        {dataField:'Dia', text:'Razon', sort:true, key:6}
     ]
 
     const pagination = paginationFactory({
@@ -58,7 +44,6 @@ function T_CommunityAssistance(){
     const modalInfo = {
         id: 1
     }
-
     useEffect(() => {
         const asyncFetch = async () => {
             const result = await Request('POST', '/beneficiaries', modalInfo)
@@ -72,29 +57,28 @@ function T_CommunityAssistance(){
 
     return(
         <ToolkitProvider
-            id='T6'
+            id='T9'
             bootstrap4
             keyField='Id'
             columns={columns}
             data={userList}
             search
-            exportCSV
         >
             {
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Asistencia de comunidades</p>
+                            <p className='title'>Justificaciones</p>
                             <hr></hr>
                             <SearchBar { ...props.searchProps } />
                             <ClearSearchButton { ...props.searchProps }/>
                             <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
                             <BootstrapTable
                                 { ...props.baseProps }
-                                pagination ={pagination}
+                                pagination={pagination}
                                 filter={filterFactory()}
                                 striped={true}
-                                bordered={ false }
+                                bordered={false}
                                 condensed={true}
                                 hover={true}
                                 headerClasses='TableHead'
@@ -102,11 +86,8 @@ function T_CommunityAssistance(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
-                            <M_CreateCommunity/>
-                            <M_CreateCommittee/>
-                            <M_CreatePetition/>
+                            <M_CreateJustification/>
                         </div>
-                        <T_CommunityHistoric/>
                     </div>
                 )
             }
@@ -115,4 +96,4 @@ function T_CommunityAssistance(){
 
 }
 
-export default T_CommunityAssistance;
+export default T_Justification;

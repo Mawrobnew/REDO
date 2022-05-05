@@ -9,6 +9,8 @@ import {Navigate} from 'react-router-dom';
 import T_Attendance from "./component/T_Attendance";
 import T_CommunityAssistance from "./component/T_CommunityAssistance";
 import T_Absence from "./component/T_Absence";
+import T_Justification from "./component/T_Justification";
+import T_Inactive from "./component/T_Inactive";
 
 let TrabajoSocial = () => {
     return <div>
@@ -18,6 +20,8 @@ let TrabajoSocial = () => {
         <T_Attendance/>
         <T_CommunityAssistance/>
         <T_Absence/>
+        <T_Justification/>
+        <T_Inactive/>
     </div>
 }
 const Cajero = () => {

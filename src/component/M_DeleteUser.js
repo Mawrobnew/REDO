@@ -55,7 +55,7 @@ export default function M_DeleteUser() {
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Nombre</p>
-                        <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
+                        <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly required/>
                         <button className='yesBtn'>Si</button>
                         <button className='noBtn' onClick={()=>{setIsOpen(false)}}>No</button>
                     </div>
