@@ -26,9 +26,10 @@ function T_User(){
         );
     };
     const btnDeleteUSer = (cell, row, rowIndex, formatExtraData) => {
+        const info = {name: row.Nombre, id: row.Id}
         return (
             <div>
-                <M_DeleteUser open={isOpen} onClose={setIsOpen}></M_DeleteUser>
+                <M_DeleteUser open={isOpen} onClose={setIsOpen} userInfo={info}/>
             </div>
         );
     };
