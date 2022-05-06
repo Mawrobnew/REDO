@@ -17,6 +17,11 @@ import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-tool
 function T_User(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
+    const deleteUser = (id) =>{
+        console.log(userList)
+        const filteredList = userList.filter((user)=>user.Id!==id);
+        setUserList(filteredList)
+    }
 
     const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
         return (
@@ -29,7 +34,7 @@ function T_User(){
         const info = {name: row.Nombre, id: row.Id}
         return (
             <div>
-                <M_DeleteUser open={isOpen} onClose={setIsOpen} userInfo={info}/>
+                <M_DeleteUser open={isOpen} onClose={setIsOpen} userInfo={info} deleteAction={deleteUser}/>
             </div>
         );
     };

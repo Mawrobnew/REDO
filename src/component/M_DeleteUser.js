@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../css/modal.css';
 
 
-export default function M_DeleteUser({userInfo}) {
+export default function M_DeleteUser({userInfo, deleteAction}) {
     const [isOpen, setIsOpen] = useState(false)
     if (!isOpen) return (
         <button onClick={() => setIsOpen(true)} id='btnModalDeleteUser'><FontAwesomeIcon icon={faUserXmark} size='1x'/></button>
@@ -17,6 +17,7 @@ export default function M_DeleteUser({userInfo}) {
         const result = await Request('DELETE', '/users', {id})
         const {done} = result
         if (done) setIsOpen(!isOpen)
+        deleteAction(id)
     }
 
     return (
