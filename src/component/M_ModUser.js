@@ -5,15 +5,8 @@ import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-export default function M_ModUser() {
-    const [modalInfo, setModalInfo] = useState({
-        name: '',
-        mail: '',
-        password: '',
-        phone: '',
-        rol: '',
-        branch: '',
-    })
+export default function M_ModUser({userinfo}) {
+    const [modalInfo, setModalInfo] = useState(userinfo)
     const [isOpen, setIsOpen] = useState(false)
     //TODO: FETCH THIS VALUES FROM THE API LATER
     const rolInventory = [
@@ -47,6 +40,7 @@ export default function M_ModUser() {
     if (!isOpen) return (
         <button onClick={() => setIsOpen(true)} id='btnModalModUser'><FontAwesomeIcon icon={faUserEdit} size='1x'/></button>
     )
+    const {name, mail, phone, rol, branch} = modalInfo
     return (
         <div>
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
@@ -56,11 +50,11 @@ export default function M_ModUser() {
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Nombre</p>
-                        <input required type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
+                        <input required type='text' value={name} onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
                         <p>Telefono</p>
-                        <input required type='text' onChange={handleInputChange} name="phone"/>
+                        <input required type='text' value={phone} onChange={handleInputChange} name="phone"/>
                         <p>Correo</p>
-                        <input required type='email' onChange={handleInputChange} name="mail"/>
+                        <input required type='email' value={mail} onChange={handleInputChange} name="mail"/>
                         <p>Contraseña</p>
                         <input required type='text' onChange={handleInputChange} name="password"/>
                         <p>Rol</p>

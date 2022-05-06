@@ -24,9 +24,11 @@ function T_User(){
     }
 
     const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
+        const {Nombre, Correo, Numero, Id} = row
+        const info = {name: Nombre, mail: Correo, phone: Numero, id: Id}
         return (
             <div>
-                <M_ModUser open={isOpen} onClose={setIsOpen}></M_ModUser>
+                <M_ModUser open={isOpen} onClose={setIsOpen} userinfo={info}/>
             </div>
         );
     };
