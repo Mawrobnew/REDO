@@ -115,8 +115,6 @@ function T_User(){
                             >
                             </BootstrapTable>
                             <M_InsertUser/>
-                            <M_Success/>
-                            <M_Fail/>
                         </div>
                     </div>
                 )

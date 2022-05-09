@@ -3,19 +3,16 @@ import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
 
 
-export default function M_Fail() {
-    const [isOpen, setIsOpen] = useState(false)
+export default function M_Fail({open, onClose}) {
 
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
-    if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalInsertUser'>Fail</button>
-    )
+    if (!open) return null
     return (
         <div>
-            <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
+            <div className='wrapper' onClick={onClose}/>
 
             <div className='window'>
-                <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
+                <button className='closeBtn' onClick={onClose}>X</button>
                 <p className='title'>La operación ha fallado</p>
             </div>
         </div>)
