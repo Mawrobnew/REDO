@@ -20,7 +20,7 @@ function Login(){
     const HandleLogin = async (e) => {
         e.preventDefault();
 
-        const result = await Request('POST', "/login", formInfo)
+        const [result, code] = await Request('POST', "/login", formInfo)
         const {done, token, role} =result
         if(done){
             sessionStorage.setItem('token', token)

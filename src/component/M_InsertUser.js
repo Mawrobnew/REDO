@@ -38,7 +38,7 @@ export default function M_InsertUser() {
     //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const result = await Request('POST', '/user', modalInfo)
+        const result = await Request('POST', '/users', modalInfo)
         const {done, errors} = result
         if (done) setIsOpen(!isOpen)
         //TODO: DISPLAY IN RED THE ERRORS OF THE FIELDS

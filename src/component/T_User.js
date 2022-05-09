@@ -73,7 +73,7 @@ function T_User(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('GET', '/users')
+            const [result, code] = await Request('GET', '/users')
             if (result.length) setUserList(result)
         }
         asyncFetch()

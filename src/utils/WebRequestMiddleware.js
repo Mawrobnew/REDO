@@ -11,5 +11,5 @@ export const Request = async (method = 'POST', route = '/', data = {}) => {
     const json = await response.json();
     console.log(json)
     //TODO: HANDLE ERRORS
-    return json;
+    return [json, response.status];
 }
