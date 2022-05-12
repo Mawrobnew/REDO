@@ -17,18 +17,26 @@ import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-tool
 function T_User(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
+    const deleteUser = (id) =>{
+        console.log(userList)
+        const filteredList = userList.filter((user)=>user.Id!==id);
+        setUserList(filteredList)
+    }
 
     const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
+        const {Nombre, Correo, Numero, Id} = row
+        const info = {name: Nombre, mail: Correo, phone: Numero, id: Id}
         return (
             <div>
-                <M_ModUser open={isOpen} onClose={setIsOpen}></M_ModUser>
+                <M_ModUser open={isOpen} onClose={setIsOpen} userinfo={info}/>
             </div>
         );
     };
     const btnDeleteUSer = (cell, row, rowIndex, formatExtraData) => {
+        const info = {name: row.Nombre, id: row.Id}
         return (
             <div>
-                <M_DeleteUser open={isOpen} onClose={setIsOpen}></M_DeleteUser>
+                <M_DeleteUser open={isOpen} onClose={setIsOpen} userInfo={info} deleteAction={deleteUser}/>
             </div>
         );
     };
@@ -65,7 +73,7 @@ function T_User(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('GET', '/users')
+            const [result, code] = await Request('GET', '/users')
             if (result.length) setUserList(result)
         }
         asyncFetch()
@@ -107,8 +115,6 @@ function T_User(){
                             >
                             </BootstrapTable>
                             <M_InsertUser/>
-                            <M_Success/>
-                            <M_Fail/>
                         </div>
                     </div>
                 )
