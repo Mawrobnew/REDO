@@ -57,7 +57,7 @@ function T_GlobalBeneficiary(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result, code] = await Request('GET', '/actBeneficiaries')
+            const [result, code] = await Request('GET', '/Beneficiaries')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()
