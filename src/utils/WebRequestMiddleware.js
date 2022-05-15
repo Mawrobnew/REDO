@@ -9,7 +9,5 @@ export const Request = async (method = 'POST', route = '/', data = {}) => {
     //Actual api fetch
     const response = await fetch(HOST + route, init)
     const json = await response.json();
-    console.log(json)
-    //TODO: HANDLE ERRORS
     return [json, response.status];
 }

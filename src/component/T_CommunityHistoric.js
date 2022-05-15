@@ -31,11 +31,11 @@ function T_CommunityHistoric(){
     };
 
     const columns = [
-        {dataField:'Folio', text:'Fecha', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Paquetes enviados', sort:true, key:2},
-        {dataField:'Credencial', text:'Comunidad', sort:true, key:3},
-        {dataField:'EstudioSocioeconomico', text:'Encargado', sort:true, key:4},
-        {dataField:'Status', text:'Telefono', sort:true, key:5}
+        {dataField:'Fecha', text:'Fecha', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'PaquetesEnviados', text:'Paquetes enviados', sort:true, key:2},
+        {dataField:'Comunidad', text:'Comunidad', sort:true, key:3},
+        {dataField:'MiembroComite', text:'Encargado', sort:true, key:4},
+        {dataField:'Telefono', text:'Telefono', sort:true, key:5}
     ]
 
     const pagination = paginationFactory({
@@ -57,12 +57,9 @@ function T_CommunityHistoric(){
         }
     });
 
-    const modalInfo = {
-        id: 1
-    }
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('POST', '/beneficiaries', modalInfo)
+            const [result, code] = await Request('GET', '/requests')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()

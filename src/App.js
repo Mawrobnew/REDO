@@ -54,6 +54,7 @@ const NotFound = () => {
         404 Pagina no encontrada
     </div>
 }
+
 export const PrivateRoute = ({ component: Component , roles }) => {
     const token = sessionStorage.getItem('token');
     const role = sessionStorage.getItem('role')
