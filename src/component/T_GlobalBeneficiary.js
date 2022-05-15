@@ -6,8 +6,6 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
-import M_ModUser from "./M_ModUser";
-import M_InsertUser from "./M_InsertUser";
 import M_ModBeneficiary from './M_ModBeneficiary'
 import '../css/table.css';
 import T_BeneficiaryDocuments from "./T_BeneficiaryDocuments";
@@ -57,14 +55,9 @@ function T_GlobalBeneficiary(){
         }
     });
 
-    const modalInfo = {
-        id: 1
-    }
-
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result, code] = await Request('GET', '/actBeneficiaries', modalInfo)
-            console.log("Mauuu", result)
+            const [result, code] = await Request('GET', '/actBeneficiaries')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()

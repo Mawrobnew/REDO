@@ -49,13 +49,9 @@ function T_Inactive(){
         }
     });
 
-    const modalInfo = {
-        id: 1
-    }
-
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('POST', '/beneficiaries', modalInfo)
+            const result = await Request('GET', '/inactBeneficiaries')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()
