@@ -56,7 +56,7 @@ function T_Attendance(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('POST', '/beneficiaries', modalInfo)
+            const [result] = await Request('GET', '/attendanceJustify', modalInfo)
             if (result.length>0) setUserList(result)
         }
         asyncFetch()
