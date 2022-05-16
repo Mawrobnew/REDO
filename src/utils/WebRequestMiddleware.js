@@ -1,4 +1,4 @@
-const HOST = "http://10.49.135.40:8080/api"
+const HOST = "http://3.84.176.73:8080/api"
 export const Request = async (method = 'POST', route = '/', data = {}) => {
     //Request configuration
     console.log(route,method)
