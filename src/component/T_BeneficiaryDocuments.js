@@ -67,12 +67,9 @@ function T_BeneficiaryDocuments(){
         }
     });
 
-    const modalInfo = {
-        id: 1
-    }
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('POST', '/beneficiaries', modalInfo)
+            const [result, code] = await Request('GET', '/beneficiaries')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()

@@ -12,7 +12,7 @@ import T_AbsenceHistoric from './T_AbsenceHistoric';
 import M_AbsencesReason from './M_AbsenceReason';
 
 function T_Absence(){
-    const [userList, setUserList] = useState([]);
+    const [absencesList, setAbsencesList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
     const btnAbsencesReason = (cell, row, rowIndex, formatExtraData) => {
@@ -26,8 +26,8 @@ function T_Absence(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Frecuencia', text:'Telefono', sort:true, key:3},
-        {dataField:'Dia', text:'Cant. Faltas', sort:true, key:4}
+        {dataField:'Telefono', text:'Telefono', sort:true, key:3},
+        {dataField:'CantFaltas', text:'Cant. Faltas', sort:true, key:4}
     ]
 
     const pagination = paginationFactory({
@@ -49,14 +49,11 @@ function T_Absence(){
         }
     });
 
-    const modalInfo = {
-        id: 1
-    }
-
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('POST', '/beneficiaries', modalInfo)
-            if (result.length>0) setUserList(result)
+            const [result, code] = await Request('GET', '/absences')
+            if (result.length>0) setAbsencesList(result)
+            console.log(result)
         }
         asyncFetch()
     }, [])
@@ -70,7 +67,7 @@ function T_Absence(){
             bootstrap4
             keyField='Id'
             columns={columns}
-            data={userList}
+            data={absencesList}
             search
             exportCSV
         >
