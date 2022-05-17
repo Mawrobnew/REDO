@@ -6,14 +6,14 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: #ED1A3B;
+    background: var(--rojo);
 }
 
 .windowL{
     position: fixed;
     align-content: center;
     z-index: 1;
-    width: 30%;
+    width: 35%;
     height: auto;
     max-width: 1200px;
     top: 50%;
@@ -21,8 +21,7 @@
     transform: translate(-40%, -50%);
     border-radius: 10px;
     padding: 40px 32px;
-    font-family: 'Titillium Web', sans-serif;
-    background: #fff;
+    background: var(--blanco);
     box-shadow: 5px 5px 10px 3px rgb(0,0,0,0.2);
 }
 .titleL{
@@ -30,12 +29,18 @@
     text-align: center;
     font-size: 42px;
     margin: 0px 0px 0px 0px;
-    font-weight: bold;
 }
-hr{
+.subTitleL{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin: 0px 0px 0px 0px;
+}
+.windowL hr{
     width: 100%;
     border: 2px solid #FF0000;
     box-shadow: .5px .5px .5px 1px rgb(255,0,0);
+    z-index: 1;
 }
 
 /*Estilos del formulario, inputs y botones dentro de el*/
@@ -43,24 +48,25 @@ hr{
 }
 .formularioL p{
     font-size: 22px;
-    margin: 50px 0px 5px 0px;
+    margin: 40px 0px 5px 0px;
     font-weight: bold;
 }
 .formularioL input{
     width: 100%;
     border: none;
-    border: 2px solid #00b0d3;
+    border: 2px solid var(--azulInput);
     height: 45px;
     font-size: 20px;
 }
 .aceptBtnL{
     position: relative;
+    font-size: 24px;
     top: 20px;
     border-radius: 5px;
     padding: 15px 50px;
-    background-color: #2ecc71;
+    background-color: var(--verde);
     border: none;
-    margin: 0px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
     color: #ffffff;
     width: 100%;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);

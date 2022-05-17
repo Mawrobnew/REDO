@@ -1,12 +1,19 @@
 import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
-import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import { faKey, faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-export default function M_ModUser({userinfo}) {
-    const [modalInfo, setModalInfo] = useState(userinfo)
+export default function M_ModUserPass() {
+    const [modalInfo, setModalInfo] = useState({
+        name: '',
+        mail: '',
+        password: '',
+        phone: '',
+        rol: '',
+        branch: '',
+    })
     const [isOpen, setIsOpen] = useState(false)
     //TODO: FETCH THIS VALUES FROM THE API LATER
     const rolInventory = [
@@ -36,38 +43,36 @@ export default function M_ModUser({userinfo}) {
         if (done) setIsOpen(!isOpen)
         event.preventDefault()
     }
+
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    };
+
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalModUser'><FontAwesomeIcon icon={faUserEdit} size='1x'/></button>
+        <button onClick={() => setIsOpen(true)} id='btnModalModUserPass'><FontAwesomeIcon icon={faKey} size='1x'/></button>
     )
-    const {name, mail, phone, rol, branch} = modalInfo
     return (
         <div>
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
             <div className='window'>
                 <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
-                <p className='title'>Modificar datos</p>
+                <p className='title'>Modificar contraseña</p>
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
-                        <p>Nombre</p>
-                        <input required type='text' value={name} onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
-                        <p>Telefono</p>
-                        <input required type='number' value={phone} onChange={handleInputChange} name="phone"/>
-                        <p>Correo</p>
-                        <input required type='email' value={mail} onChange={handleInputChange} name="mail"/>
-                        <p>Rol</p>
-                        <select onChange={handleInputChange} name="rol">
-                            {rolInventory.map((rol)=>(
-                                <option value={rol.id}>{rol.label}</option>
-                            ))}
-                        </select>
-                        <p>Sucursal</p>
-                        <select onChange={handleInputChange} name="branch">
-                            {branchInventory.map((rol)=>(
-                                <option value={rol.id}>{rol.label}</option>
-                            ))}
-                        </select>
-                        <button className='aceptBtn'>Modificar usuario</button>
+
+                        <p>Contraseña</p>
+                        <input type={passwordShown ? "text" : "password"} placeholder={'Entre 8 y 16 caractéres'} onChange={handleInputChange}
+                               name="pass1" minLength={8} maxLength={16}/>
+
+                        <p>Confirmar contraseña</p>
+                        <input type={passwordShown ? "text" : "password"} placeholder={''} onChange={handleInputChange}
+                               name="pass2" minLength={8} maxLength={16}/>
+
+                        <button type={"button"} onClick={togglePassword} className={'changePassBtn'}><FontAwesomeIcon icon={passwordShown ? faEyeSlash : faEye} size='1x'/></button>
+                        <button className='aceptBtnPass'>Modificar contraseña</button>
                     </div>
                 </form>
             </div>

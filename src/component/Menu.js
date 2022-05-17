@@ -1,5 +1,5 @@
 import '../css/menu.css'
-
+import React from "react";
 function Menu(){
 
     return <nav className="main-menu">

@@ -13,6 +13,7 @@ import M_Success from "./M_Success";
 import M_Fail from "./M_Fail";
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+import M_ModUserPass from "./M_ModUserPass";
 
 function T_User(){
     const [userList, setUserList] = useState([]);
@@ -41,6 +42,15 @@ function T_User(){
         );
     };
 
+    const btnModUserPass = (cell, row, rowIndex, formatExtraData) => {
+        const info = {name: row.Nombre, id: row.Id}
+        return (
+            <div>
+                <M_ModUserPass open={isOpen} onClose={setIsOpen} userInfo={info} deleteAction={deleteUser}/>
+            </div>
+        );
+    };
+
     const columns = [
         {dataField:'Id', text:'Id', sort:true, key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
@@ -48,8 +58,9 @@ function T_User(){
         {dataField:'Numero', text:'Telefono', sort:true, key:4},
         {dataField:'Rol', text:'Rol', sort:true, key:5},
         {dataField:'Sucursal', text:'Sucursal',sort:true, key:6},
-        {dataField:'btn', text:'Modificar', formatter: btnModUSer, key:7},
-        {dataField:'btn2', text:'Eliminar', formatter: btnDeleteUSer, key:8}
+        {dataField:'btn',  text:'Modificar', formatter: btnModUSer, key:7},
+        {dataField:'btn2', text:'Eliminar', formatter: btnDeleteUSer, key:8},
+        {dataField:'btn3', text:'Contraseña', formatter: btnModUserPass, key: 9}
     ]
 
     const pagination = paginationFactory({

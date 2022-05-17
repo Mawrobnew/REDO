@@ -1,16 +1,18 @@
-#container{
-    margin: 0px 50px 0px 0px;
-    width: 90%;
-    padding: -10px;
-    float: right;
+#container {
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    padding: 5px 10px 0px 10px;
+    position: center;
+    z-index: -1;
 }
 
 #cont_tabla{
     padding: 5px 5px 5px 5px;
-    background-color: #fff;
-    box-shadow: 3px 3px 10px 2px rgb(0,0,0,0.2);
+    background-color: var(--blanco);
+    /*box-shadow: 1px 1px 5px 1px rgb(0,0,0,0.2);*/
     border-radius: 10px;
     margin: 20px 0px 0px 0px;
+    z-index: -1;
 }
 #cont_tabla .title{
     font-size: 28px;
@@ -18,11 +20,19 @@
     font-weight: bold;
 }
 
+#cont_tabla hr{
+    width: 100%;
+    border: 2px solid #FF0000;
+    box-shadow: .5px .5px .5px 1px rgb(255,0,0);
+    z-index: -1;
+}
+
 .TableBody{
     vertical-align: middle;
-    background-color: #ffffff;
+    background-color: var(--blanco);
     border-bottom: #a1a1a1;
     padding: 0px 5px;
+    z-index: 1;
 }
 
 .TableHead{
@@ -30,8 +40,9 @@
     padding: 0px 50px;
     font-size: 17px;
     vertical-align: middle;
-    color: #003bb9;
+    color: var(--azul);
     height: 50px;
+    z-index: 1;
 }
 .btnLimpiar{
 }

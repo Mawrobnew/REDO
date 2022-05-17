@@ -73,13 +73,13 @@ export default function M_InsertUser() {
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Nombre</p>
-                        <input required type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
-                        <p>Telefono</p>
-                        <input required type='text' onChange={handleInputChange} name="phone"/>
+                        <input required type='text' onChange={handleInputChange} name="name" autoFocus={true}/>
+                        <p>Teléfono</p>
+                        <input required type='number' onChange={handleInputChange} name="phone" placeholder={'7771234567'}/>
                         <p>Correo</p>
                         <input required type='email' onChange={handleInputChange} name="mail"/>
                         <p>Contraseña</p>
-                        <input required type='text' onChange={handleInputChange} name="password"/>
+                        <input required type='text' onChange={handleInputChange} minLength={8} maxLength={16} name="password" placeholder={'Entre 8 y 16 caractéres'} />
                         <p>Rol</p>
                         <select onChange={handleInputChange} name="rol">
                             {rolInventory.map((rol)=>(

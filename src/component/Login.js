@@ -43,8 +43,9 @@ function Login(){
     return (
         <div className='wrapperL'>
             <div className='windowL'>
-                <p className='titleL'>Iniciar sesión</p>
+                <p className='titleL'>Sistema REDO</p>
                 <hr></hr>
+                <p className={'subTitleL'}>Bienvenido</p>
                 <div className='formularioL'>
                 <form onSubmit={HandleLogin}>
                     <p>Correo</p>
