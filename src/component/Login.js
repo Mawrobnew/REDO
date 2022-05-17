@@ -48,10 +48,8 @@ function Login(){
                 <p className={'subTitleL'}>Bienvenido</p>
                 <div className='formularioL'>
                 <form onSubmit={HandleLogin}>
-                    <p>Correo</p>
                     <input type='email' placeholder='Correo electrónico' onChange={handleInputChange} autoFocus={true} name={"mail"}/>
-                    <p>Contraseña</p>
-                    <input type='password' maxLength={16} placeholder='********'  onChange={handleInputChange} name={"password"}/>
+                    <input type='password' maxLength={16} placeholder='Contraseña'  onChange={handleInputChange} name={"password"}/>
                     <Alert variant="danger" show={error}>
                         <Alert.Heading>Correo o contraseña inválidos</Alert.Heading>
                     </Alert>

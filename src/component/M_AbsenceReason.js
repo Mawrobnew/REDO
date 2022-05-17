@@ -53,7 +53,7 @@ export default function M_AbsenceReason(){
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
             <div className='window'>
                 <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
-                <p className='title'>Crear una comunidad</p>
+                <p className='title'>Descripción de falta</p>
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Motivo</p>

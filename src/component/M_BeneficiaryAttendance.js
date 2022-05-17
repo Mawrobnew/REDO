@@ -56,8 +56,9 @@ export default function M_BeneficiaryAttendance() {
                     <div className='formulario'>
                         <p>Nombre</p>
                         <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
-                        <button className='yesBtn'>Si</button>
-                        <button className='noBtn' onClick={()=>{setIsOpen(false)}}>No</button>
+                        <p>Asistencia</p>
+                        <input type='text' onChange={handleInputChange} name="name" placeholder={'Nombre'} readOnly/>
+                        <button className='yesBtn'>Cambiar</button>
                     </div>
                 </form>
             </div>

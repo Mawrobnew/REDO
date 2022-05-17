@@ -83,11 +83,13 @@ function App() {
                     path="/superusuario"
                     element={<PrivateRoute roles={[SUPERUSUARIO]} component={Layout_SU} />}
                 >
+                    <Route index element={<T_User/>}/>
                     <Route exact path="users" element={<T_User/>}/>
                 </Route>
                 <Route
                     path="/cajero"
                     element={<PrivateRoute roles={[CAJERO]} component={Cajero} />}
+
                 >
                     
                 </Route>
@@ -95,6 +97,7 @@ function App() {
                     path="/trabajosocial"
                     element={<PrivateRoute roles={[TRABAJOSOCIAL]} component={Layout_TS}/>}
                 >
+                    <Route index element={<T_GlobalBeneficiary />}/>
                     <Route exact path="globalbeneficiary" element={<T_GlobalBeneficiary />}/>
                     <Route path="attendance" element={<T_Attendance />}/>
                     <Route path="communityAssistance" element={<T_CommunityAssistance />} />

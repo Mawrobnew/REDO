@@ -34,6 +34,7 @@ function T_CommunityAssistance(){
         {dataField:'Dia', text:'Paquetes Totales', sort:true, key:7},
         {dataField:'Status', text:'Asistencias Totales', sort:true, key:8},
         {text:'Listas de asistencia', formatter: btnDocsAttendance, key: 9}
+
     ]
 
     const pagination = paginationFactory({

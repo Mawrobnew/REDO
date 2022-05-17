@@ -58,7 +58,7 @@ export default function M_ModBeneficiary() {
                         <p>Nombre</p>
                         <input required type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
                         <p>Telefono</p>
-                        <input required type='text' onChange={handleInputChange} name="phone"/>
+                        <input required type='number' onChange={handleInputChange} name="phone"/>
                         <p>Beca</p>
                         <select onChange={handleInputChange} name="branch">
                             {branchInventory.map((rol)=>(

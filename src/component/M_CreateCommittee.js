@@ -58,13 +58,9 @@ export default function M_CreateCommittee(){
                     <div className='formulario'>
                         <p>Nombre</p>
                         <input type='text' required onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
-                        <p>Municipio</p>
-                        <select onChange={handleInputChange} name="rol">
-                            {rolInventory.map((rol)=>(
-                                <option value={rol.id}>{rol.label}</option>
-                            ))}
-                        </select>
-                        <p>Estado</p>
+                        <p>Teléfono</p>
+                        <input type={'number'} required maxLength={12}/>
+                        <p>Comunidad</p>
                         <select onChange={handleInputChange} name="rol">
                             {rolInventory.map((rol)=>(
                                 <option value={rol.id}>{rol.label}</option>

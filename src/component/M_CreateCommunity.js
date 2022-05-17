@@ -58,13 +58,13 @@ export default function M_CreateCommunity(){
                     <div className='formulario'>
                         <p>Nombre</p>
                         <input required type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
-                        <p>Municipio</p>
+                        <p>Frecuencia</p>
                         <select onChange={handleInputChange} name="rol">
                             {rolInventory.map((rol)=>(
                                 <option value={rol.id}>{rol.label}</option>
                             ))}
                         </select>
-                        <p>Estado</p>
+                        <p>Municipio</p>
                         <select onChange={handleInputChange} name="rol">
                             {rolInventory.map((rol)=>(
                                 <option value={rol.id}>{rol.label}</option>
