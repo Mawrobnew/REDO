@@ -1,8 +1,9 @@
 import React, {cloneElement, useState} from "react";
-import recursiveMap from "../utils/RecursiveInyection";
-import M_Fail from "./M_Fail";
-import M_Success from "./M_Success";
-import {Request} from "../utils/WebRequestMiddleware";
+import recursiveMap from "../../utils/RecursiveInyection";
+import M_Fail from "../M_Fail";
+import M_Success from "../M_Success";
+import {Request} from "../../utils/WebRequestMiddleware";
+import Select from "./Select";
 
 //Component than handles the request to the specified routes, handles the changes on the inputs and select,
 // when the button is pressed manage the errors and validations
@@ -82,7 +83,7 @@ export default function ValidationModal({children, Button, initialState = {}, ro
                 {
                     recursiveMap(children,(child)=>{
                         //inserting code to modified this state on the changes on every input or select change
-                        if(child.type ==='input' || child.type === 'select'){
+                        if(child.type ==='input' || child.type === Select){
                             const {name} = child.props;
                             //if the state is already set the modal will load with the values
                             if(modalInfo.hasOwnProperty(name))
