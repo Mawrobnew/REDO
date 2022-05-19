@@ -9,8 +9,6 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 import M_ModUser from "./M_ModUser";
 import M_DeleteUser from "./M_DeleteUser";
 import M_InsertUser from "./M_InsertUser";
-import M_Success from "./M_Success";
-import M_Fail from "./M_Fail";
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import M_ModUserPass from "./M_ModUserPass";
@@ -42,17 +40,8 @@ function T_User(){
         );
     };
 
-    const btnModUserPass = (cell, row, rowIndex, formatExtraData) => {
-        const info = {name: row.Nombre, id: row.Id}
-        return (
-            <div>
-                <M_ModUserPass open={isOpen} onClose={setIsOpen} userInfo={info} deleteAction={deleteUser}/>
-            </div>
-        );
-    };
-
     const columns = [
-        {dataField:'Id', text:'Id', sort:true, key:1},
+        {dataField:'Id', text:'Id', sort:true, key:1, hidden:true},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
         {dataField:'Correo', text:'Correo', sort:true, key:3},
         {dataField:'Numero', text:'Telefono', sort:true, key:4},
