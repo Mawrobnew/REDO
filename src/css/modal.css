@@ -189,7 +189,7 @@
 }
 #btnModalAttendance{
     padding: 3px 5px;
-    background-color:#fe7e42;
+    background-color:var(--verde);
     border-radius: 10px;
     border: none;
     margin: 0px 0px 0px 0px;

@@ -1,43 +1,55 @@
+@import "colors.css";
+
 .searchInputs{
-    margin-top: 105px;
-    display: flex;
-  }
+  margin-top: 105px;
+  display: flex;
+  position: fixed;
+  align-content: center;
+  top: 10%;
+  left: 10%;
+  box-shadow: 1px 1px 2px 2px rgb(0,0,0,.2);
+  width: 80%;
+  border-radius: 5px;
+  padding: 10px;
+
+}
   
   .search input{
-    background-color: rgb(243, 255, 255);
-    border:0;
-    border-radius:2px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    font-size: 18px;
-    padding: 15px;
-    height: 30px;
-    width: 300px;
-  
+    background-color:var(--blanco);
+    border: none;
+    border-bottom: 2px solid var(--azulInput);
+    font-size: 24px;
+    padding: 0px 0px 0px 15px;
+    height: 60px;
+    width: 100%;
   }
   
   .searchIcon{
-    height: 60px;
-    width: 50px;
-    background-color: #ed1a3b;
+    background-color: var(--verde);
     display:grid;
     place-items: center;
-    
+    margin: 0px 0px 0px 10px;
+    padding: 0px 0px;
+    width: 8%;
+    border: none;
+    border-radius: 5px;
   }
   /* .searchIcon:hover{
     background-color: rgb(253, 185, 19);
   } */
   input:focus {
-      outline-color: #ed1a3b;
+      border: 1px solid var(--azul);
     }
-  
-  
+
   .dataResult{
-    margin-top: 5px;
-    width: 300px;
-    height: 200px;
-    background-color: rgb(233, 235, 235);
-    box-shadow: rgb(0, 0, 0,0.35) 0px 5px 15px;
+    top: 35%;
+    left: 10%;
+    box-shadow: 1px 1px 2px 2px rgb(0,0,0,.2);
+    width: 80%;
+    border-radius: 5px;
+    position: fixed;
+    background-color: var(--blanco);
+    max-height: 420px;
     overflow: hidden;
     overflow-y: auto;
   }
@@ -47,26 +59,39 @@
   }
   
   .dataResult .dataItem{
-    width: 300px;
-    height: 50px;
+    width: auto;
+    height: 60px;
     display:flex;
-    align-items: center;
     color:black;
   }
-  
-  .dataItem p{
-    margin-left: 10px;
+
+  .id{
+    width: 30%;
   }
-  
-  a{
-    text-decoration: none;
+  .name{
+    width: 50%;
   }
-  a:hover{
-    background-color: aqua;
+  .btn{
+    width: 20%;
+  }
+
+  .dataItem table{
+    border-spacing: 5px 0px;
+    border-collapse: separate;
+    width: 100%;
+  }
+
+  .dataItem td{
+  }
+
+  .dataItem:hover{
+    background-color: var(--resaltar);
   }
   
   #clearBtn{
     cursor:pointer;
+    background-color: var(--rojo);
+    width: 100%;
   }
   
   

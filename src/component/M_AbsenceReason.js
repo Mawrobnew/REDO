@@ -13,6 +13,7 @@ export default function M_AbsenceReason(){
         rol: '',
         branch: '',
     })
+
     const [isOpen, setIsOpen] = useState(false)
     //TODO: FETCH THIS VALUES FROM THE API LATER
     const rolInventory = [
