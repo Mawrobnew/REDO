@@ -1,20 +1,23 @@
 @import "colors.css";
 
-.searchInputs{
-  margin-top: 105px;
-  display: flex;
-  position: fixed;
-  align-content: center;
-  top: 10%;
-  left: 10%;
-  box-shadow: 1px 1px 2px 2px rgb(0,0,0,.2);
-  width: 80%;
-  border-radius: 5px;
-  padding: 10px;
+  .search{
+    background-color: #000000;
+  }
 
-}
+  .searchInputs{
+    margin-top: 105px;
+    display: flex;
+    position: fixed;
+    align-content: center;
+    top: 10%;
+    left: 10%;
+    box-shadow: 1px 1px 2px 2px rgb(0,0,0,.2);
+    width: 80%;
+    border-radius: 5px;
+    padding: 10px;
+  }
   
-  .search input{
+  .search .inputCashier{
     background-color:var(--blanco);
     border: none;
     border-bottom: 2px solid var(--azulInput);
@@ -90,8 +93,6 @@
   
   #clearBtn{
     cursor:pointer;
-    background-color: var(--rojo);
-    width: 100%;
   }
   
   

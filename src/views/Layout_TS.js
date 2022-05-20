@@ -5,7 +5,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import {SidebarData} from '../component/SidebarData_TS';
 import { IconContext } from 'react-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import {faBars, faPowerOff} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Logo from "../img/logo.png";
 
@@ -22,6 +22,10 @@ export const Layout_TS = () => {
                 <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
                 <img src={Logo} alt={'logo'} className={'logoSB'}/>
             </Link>
+            <button className='btnCloseSesion'>
+                <FontAwesomeIcon icon={faPowerOff}/>
+                <span>Cerrar sesión</span>
+            </button>
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
             <ul className='nav-menu-items' onClick={showSidebar}>

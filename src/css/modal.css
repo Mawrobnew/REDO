@@ -28,9 +28,9 @@
 .title{
     width: 80%;
     font-size: 28px;
-    align-content: flex-end;
     margin: -5px 0px 0px 0px;
     font-weight: bold;
+    text-align: left;
 }
 /*Estilos del formulario, inputs y botones dentro de el modal*/
 .formulario{
@@ -38,6 +38,7 @@
 .formulario p{
     font-size: 20px;
     margin: 10px 0px 5px 0px;
+    text-align: left;
 }
 .formulario input{
     width: 100%;
@@ -129,7 +130,7 @@
 }
 #btnModalModUserPass{
     padding: 3px 5px;
-    background-color: var(--naranja) ;
+    background-color: var(--azul) ;
     border-radius: 10px;
     border: none;
     margin: 0px 0px 0px 0px;
@@ -196,6 +197,15 @@
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
     width: 50%;
+}
+#btnModalAttendanceCashier{
+    padding: 3px 100px;
+    background-color:var(--verde);
+    border-radius: 10px;
+    border: none;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
+    width: 100%;
 }
 #btnModalCreateCommunity{
     padding: 10px 10px;

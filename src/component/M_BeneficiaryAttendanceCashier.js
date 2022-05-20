@@ -45,7 +45,7 @@ export default function M_BeneficiaryAttendance() {
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalAttendance'><FontAwesomeIcon icon={faUserCheck} size='1x'/></button>
+        <button onClick={() => setIsOpen(true)} id='btnModalAttendanceCashier'><FontAwesomeIcon icon={faUserCheck} size='1x'/></button>
     )
     return (
         <div>
@@ -57,6 +57,7 @@ export default function M_BeneficiaryAttendance() {
                         <p>Nombre</p>
                         <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
                         <button className='yesBtn'>Si</button>
+                        <button onClick={() => setIsOpen(true)} className={'noBtn'}>No</button>
                     </div>
                 </form>
             </div>

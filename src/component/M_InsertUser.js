@@ -30,6 +30,7 @@ export default function M_InsertUser() {
                 <Select name="branch" route="/branch"/>
                 <Alert variant="danger" name="alert"/>
                 <button className='aceptBtn' name="formButton">Crear usuario</button>
+
             </div>
     </ValidationModal>
 }
