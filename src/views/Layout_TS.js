@@ -13,16 +13,19 @@ export const Layout_TS = () => {
 
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
+    const closeSession = () => {
+
+    }
 
     return (
         <>
-        <IconContext.Provider value={{ color: '#fff' }}>
-            <div className='navbar'>
-            <Link to='#' className='menu-bars'>
-                <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
-                <img src={Logo} alt={'logo'} className={'logoSB'}/>
-            </Link>
-            <button className='btnCloseSesion'>
+            <IconContext.Provider value={{color: '#fff'}}>
+                <div className='navbar'>
+                    <Link to='#' className='menu-bars'>
+                        <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
+                        <img src={Logo} alt={'logo'} className={'logoSB'}/>
+                    </Link>
+                    <button className='btnCloseSesion'>
                 <FontAwesomeIcon icon={faPowerOff}/>
                 <span>Cerrar sesión</span>
             </button>

@@ -80,7 +80,10 @@ function SearchBar({placeholder,data}) {
                           <tr>
                             <td className={'id'}>{value.Folio}</td>
                             <td className={'name'}>{value.Nombre}</td>
-                            <td className={'btn'}><M_BeneficiaryAttendanceCashier/></td>
+                            <td className={'btn'}>
+                              <M_BeneficiaryAttendanceCashier
+                                  beneficiary={{folio: value.Folio, name: value.Nombre, attendance: 1}}/>
+                            </td>
                           </tr>
                         </table>
                       </div>
