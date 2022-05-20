@@ -14,6 +14,8 @@ import T_Inactive from "./component/T_Inactive";
 import Reports from "./component/Reports"
 import { Layout_TS } from './views/Layout_TS';
 import { Layout_SU } from './views/Layout_SU';
+import SearchBar from "./component/SearchBar";
+import Data from "../src/component/SearchbarData.json";
 
 
 let TrabajoSocial = () => {
@@ -38,7 +40,7 @@ let TrabajoSocial = () => {
 }
 const Cajero = () => {
     return <div>
-        Vista de cajero
+        <SearchBar placeholder='Folio o nombre del beneficiario' data={Data}/>
     </div>
 }
 
