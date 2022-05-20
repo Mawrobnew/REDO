@@ -21,11 +21,11 @@ function Login(){
         e.preventDefault();
 
         const [result, code] = await Request('POST', "/login", formInfo)
-        const {done, token, role} =result
+        const {done, token, IdRole, IdBranch, Name, UserRole} =result
         if(done){
             sessionStorage.setItem('token', token)
-            sessionStorage.setItem('role', role)
-            switch (role){
+            sessionStorage.setItem('role', IdRole)
+            switch (IdRole){
                 case 1:
                     navigate('/SuperUsuario')
                     break;
