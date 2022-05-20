@@ -56,8 +56,8 @@ function T_User(){
         {dataField: 'Rol', text: 'Rol', sort: true, key: 5},
         {dataField: 'Sucursal', text: 'Sucursal', sort: true, key: 6},
         {dataField: 'btn', text: 'Modificar', formatter: btnModUSer, key: 7},
-        {dataField: 'btn2', text: 'Eliminar', formatter: btnDeleteUSer, key: 8},
         {dataField: 'btn3', text: 'Contraseña', formatter: btnModUserPass, key: 9},
+        {dataField: 'btn2', text: 'Eliminar', formatter: btnDeleteUSer, key: 8},
         {dataField: 'IdRol', text: 'Rol', sort: true, key: 10, hidden: true},
         {dataField: 'IdSucursal', text: 'Sucursal', sort: true, key: 11, hidden: true},
     ]
@@ -106,6 +106,7 @@ function T_User(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
+                            <M_InsertUser/>
                             <p className='title'>Usuarios</p>
                             <hr></hr>
                             <SearchBar { ...props.searchProps } />
@@ -124,7 +125,6 @@ function T_User(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
-                            <M_InsertUser/>
                         </div>
                     </div>
                 )

@@ -133,7 +133,7 @@
     background-color: var(--azul) ;
     border-radius: 10px;
     border: none;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 10px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
     width: 60%;
@@ -147,7 +147,7 @@
     margin: 0px 0px 0px 0px;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
     position: relative;
-    width: 75%;
+    width: 70%;
 }
 #btnModalModBen{
     padding: 3px 5px;
