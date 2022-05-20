@@ -1,5 +1,5 @@
 import '../css/login.css'
-import Logo from '../img/Blanco.png'
+import LogoB from '../img/logoB.png'
 import { useNavigate } from 'react-router-dom';
 import {Request} from "../utils/WebRequestMiddleware"
 import {useState} from "react";
@@ -57,7 +57,7 @@ function Login(){
                 </form>
                 </div>
             </div>
-            <img src={Logo} alt='logo'/>
+            <img src={LogoB} alt='logo' className={'logoLogin'}/>
         </div>
     )
 }

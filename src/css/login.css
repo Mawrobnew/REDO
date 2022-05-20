@@ -73,7 +73,7 @@
     width: 100%;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
 }
-img{
+.logoLogin{
     position: fixed;
     top: 25px;
     left: 60px;

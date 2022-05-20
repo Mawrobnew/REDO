@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react'
+import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
-import '../css/modal.css';
-import { faFileArchive } from '@fortawesome/free-solid-svg-icons'
+import { faUserCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../css/modal.css';
 
 
-export default function M_UploadDocuments() {
+export default function M_BeneficiaryAttendance() {
     const [modalInfo, setModalInfo] = useState({
         name: '',
         mail: '',
@@ -37,31 +37,26 @@ export default function M_UploadDocuments() {
     }
 
     //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
-    const form = useRef()
     const handleSubmit = async (event) => {
-        const formData= new FormData(form.current)
-        const [result, code] = await Request ('POST', '/', formData)
+        const result = await Request('POST', '/user', modalInfo)
         const {done} = result
         if (done) setIsOpen(!isOpen)
         event.preventDefault()
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalUploadDocs'><FontAwesomeIcon icon={faFileArchive} size='1x'/></button>
+        <button onClick={() => setIsOpen(true)} id='btnModalAttendance'><FontAwesomeIcon icon={faUserCheck} size='1x'/></button>
     )
     return (
         <div>
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
             <div className='window'>
-                <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
-                <p className='title'>Subir documentos</p>
-                <form onSubmit={handleSubmit} action={'http://localhost:9000/'} target={'_blank'} ref={'form'}>
+                <p className='title'>Poner asistencia</p>
+                <form onSubmit={handleSubmit}>
                     <div className='formulario'>
-
-                        <p>Credencial</p>
-                        <input required type="file" id="" name="archivo" accept=".jpg, .jpeg, .png, .pdf"/>
-
-                        <button className='aceptBtn'>Enviar</button>
+                        <p>Nombre</p>
+                        <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
+                        <button className='yesBtn'>Si</button>
                     </div>
                 </form>
             </div>

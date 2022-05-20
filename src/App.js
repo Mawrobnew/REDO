@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react'
 import './App.css';
-import Menu from './component/Menu';
 import T_User from "./component/T_User";
 import T_GlobalBeneficiary from "./component/T_GlobalBeneficiary";
 import {BrowserRouter as  Router, Routes, Route, Redirect, useLocation,Link} from "react-router-dom";
@@ -53,7 +52,7 @@ const Cajero = () => {
     }
 
     return <div>
-        <SearchBar placeholder='Folio o nombre del beneficiario' data={beneficiaryResults}/>
+        <SearchBar placeholder='Folio del beneficiario' data={Data}/>
     </div>
 }
 

@@ -38,14 +38,32 @@ function T_BeneficiaryDocuments(){
         );
     };
 
+    const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
+        return (
+            <div>
+                <a href={'http://localhost:9000/'}>
+                    <form action={'http://localhost:9000/'} target='_blank' method='post' encType='multipart/form-data'>
+                        <div className='formulario'>
+
+                            <p>Credencial</p>
+                            <input required type="file" name="archivo" accept=".jpg, .jpeg, .png, .pdf"/>
+
+                            <button type='submit' className='aceptBtn'>Enviar</button>
+                        </div>
+                    </form>
+                </a>
+            </div>
+        );
+    };
+
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
         {dataField:'Credencial', text:'Credencial', sort:true, key:3},
-        {dataField:'EstudioSocioeconomico', text:'Estudio', sort:true, key:4},
         {dataField:'Status', text:'Estado', sort:true, key:5},
         {dataField:'btn', text:'Cambiar estado', formatter: btnModUStatus, key:6},
-        {dataField:'btn2', text:'Documentos', formatter: btnUploadDoc, key:7}
+        {dataField:'btn2', text:'Documentos', formatter: btnUploadDoc, key:7}/*,
+        {dataField:'btn3', text:'Documentos', formatter: btnUploadDo, key:8}*/
     ]
 
     const pagination = paginationFactory({

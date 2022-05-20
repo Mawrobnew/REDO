@@ -19,11 +19,11 @@ export default function M_InsertUser() {
                 <p>Nombre</p>
                 <input required type='text' name="name" autoFocus={true} placeholder={'Nombre'}/>
                 <p>Telefono</p>
-                <input required type='text' name="phone"/>
+                <input required type='number' name="phone" placeholder={'Es necesaria la lada nacional (52)'} minLength={12}/>
                 <p>Correo</p>
                 <input required type='email' name="mail"/>
                 <p>Contraseña</p>
-                <input required type='text' name="password"/>
+                <input required type='password' name="password"/>
                 <p>Rol</p>
                 <Select name="rol" route="/userRole"/>
                 <p>Sucursal</p>

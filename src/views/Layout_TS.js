@@ -7,6 +7,7 @@ import {SidebarData} from '../component/SidebarData_TS';
 import { IconContext } from 'react-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Logo from "../img/logo.png";
 
 export const Layout_TS = () => {
 
@@ -19,6 +20,7 @@ export const Layout_TS = () => {
             <div className='navbar'>
             <Link to='#' className='menu-bars'>
                 <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
+                <img src={Logo} alt={'logo'} className={'logoSB'}/>
             </Link>
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -26,8 +28,10 @@ export const Layout_TS = () => {
                 <li className='navbar-toggle'>
                 <Link to='#' className='menu-bars'>
                     <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
+                    <img src={Logo} alt={'logo'} className={'logoMB'}/>
                 </Link>
                 </li>
+                <hr/>
                 {SidebarData.map((item, index) => {
                 return (
                     <li key={index} className={item.cName}>

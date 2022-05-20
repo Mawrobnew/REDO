@@ -2,7 +2,7 @@
 
 .wrapper{
     position: fixed;
-    z-index: 2;
+    z-index: 6;
     display: block;
     top: 0;
     left: 0;
@@ -14,7 +14,7 @@
 .window{
     position: fixed;
     align-content: center;
-    z-index: 2;
+    z-index: 6;
     height: auto;
     width: 35%;
     max-width: 1200px;
