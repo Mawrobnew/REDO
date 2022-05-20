@@ -41,22 +41,26 @@ function SearchBar({placeholder,data}) {
 
     if(searchWord===""){
       setFilteredData([])
-    }
-    else{
+    } else {
       setFilteredData(newFilter);
     }
   };
 
-  const clearInput=()=>{
+  const clearInput = () => {
     setFilteredData([]);
     setWordEntered("")
+  }
+
+  const closeSession = () => {
+    sessionStorage.clear();
+    window.location.reload();
   }
 
   return (
       <div className='search'>
         <div className={'navbar'}>
           <img src={Logo} alt={'logo'} className={'logoSB'}/>
-          <button className='btnCloseSesion'>
+          <button className='btnCloseSesion' onClick={closeSession}>
             <FontAwesomeIcon icon={faPowerOff}/>
             <span>Cerrar sesión</span>
           </button>
