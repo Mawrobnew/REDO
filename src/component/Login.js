@@ -51,7 +51,7 @@ function Login(){
                     <input type='email' placeholder='Correo electrónico' onChange={handleInputChange} autoFocus={true} name={"mail"}/>
                     <input type='password' maxLength={16} placeholder='Contraseña'  onChange={handleInputChange} name={"password"}/>
                     <Alert variant="danger" show={error}>
-                        <Alert.Heading>Correo o contraseña inválidos</Alert.Heading>
+                        Correo o contraseña inválidos
                     </Alert>
                     <button className='aceptBtnL' onClick={HandleLogin}>Iniciar sesión</button>
                 </form>

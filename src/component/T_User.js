@@ -9,8 +9,6 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 import M_ModUser from "./M_ModUser";
 import M_DeleteUser from "./M_DeleteUser";
 import M_InsertUser from "./M_InsertUser";
-import M_Success from "./M_Success";
-import M_Fail from "./M_Fail";
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import M_ModUserPass from "./M_ModUserPass";
@@ -25,8 +23,8 @@ function T_User(){
     }
 
     const btnModUSer = (cell, row, rowIndex, formatExtraData) => {
-        const {Nombre, Correo, Numero, Id} = row
-        const info = {name: Nombre, mail: Correo, phone: Numero, id: Id}
+        const {Nombre, Correo, Numero, Id, IdRol, IdSucursal} = row
+        const info = {name: Nombre, mail: Correo, phone: Numero, id: Id, rol: IdRol, branch: IdSucursal}
         return (
             <div>
                 <M_ModUser open={isOpen} onClose={setIsOpen} userinfo={info}/>
@@ -41,26 +39,27 @@ function T_User(){
             </div>
         );
     };
-
     const btnModUserPass = (cell, row, rowIndex, formatExtraData) => {
-        const info = {name: row.Nombre, id: row.Id}
+        const info = {id: row.Id}
         return (
             <div>
-                <M_ModUserPass open={isOpen} onClose={setIsOpen} userInfo={info} deleteAction={deleteUser}/>
+                <M_ModUserPass id={info}/>
             </div>
         );
     };
 
     const columns = [
-        {dataField:'Id', text:'Id', sort:true, key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Correo', text:'Correo', sort:true, key:3},
-        {dataField:'Numero', text:'Telefono', sort:true, key:4},
-        {dataField:'Rol', text:'Rol', sort:true, key:5},
-        {dataField:'Sucursal', text:'Sucursal',sort:true, key:6},
-        {dataField:'btn',  text:'Modificar', formatter: btnModUSer, key:7},
-        {dataField:'btn2', text:'Eliminar', formatter: btnDeleteUSer, key:8},
-        {dataField:'btn3', text:'Contraseña', formatter: btnModUserPass, key: 9}
+        {dataField: 'Id', text: 'Id', sort: true, key: 1, hidden: true},
+        {dataField: 'Nombre', text: 'Nombre', sort: true, key: 2},
+        {dataField: 'Correo', text: 'Correo', sort: true, key: 3},
+        {dataField: 'Numero', text: 'Telefono', sort: true, key: 4},
+        {dataField: 'Rol', text: 'Rol', sort: true, key: 5},
+        {dataField: 'Sucursal', text: 'Sucursal', sort: true, key: 6},
+        {dataField: 'btn', text: 'Modificar', formatter: btnModUSer, key: 7},
+        {dataField: 'btn2', text: 'Eliminar', formatter: btnDeleteUSer, key: 8},
+        {dataField: 'btn3', text: 'Contraseña', formatter: btnModUserPass, key: 9},
+        {dataField: 'IdRol', text: 'Rol', sort: true, key: 10, hidden: true},
+        {dataField: 'IdSucursal', text: 'Sucursal', sort: true, key: 11, hidden: true},
     ]
 
     const pagination = paginationFactory({
