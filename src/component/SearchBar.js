@@ -1,19 +1,39 @@
-import React,{useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../css/searchbar.css';
 import * as FaIcons from 'react-icons/fa';
 import * as GrIcons from "react-icons/gr";
 import M_BeneficiaryAttendance from "./M_BeneficiaryAttendance";
 import T_Inactive from "./T_Inactive";
+import {Request} from "../utils/WebRequestMiddleware";
 
 function SearchBar({placeholder,data}) {
   const [filteredData,setFilteredData]= useState([]);
   const [wordEntered,setWordEntered]= useState("");
 
+  const[attendance, setAttendance]= useState([]);
+
+  useEffect(() => {
+    const handleBeneficiary = async () => {
+      const [result, code] = await Request('GET', '/attendanceJustify')
+      const {done, errors} = result
+      setAttendance(result)
+      console.log("(Cajero) Llena el modal de cajero")
+      //console.log("(Cajero) attendance ", attendance)
+      //console.log("(Cajero) result ", result)
+    }
+    handleBeneficiary()
+    //console.log("(Cajero) attendance ", attendance)
+  },[])
+
   const handleFilter =(event) =>{
+    // handleBeneficiary()
+    //console.log("Data ", data)
     const searchWord= event.target.value
     setWordEntered(searchWord)
-    const newFilter = data.filter((value)=>{
-      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    //console.log("(Cajero) attendance ", attendance)
+    const newFilter = attendance.filter(value => {
+      //console.log(value.title.toLowerCase())
+      return value.Folio.toLowerCase().includes(searchWord.toLowerCase());
     })
 
     if(searchWord===""){
@@ -51,8 +71,8 @@ function SearchBar({placeholder,data}) {
                       <div className='dataItem'  target="_blank">
                         <table>
                           <tr>
-                            <td className={'id'}>{value.title}</td>
-                            <td className={'name'}>{value.title}</td>
+                            <td className={'id'}>{value.Folio}</td>
+                            <td className={'name'}>{value.Nombre}</td>
                             <td className={'btn'}><M_BeneficiaryAttendance/></td>
                           </tr>
                         </table>

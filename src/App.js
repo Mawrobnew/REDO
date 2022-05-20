@@ -16,6 +16,7 @@ import { Layout_TS } from './views/Layout_TS';
 import { Layout_SU } from './views/Layout_SU';
 import SearchBar from "./component/SearchBar";
 import Data from "../src/component/SearchbarData.json";
+import {Request} from "./utils/WebRequestMiddleware";
 
 
 let TrabajoSocial = () => {
@@ -38,9 +39,21 @@ let TrabajoSocial = () => {
                   
     </div>
 }
+const fromDb = undefined;
+
+var beneficiaryResults = fromDb || [];
+
 const Cajero = () => {
+    //console.log("return?: ", handleBeneficiary())
+    if (Array.isArray(beneficiaryResults)) {
+        console.log('prueba array: ', beneficiaryResults);
+    } else {
+        console.log('BR is not an array');
+        console.log(beneficiaryResults);
+    }
+
     return <div>
-        <SearchBar placeholder='Folio o nombre del beneficiario' data={Data}/>
+        <SearchBar placeholder='Folio o nombre del beneficiario' data={beneficiaryResults}/>
     </div>
 }
 
@@ -77,6 +90,21 @@ const SUPERUSUARIO = 1;
 const TRABAJOSOCIAL= 2;
 const CAJERO = 3;
 function App() {
+    /*
+    useEffect(() => {
+        const handleBeneficiary = async () => {
+            const [result, code] = await Request('GET', '/attendanceJustify')
+            beneficiaryResults = result
+            //console.log("(App) Llena el modal de cajero")
+            //console.log("(App) beneficiaryResults (",typeof(beneficiaryResults),"): ", beneficiaryResults)
+            console.log("(App) result (", typeof (result), "): ", result)
+            return {result};
+            //console.log("(App) Data: (",typeof(Data),"): ", Data)
+            // console.log(Data)
+        }
+        beneficiaryResults = handleBeneficiary()
+    },[])
+    */
     return (
         <Router>
             <Routes>
