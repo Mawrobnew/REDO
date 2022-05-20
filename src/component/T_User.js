@@ -40,9 +40,10 @@ function T_User(){
         );
     };
     const btnModUserPass = (cell, row, rowIndex, formatExtraData) => {
+        const info = {id: row.Id}
         return (
             <div>
-                <M_ModUserPass/>
+                <M_ModUserPass id={info}/>
             </div>
         );
     };
