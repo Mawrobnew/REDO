@@ -41,22 +41,26 @@ function SearchBar({placeholder,data}) {
 
     if(searchWord===""){
       setFilteredData([])
-    }
-    else{
+    } else {
       setFilteredData(newFilter);
     }
   };
 
-  const clearInput=()=>{
+  const clearInput = () => {
     setFilteredData([]);
     setWordEntered("")
+  }
+
+  const closeSession = () => {
+    sessionStorage.clear();
+    window.location.reload();
   }
 
   return (
       <div className='search'>
         <div className={'navbar'}>
           <img src={Logo} alt={'logo'} className={'logoSB'}/>
-          <button className='btnCloseSesion'>
+          <button className='btnCloseSesion' onClick={closeSession}>
             <FontAwesomeIcon icon={faPowerOff}/>
             <span>Cerrar sesión</span>
           </button>
@@ -80,7 +84,10 @@ function SearchBar({placeholder,data}) {
                           <tr>
                             <td className={'id'}>{value.Folio}</td>
                             <td className={'name'}>{value.Nombre}</td>
-                            <td className={'btn'}><M_BeneficiaryAttendanceCashier/></td>
+                            <td className={'btn'}>
+                              <M_BeneficiaryAttendanceCashier
+                                  beneficiary={{folio: value.Folio, name: value.Nombre, attendance: 1}}/>
+                            </td>
                           </tr>
                         </table>
                       </div>
