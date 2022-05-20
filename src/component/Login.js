@@ -25,6 +25,7 @@ function Login(){
         if(done){
             sessionStorage.setItem('token', token)
             sessionStorage.setItem('role', IdRole)
+            sessionStorage.setItem('name', Name)
             switch (IdRole){
                 case 1:
                     navigate('/SuperUsuario')
