@@ -60,6 +60,7 @@ function SearchBar({placeholder,data}) {
       <div className='search'>
         <div className={'navbar'}>
           <img src={Logo} alt={'logo'} className={'logoSB'}/>
+          <div>{sessionStorage.getItem('name')}</div>
           <button className='btnCloseSesion' onClick={closeSession}>
             <FontAwesomeIcon icon={faPowerOff}/>
             <span>Cerrar sesión</span>
