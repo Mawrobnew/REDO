@@ -10,7 +10,7 @@ import Select from "./API/Select";
 export default function M_InsertUser() {
     return <ValidationModal
         Button={
-            <button id='btnModalInsertUser'><FontAwesomeIcon icon={faUserPlus} size='1x'/> Agregar Usuario</button>
+            <button id='btnModalInsertUser'><FontAwesomeIcon icon={faUserPlus} size='1x'/> Agregar usuario</button>
         }
         route={"/users"}
     >
@@ -18,8 +18,8 @@ export default function M_InsertUser() {
             <div className='formulario'>
                 <p>Nombre</p>
                 <input required type='text' name="name" autoFocus={true} placeholder={'Nombre'}/>
-                <p>Telefono</p>
-                <input required type='number' name="phone" placeholder={'Es necesaria la lada nacional (52)'} minLength={12}/>
+                <p>Teléfono</p>
+                <input required type='number' name="phone" placeholder={'Es necesaria la lada nacional (52)'} minLength={10}/>
                 <p>Correo</p>
                 <input required type='email' name="mail"/>
                 <p>Contraseña</p>

@@ -19,7 +19,7 @@ export default function M_ModUser({userinfo}) {
             <div className='formulario'>
                 <p>Nombre</p>
                 <input required type='text' name="name" autoFocus={true} placeholder={'Nombre'}/>
-                <p>Telefono</p>
+                <p>Teléfono</p>
                 <input required type='number' name="phone"/>
                 <p>Correo</p>
                 <input required type='email' name="mail"/>
