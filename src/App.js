@@ -117,7 +117,7 @@ function App() {
                     <Route path="inactive" element={<T_Inactive/>}/>
                     <Route path="reports" element={<Reports/>}/>
                 </Route>
-                <Route exact path="*" element={<Login/>}/>
+                <Route exact path="*" element={<Navigate to="/login"/>}/>
             </Routes>
         </Router>
     );
