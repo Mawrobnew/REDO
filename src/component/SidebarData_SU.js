@@ -9,11 +9,6 @@ export const SidebarData = [
     icon: <FontAwesomeIcon icon={faGlobe}/> ,
     cName: 'nav-text'
   },
-  {
-    title: 'Cerrar Sesión',
-    path: '#',
-    icon: <FontAwesomeIcon icon={faPowerOff}/> ,
-    cName: 'nav-text'
-  },
+  
 
 ];

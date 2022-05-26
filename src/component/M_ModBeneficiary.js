@@ -57,7 +57,7 @@ export default function M_ModBeneficiary() {
                     <div className='formulario'>
                         <p>Nombre</p>
                         <input required type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
-                        <p>Telefono</p>
+                        <p>Teléfono</p>
                         <input required type='number' onChange={handleInputChange} name="phone"/>
                         <p>Beca</p>
                         <select onChange={handleInputChange} name="branch">

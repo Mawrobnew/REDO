@@ -24,10 +24,10 @@ export default function M_ModUserPass({id}) {
         >
             <div className='formulario'>
                 <p>Contraseña</p>
-                <input type={passwordShown ? "text" : "password"} placeholder={'Entre 8 y 16 caractéres'}
+                <input type={passwordShown ? "text" : "password"} placeholder={'Entre 8 y 16 caracteres'}
                        name="password" minLength={8} maxLength={16}/>
                 <p>Confirmar contraseña</p>
-                <input type={passwordShown ? "text" : "password"} placeholder={'Entre 8 y 16 caractéres'}
+                <input type={passwordShown ? "text" : "password"} placeholder={'Entre 8 y 16 caracteres'}
                        name="confirmationPassword" minLength={8} maxLength={16}/>
                 <button type={"button"} onClick={togglePassword} className={'changePassBtn'}><FontAwesomeIcon
                     icon={passwordShown ? faEyeSlash : faEye} size='1x'/></button>

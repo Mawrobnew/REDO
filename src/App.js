@@ -58,7 +58,6 @@ const Cajero = () => {
 
 const SuperUsuario = () => {
     return <div>
-        
         <T_User/>
     </div>
 
