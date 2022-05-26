@@ -1,4 +1,3 @@
-import React, { useState, useEffect} from 'react'
 import './App.css';
 import T_User from "./component/T_User";
 import T_GlobalBeneficiary from "./component/T_GlobalBeneficiary";
@@ -15,7 +14,6 @@ import { Layout_TS } from './views/Layout_TS';
 import { Layout_SU } from './views/Layout_SU';
 import SearchBar from "./component/SearchBar";
 import Data from "../src/component/SearchbarData.json";
-import {Request} from "./utils/WebRequestMiddleware";
 
 
 let TrabajoSocial = () => {
@@ -88,21 +86,6 @@ const SUPERUSUARIO = 1;
 const TRABAJOSOCIAL= 2;
 const CAJERO = 3;
 function App() {
-    /*
-    useEffect(() => {
-        const handleBeneficiary = async () => {
-            const [result, code] = await Request('GET', '/attendanceJustify')
-            beneficiaryResults = result
-            //console.log("(App) Llena el modal de cajero")
-            //console.log("(App) beneficiaryResults (",typeof(beneficiaryResults),"): ", beneficiaryResults)
-            console.log("(App) result (", typeof (result), "): ", result)
-            return {result};
-            //console.log("(App) Data: (",typeof(Data),"): ", Data)
-            // console.log(Data)
-        }
-        beneficiaryResults = handleBeneficiary()
-    },[])
-    */
     return (
         <Router>
             <Routes>
@@ -125,16 +108,16 @@ function App() {
                     path="/trabajosocial"
                     element={<PrivateRoute roles={[TRABAJOSOCIAL]} component={Layout_TS}/>}
                 >
-                    <Route index element={<T_GlobalBeneficiary />}/>
-                    <Route exact path="globalbeneficiary" element={<T_GlobalBeneficiary />}/>
-                    <Route path="attendance" element={<T_Attendance />}/>
-                    <Route path="communityAssistance" element={<T_CommunityAssistance />} />
-                    <Route path="absene" element={<T_Absence />} />
-                    <Route path="justification" element={<T_Justification/>} />
-                    <Route path="inactive" element={<T_Inactive/>} />
-                    <Route path="reports" element={<Reports/>} />
+                    <Route index element={<T_GlobalBeneficiary/>}/>
+                    <Route exact path="globalbeneficiary" element={<T_GlobalBeneficiary/>}/>
+                    <Route path="attendance" element={<T_Attendance/>}/>
+                    <Route path="communityAssistance" element={<T_CommunityAssistance/>}/>
+                    <Route path="absene" element={<T_Absence/>}/>
+                    <Route path="justification" element={<T_Justification/>}/>
+                    <Route path="inactive" element={<T_Inactive/>}/>
+                    <Route path="reports" element={<Reports/>}/>
                 </Route>
-                <Route exact path="*" element={<NotFound/>}/>
+                <Route exact path="*" element={<Login/>}/>
             </Routes>
         </Router>
     );
