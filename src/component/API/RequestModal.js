@@ -3,6 +3,7 @@ import recursiveMap from "../../utils/RecursiveInyection";
 import M_Fail from "../M_Fail";
 import M_Success from "../M_Success";
 import {Request} from "../../utils/WebRequestMiddleware";
+import MessageModal from "./MessageModal";
 
 //Component than handles the request to the specified routes, handles the changes on the inputs and select,
 // when the button is pressed manage the errors and validations
@@ -13,7 +14,8 @@ export default function RequestModal({children, Button, initialState = {}, route
 
     const [petitionState, setPetitionState] = useState({
         successful: false,
-        failed: false
+        failed: false,
+        message: ''
     })
 
     //Returning the costum button
@@ -34,19 +36,19 @@ export default function RequestModal({children, Button, initialState = {}, route
             ...petitionState,
             successful: true
         })
-        window.location.reload();
     }
 
     const handleSubmit = async () => {
         const [result, code] = await Request(method, route, modalInfo)
-        const {done} = result[0]
+        const {done, message} = result[0]
         if (done === 1) {
             returnToDefault()
             return;
         }
         setPetitionState({
             ...petitionState,
-            failed: true
+            failed: true,
+            message
         });
     }
 
@@ -76,7 +78,9 @@ export default function RequestModal({children, Button, initialState = {}, route
                     })
                 }
             </div>
-            <M_Fail open={petitionState.failed} onClose={() => setPetitionState({...petitionState, failed: false})}/>
+            <MessageModal open={petitionState.failed}
+                          onClose={() => setPetitionState({...petitionState, failed: false})}
+                          message={petitionState.message}/>
         </div>
     )
 }
