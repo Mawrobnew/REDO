@@ -44,7 +44,7 @@ export default function ValidationModal({children, Button, initialState = {}, ro
             ...petitionState,
             successful: true
         })
-        setModalInfo({})
+        window.location.reload();
         setValidationErrors({isError: false, errors: []})
     }
 

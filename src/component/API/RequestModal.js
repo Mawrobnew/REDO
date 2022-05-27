@@ -34,7 +34,7 @@ export default function RequestModal({children, Button, initialState = {}, route
             ...petitionState,
             successful: true
         })
-        //setModalInfo({})
+        window.location.reload();
     }
 
     const handleSubmit = async () => {
