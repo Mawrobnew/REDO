@@ -29,9 +29,9 @@ export default function M_ModUserPass({id}) {
                 <p>Confirmar contraseña</p>
                 <input type={passwordShown ? "text" : "password"} placeholder={'Entre 8 y 16 caracteres'}
                        name="confirmationPassword" minLength={8} maxLength={16}/>
+                <Alert variant="danger" name="alert"/>
                 <button type={"button"} onClick={togglePassword} className={'changePassBtn'}><FontAwesomeIcon
                     icon={passwordShown ? faEyeSlash : faEye} size='1x'/></button>
-                <Alert variant="danger" name="alert"/>
                 <button className='aceptBtn' name="formButton">Modificar contraseña</button>
             </div>
         </ValidationModal>

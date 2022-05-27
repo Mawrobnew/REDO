@@ -52,7 +52,7 @@ function T_User(){
         {dataField: 'Id', text: 'Id', sort: true, key: 1, hidden: true},
         {dataField: 'Nombre', text: 'Nombre', sort: true, key: 2},
         {dataField: 'Correo', text: 'Correo', sort: true, key: 3},
-        {dataField: 'Numero', text: 'Telefono', sort: true, key: 4},
+        {dataField: 'Numero', text: 'Teléfono', sort: true, key: 4},
         {dataField: 'Rol', text: 'Rol', sort: true, key: 5},
         {dataField: 'Sucursal', text: 'Sucursal', sort: true, key: 6},
         {dataField: 'btn', text: 'Modificar', formatter: btnModUSer, key: 7},
