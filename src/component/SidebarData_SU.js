@@ -1,6 +1,6 @@
 import React from 'react';
 import * as RiIcons from 'react-icons/ri';
-import { faGlobe, faPowerOff} from '@fortawesome/free-solid-svg-icons'
+import { faGlobe} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const SidebarData = [
   {
