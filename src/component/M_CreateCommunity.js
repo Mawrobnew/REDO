@@ -19,9 +19,9 @@ export default function M_CreateCommunity() {
                 <p>Nombre</p>
                 <input required type='text' name="name" autoFocus={true} placeholder={'Nombre'}/>
                 <p>Frecuencia</p>
-                <Select name="town" route="/frequency"/>
+                <Select name="frequency" route="/frequency"/>
                 <p>Municipio</p>
-                <Select name="frequency" route="/towns"/>
+                <Select name="town" route="/towns"/>
                 <button className='aceptBtn' name={"formButton"}>Crear comunidad</button>
             </div>
         </ValidationModal>
