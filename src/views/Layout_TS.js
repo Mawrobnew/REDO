@@ -13,8 +13,11 @@ export const Layout_TS = () => {
 
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
-    const closeSession = () => {
 
+    const closeSession = () => {
+        sessionStorage.clear();
+        window.location.reload();
+        return
     }
 
     return (
@@ -25,22 +28,23 @@ export const Layout_TS = () => {
                         <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
                         <img src={Logo} alt={'logo'} className={'logoSB'}/>
                     </Link>
-                    <button className='btnCloseSesion'>
-                <FontAwesomeIcon icon={faPowerOff}/>
-                <span>Cerrar sesión</span>
-            </button>
-            </div>
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className='nav-menu-items' onClick={showSidebar}>
-                <li className='navbar-toggle'>
-                <Link to='#' className='menu-bars'>
-                    <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
-                    <img src={Logo} alt={'logo'} className={'logoMB'}/>
-                </Link>
-                </li>
-                <hr/>
-                {SidebarData.map((item, index) => {
-                return (
+                    <p>{sessionStorage.getItem('name')}</p>
+                    <button className='btnCloseSesion' onClick={closeSession}>
+                        <FontAwesomeIcon icon={faPowerOff}/>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
+                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    <ul className='nav-menu-items' onClick={showSidebar}>
+                        <li className='navbar-toggle'>
+                            <Link to='#' className='menu-bars'>
+                                <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
+                                <img src={Logo} alt={'logo'} className={'logoMB'}/>
+                            </Link>
+                        </li>
+                        <hr/>
+                        {SidebarData.map((item, index) => {
+                            return (
                     <li key={index} className={item.cName}>
                     <Link to={item.path}>
                         {item.icon}
