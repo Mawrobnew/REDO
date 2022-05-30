@@ -1,74 +1,31 @@
-import React, {useState} from 'react'
-import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
 import {faAddressBook} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import ValidationModal from "./API/ValidationModal";
+import Select from "./API/Select";
+import {Alert} from "react-bootstrap";
 
-export default function M_CreateCommittee(){
-    const [modalInfo, setModalInfo] = useState({
-        name: '',
-        mail: '',
-        password: '',
-        phone: '',
-        rol: '',
-        branch: '',
-    })
-    const [isOpen, setIsOpen] = useState(false)
-    //TODO: FETCH THIS VALUES FROM THE API LATER
-    const rolInventory = [
-        {id:1, label: "Super Usuario"},
-        {id:2, label: "Trabajo Social"},
-        {id:3, label: "Cajero"},
-    ]
-    const branchInventory = [
-        {id:1, label: "Cuernavaca"},
-        {id:2, label: "Jiutepec"},
-        {id:3, label: "Temixco"},
-    ]
-
-    // updates the state on every change of the inputs or the selects
-    const handleInputChange = (event) =>{
-        const {name,value} = event.target
-        setModalInfo({
-            ...modalInfo,
-            [name]:value
-        })
-    }
-
-    //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        const result = await Request('POST', '/user', modalInfo)
-        const {done, errors} = result
-        if (done) setIsOpen(!isOpen)
-        //TODO: DISPLAY IN RED THE ERRORS OF THE FIELDS
-        console.log("TONY THIS ARE THE ERRORS TO BE DISPLAYED",errors)
-    }
-    //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
-    if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalCreateCommittee'><FontAwesomeIcon icon={faAddressBook} size='2x'/> Registrar Comité</button>
-    )
+export default function M_CreateCommittee() {
     return (
-        <div>
-            <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
-            <div className='window'>
-                <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
-                <p className='title'>Crear una comunidad</p>
-                <form onSubmit={handleSubmit}>
-                    <div className='formulario'>
-                        <p>Nombre</p>
-                        <input type='text' required onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'}/>
-                        <p>Teléfono</p>
-                        <input type={'number'} required maxLength={12}/>
-                        <p>Comunidad</p>
-                        <select onChange={handleInputChange} name="rol">
-                            {rolInventory.map((rol)=>(
-                                <option value={rol.id}>{rol.label}</option>
-                            ))}
-                        </select>
-                        <button className='aceptBtn'>Crear comité</button>
-                    </div>
-                </form>
+        <ValidationModal
+            Button={
+                <button id='btnModalCreateCommittee'><FontAwesomeIcon icon={faAddressBook} size='2x'/> Registrar Comité
+                </button>
+            }
+            route="/committeeMember"
+            method="POST"
+        >
+            <p className='title'>Crear un Comité</p>
+            <div className='formulario'>
+                <p>Nombre</p>
+                <input type='text' required name="name" autoFocus={true} placeholder={'Nombre'}/>
+                <p>Teléfono</p>
+                <input type={'number'} name={"phone"} required maxLength={10}/>
+                <p>Comunidad</p>
+                <Select name="id" route="/communities"/>
+                <Alert variant="danger" name="alert"/>
+                <button className='aceptBtn' name="formButton">Crear comité</button>
             </div>
-        </div>)
+        </ValidationModal>
+    )
 }

@@ -23,7 +23,7 @@ export default function Select({onChange, name, value, route, method = "GET"}){
             {options.map((option)=>(
                 //Since the api is not standarized the this select tries with matching the attribute that is on the json response
                 <option
-                    value={option.Id}>{option.Rol || option.Sucursal || option.Municipio || option.Frecuencia}</option>
+                    value={option.Id}>{option.Rol || option.Sucursal || option.Municipio || option.Frecuencia || option.Comunidad}</option>
             ))}
         </select>
     )
