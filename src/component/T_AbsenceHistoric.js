@@ -6,7 +6,6 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
-import M_ChangeStatus from './M_ChangeStatus';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import M_AbsenceReason from './M_AbsenceReason';

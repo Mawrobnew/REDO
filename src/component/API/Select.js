@@ -21,7 +21,9 @@ export default function Select({onChange, name, value, route, method = "GET"}){
         <select name={name} onChange={handleChange} value={value}>
             <option defaultValue>Seleccionar</option>
             {options.map((option)=>(
-                <option value={option.Id}>{option.Rol || option.Sucursal}</option>
+                //Since the api is not standarized the this select tries with matching the attribute that is on the json response
+                <option
+                    value={option.Id}>{option.Rol || option.Sucursal || option.Municipio || option.Frecuencia || option.Comunidad || option.Nombre}</option>
             ))}
         </select>
     )

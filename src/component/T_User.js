@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Request} from "../utils/WebRequestMiddleware";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import filterFactory from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import M_ModUser from "./M_ModUser";
 import M_DeleteUser from "./M_DeleteUser";

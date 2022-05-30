@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import {Request} from "../utils/WebRequestMiddleware";
+import React from 'react'
 import '../css/modal.css';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

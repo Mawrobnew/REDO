@@ -16,7 +16,7 @@ import M_CreatePetition from "./M_CreatePetition";
 
 
 function T_CommunityAssistance(){
-    const [userList, setUserList] = useState([]);
+    const [communityAssistanceList, setCommunityAssitanceList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
     const btnDocsAttendance = (cell, row, rowIndex, formatExtraData) => {
@@ -28,13 +28,12 @@ function T_CommunityAssistance(){
     };
 
     const columns = [
-        {dataField:'Folio', text:'Fecha Inicial', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Fecha Final', sort:true, key:2},
-        {dataField:'Frecuencia', text:'Comunidad', sort:true, key:6},
-        {dataField:'Dia', text:'Paquetes Totales', sort:true, key:7},
-        {dataField:'Status', text:'Asistencias Totales', sort:true, key:8},
-        {text:'Listas de asistencia', formatter: btnDocsAttendance, key: 9}
-
+        {dataField: 'FechaInicio', text: 'Fecha Inicial', sort: true, filterFactory: textFilter(), key: 1},
+        {dataField: 'FechaFinal', text: 'Fecha Final', sort: true, key: 2},
+        {dataField: 'Comunidad', text: 'Comunidad', sort: true, key: 6},
+        {dataField: 'PaquetesTotales', text: 'Paquetes Totales', sort: true, key: 7},
+        {dataField: 'AsistenciasTotales', text: 'Asistencias Totales', sort: true, key: 8},
+        {text: 'Listas de asistencia', formatter: btnDocsAttendance, key: 9}
     ]
 
     const pagination = paginationFactory({
@@ -56,14 +55,11 @@ function T_CommunityAssistance(){
         }
     });
 
-    const modalInfo = {
-        id: 1
-    }
-
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('POST', '/beneficiaries', modalInfo)
-            if (result.length>0) setUserList(result)
+            const [result, code] = await Request('GET', '/actCommunityAttendance')
+            console.log(result, code)
+            if (result.length > 0) setCommunityAssitanceList(result)
         }
         asyncFetch()
     }, [])
@@ -77,7 +73,7 @@ function T_CommunityAssistance(){
             bootstrap4
             keyField='Id'
             columns={columns}
-            data={userList}
+            data={communityAssistanceList}
             search
             exportCSV
         >
@@ -113,7 +109,6 @@ function T_CommunityAssistance(){
             }
         </ToolkitProvider>
     )
-
 }
 
 export default T_CommunityAssistance;

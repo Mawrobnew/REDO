@@ -1,9 +1,7 @@
-import React, {useState} from 'react'
-import {Request} from "../utils/WebRequestMiddleware";
+import React from 'react'
 import {faUserCheck} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import '../css/modal.css';
-import ValidationModal from "./API/ValidationModal";
 import RequestModal from "./API/RequestModal";
 
 
