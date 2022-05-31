@@ -16,9 +16,9 @@ function T_Justification(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Telefono', text:'Telefono', sort:true, key:3},
+        {dataField:'Telefono', text:'Teléfono', sort:true, key:3},
         {dataField:'', text:'Fecha', sort:true, key:4},
-        {dataField:'Status', text:'# de justificación', sort:true, key:5},
+        {dataField:'Status', text:'Num. de justificación', sort:true, key:5},
         {dataField:'Dia', text:'Razon', sort:true, key:6}
     ]
 

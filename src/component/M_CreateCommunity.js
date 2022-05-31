@@ -9,7 +9,7 @@ export default function M_CreateCommunity() {
     return (
         <ValidationModal
             Button={
-                <button id='btnModalCreateCommunity'><FontAwesomeIcon icon={faUsers} size='2x'/> Crear Comunidad
+                <button id='btnModalCreateCommunity'><FontAwesomeIcon icon={faUsers} size='2x'/> Crear comunidad
                 </button>
             }
             route={"/community"}
@@ -17,7 +17,7 @@ export default function M_CreateCommunity() {
             <p className='title'>Crear una comunidad</p>
             <div className='formulario'>
                 <p>Nombre</p>
-                <input required type='text' name="name" autoFocus={true} placeholder={'Nombre'}/>
+                <input required type='text' name="name" autoFocus={true} placeholder={'Nombre y apellidos'}/>
                 <p>Frecuencia</p>
                 <Select name="frequency" route="/frequency"/>
                 <p>Municipio</p>

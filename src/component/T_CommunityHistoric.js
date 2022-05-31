@@ -35,7 +35,7 @@ function T_CommunityHistoric(){
         {dataField:'PaquetesEnviados', text:'Paquetes enviados', sort:true, key:2},
         {dataField:'Comunidad', text:'Comunidad', sort:true, key:3},
         {dataField:'MiembroComite', text:'Encargado', sort:true, key:4},
-        {dataField:'Telefono', text:'Telefono', sort:true, key:5}
+        {dataField:'Telefono', text:'Teléfono', sort:true, key:5}
     ]
 
     const pagination = paginationFactory({

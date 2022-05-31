@@ -25,8 +25,8 @@ function T_Inactive(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Fecha', text:'F vencimiento', sort:true, key:4},
-        {dataField:'Falta', text:'# de faltas', sort:true, key:5},
+        {dataField:'Fecha', text:'F. vencimiento', sort:true, key:4},
+        {dataField:'Falta', text:'Cant. de faltas', sort:true, key:5},
         {dataField:'btn2', text:'Activar', formatter: btnModBeneficiary, key:8}
     ]
 

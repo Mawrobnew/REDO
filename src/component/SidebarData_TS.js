@@ -1,46 +1,57 @@
 import React from 'react';
 import * as RiIcons from 'react-icons/ri';
+import {
+  faGlobe,
+  faStore,
+  faTruckMoving,
+  faPersonCircleExclamation,
+  faUsersSlash,
+  faFileCircleExclamation,
+  faFileClipboard
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export const SidebarData = [
   {
     title: 'Lista global',
     path: 'globalbeneficiary',
-    icon: <RiIcons.RiGlobalLine />,
+    icon: <FontAwesomeIcon icon={faGlobe}/>,
     cName: 'nav-text'
   },
   {
     title: 'Asistencia en punto',
     path: 'attendance',
-    icon: <RiIcons.RiStore2Line />,
+    icon: <FontAwesomeIcon icon={faStore}/>,
     cName: 'nav-text'
   },
   {
     title: 'Asistencia en comunidad',
     path: 'communityAssistance',
-    icon: <RiIcons.RiTruckLine />,
+    icon: <FontAwesomeIcon icon={faTruckMoving}/>,
     cName: 'nav-text'
   },
   {
     title: 'Faltas',
     path: 'absene',
-    icon: <RiIcons.RiFileWarningLine />,
+    icon: <FontAwesomeIcon icon={faPersonCircleExclamation}/>,
     cName: 'nav-text'
   },
   {
     title: 'Inactivos',
     path: 'inactive',
-    icon: <RiIcons.RiEyeOffLine />,
+    icon: <FontAwesomeIcon icon={faUsersSlash}/>,
     cName: 'nav-text'
   },
   {
     title: 'Justificantes',
     path: 'justification',
-    icon: <RiIcons.RiFileInfoLine />,
+    icon: <FontAwesomeIcon icon={faFileCircleExclamation}/>,
     cName: 'nav-text'
   },
   {
     title: 'Reportes',
     path: 'reports',
-    icon: <RiIcons.RiFileList3Line/>,
+    icon: <FontAwesomeIcon icon={faFileClipboard}/>,
     cName: 'nav-text'
   }
 ];

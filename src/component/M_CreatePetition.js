@@ -14,7 +14,7 @@ export default function M_CreatePetition() {
             route="/request"
             method="POST"
         >
-            <p className='title'>Pedir paquete</p>
+            <p className='title'>Petición de paquetes</p>
             <div className='formulario'>
                 <p>Comunidad</p>
                 <Select name="idCommunity" route="/communities"/>

@@ -28,11 +28,11 @@ function T_GlobalBeneficiary(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'FechaRegistro', text:'F registro', sort:true, key:3},
-        {dataField:'FechaVencimiento', text:'F vencimiento', sort:true, key:4},
+        {dataField:'FechaRegistro', text:'F. registro', sort:true, key:3},
+        {dataField:'FechaVencimiento', text:'F. vencimiento', sort:true, key:4},
         {dataField:'Beca', text:'Beca', sort:true, key:5},
         {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:6},
-        {dataField:'Dia', text:'Dia', sort:true, key:7},
+        {dataField:'Dia', text:'Día', sort:true, key:7},
         {dataField:'btn2', text:'Modificar', formatter: btnModBeneficiary, key:8}
     ]
 

@@ -9,13 +9,13 @@ export default function M_CreateCommittee() {
     return (
         <ValidationModal
             Button={
-                <button id='btnModalCreateCommittee'><FontAwesomeIcon icon={faAddressBook} size='2x'/> Registrar Comité
+                <button id='btnModalCreateCommittee'><FontAwesomeIcon icon={faAddressBook} size='2x'/> Registrar comité
                 </button>
             }
             route="/committeeMember"
             method="POST"
         >
-            <p className='title'>Crear un Comité</p>
+            <p className='title'>Registrar un comité</p>
             <div className='formulario'>
                 <p>Nombre</p>
                 <input type='text' required name="name" autoFocus={true} placeholder={'Nombre'}/>

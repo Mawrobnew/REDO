@@ -26,10 +26,10 @@ function T_AbsenceHistoric(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Telefono', text:'Telefono', sort:true, key:3},
+        {dataField:'Telefono', text:'Teléfono', sort:true, key:3},
         {dataField:'Fecha', text:'Fecha', sort:true, key:4},
-        {dataField:'CanFaltas', text:'# de falta', sort:true, key:5},
-        {dataField:'Razon', text:'Razon', sort:true, key:6},
+        {dataField:'CanFaltas', text:'Num. de falta', sort:true, key:5},
+        {dataField:'Razon', text:'Razón', sort:true, key:6},
         {text: 'Motivo', formatter: btnAbsenceReason, key: 7}
     ]
 
