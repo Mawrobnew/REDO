@@ -21,8 +21,9 @@ export default function M_ModUserPass({id}) {
             method="PUT"
             initialState={id}
         >
+            <p className='title'>Cambiar contraseña</p>
             <div className='formulario'>
-                <p>Contraseña</p>
+                <p>Contraseña nueva</p>
                 <input type={passwordShown ? "text" : "password"} placeholder={'Entre 8 y 16 caracteres'}
                        name="password" minLength={8} maxLength={16}/>
                 <p>Confirmar contraseña</p>
