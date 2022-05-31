@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import {Request} from "../utils/WebRequestMiddleware";
+import {HOST,FileHost, Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
 import { faFileArchive } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -55,11 +55,11 @@ export default function M_UploadDocuments() {
             <div className='window'>
                 <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
                 <p className='title'>Subir documentos</p>
-                <form onSubmit={handleSubmit} action={'http://localhost:9000/'} target={'_blank'} ref={'form'}>
+                <form  action={FileHost} target={HOST+'/trabajoSocial'} method='POST' enctype='multipart/form-data'>
                     <div className='formulario'>
 
                         <p>Credencial</p>
-                        <input required type="file" id="" name="archivo" accept=".jpg, .jpeg, .png, .pdf"/>
+                        <input required type="file" id="archivo" name="archivo" accept=".jpg, .jpeg, .png, .pdf"/>
 
                         <button className='aceptBtn'>Enviar</button>
                     </div>
