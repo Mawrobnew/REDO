@@ -6,10 +6,9 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
-import M_ChangeStatus from './M_ChangeStatus';
-import M_UploadDocuments from './M_UploadDocuments'
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+import TR_AttendanceHistoric from './TR_AttendanceHistoric';
 
 function T_BeneficiaryDocuments(){
     const [userList, setUserList] = useState([]);
@@ -23,41 +22,41 @@ function T_BeneficiaryDocuments(){
         4: 'Shanna@melissa.tv'
     };
 
-    const btnModUStatus = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <M_ChangeStatus open={isOpen} onClose={setIsOpen}></M_ChangeStatus>
-            </div>
-        );
-    };
-    const btnUploadDoc = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <M_UploadDocuments open={isOpen} onClose={setIsOpen}></M_UploadDocuments>
-            </div>
-        );
-    };
-
-    const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
+    const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
                 <a href={'http://localhost:9000/3'}>Descargar</a>
-                {/*Aqui es donde se pasa el parametro, Id, para recuperar el documento*/}
+                /*Cambiar al endopoint que descarga del reporte*/
+            </div>
+        );
+    };
+    const btnJustification = (cell, row, rowIndex, formatExtraData) => {
+        return (
+            <div>
+                <a href={'http://localhost:9000/3'}>Descargar</a>
+                /*Cambiar al endopoint que descarga del reporte*/
+            </div>
+        );
+    };
+    const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
+        return (
+            <div>
+                <a href={'http://localhost:9000/3'}>Descargar</a>
+                /*Cambiar al endopoint que descarga del reporte*/
             </div>
         );
     };
 
     const columns = [
-        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Status', text:'Estado', sort:true, key:5},
-        {dataField:'btn3', text:'Credencial', formatter: btnUploadDo, key:3},
-        {dataField:'btn', text:'Cambiar estado', formatter: btnModUStatus, key:6},
-        {dataField:'btn2', text:'Documentos', formatter: btnUploadDoc, key:7}
-        /*Falta la columna del id oculto para recibir los documentos*/
-        /*{dataField:'NO SE', text:'Id', hidden:true, key:9}*/
+        {dataField:'', text:'Fecha inicial', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'', text:'Número de asistencias', sort:true, key:2},
+        {dataField:'', text:'Número de justificaciones', sort:true, key:3},
+        {dataField:'', text:'Número de faltas', sort:true, key:4},
+        {dataField:'btn1', text:'Asitencias', formatter: btnAttendanceList(), key:5},
+        {dataField:'btn2', text:'Justificaciones', formatter: btnJustification(), key:6},
+        {dataField:'btn3', text:'Faltas', formatter: btnAbsence(), key:7},
+        /*Falta la columna del id oculto*/
     ]
-
     const customTotal = (from, to, size) => (
         <span className="react-bootstrap-table-pagination-total">
             Registros { from } hasta { to } de { size } totales
@@ -93,10 +92,9 @@ function T_BeneficiaryDocuments(){
 
     const { SearchBar, ClearSearchButton } = Search;
     const { ExportCSVButton } = CSVExport;
-
     return(
         <ToolkitProvider
-            id='T3'
+            id='T11'
             bootstrap4
             keyField='Id'
             columns={columns}
@@ -106,7 +104,7 @@ function T_BeneficiaryDocuments(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Documentos beneficiarios</p>
+                        <p className='title'>Histórico de asistencia</p>
                         <hr></hr>
                         <SearchBar { ...props.searchProps } />
                         <ClearSearchButton { ...props.searchProps }/>

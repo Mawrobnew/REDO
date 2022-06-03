@@ -8,29 +8,37 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import M_BeneficiaryAttendance from "./M_BeneficiaryAttendance";
+import TR_AttendanceHistoric from './TR_AttendanceHistoric';
 
-
-function T_Attendance(){
+function T_BeneficiaryDocuments(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
-    const btnModAttendance = (cell, row, rowIndex, formatExtraData) => {
+
+    const selectOptions = {
+        0: 'gmail',
+        1: 'hotmail',
+        2: 'outlook',
+        4: 'Shanna@melissa.tv'
+    };
+
+    const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_BeneficiaryAttendance open={isOpen} onClose={setIsOpen}></M_BeneficiaryAttendance>
+                <a href={'http://localhost:9000/3'}>Descargar</a>
+                /*Cambiar al endopoint que descarga las listas, solo ocupa el Id como parametro*/
             </div>
         );
     };
 
     const columns = [
-        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:3},
-        {dataField:'Dia', text:'Día', sort:true, key:4},
-        {dataField:'Dia', text:'Asistencia', sort:true, key:5},
-        {dataField:'Dia', text:'Justificación', sort:true, key:6},
-        {dataField:'btn2', text:'Asistencia', formatter: btnModAttendance, key:7}
+        {dataField:'', text:'Fecha inicial', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'', text:'Fecha final', sort:true, key:2},
+        {dataField:'', text:'Comunidad', sort:true, key:3},
+        {dataField:'', text:'Paquetes totales', sort:true, key:4},
+        {dataField:'', text:'Asistencias totales', sort:true, key:5},
+        {dataField:'btn1', text:'Documentos', formatter: btnUploadDo, key:6}
+        /*Falta la columna del id oculto*/
     ]
 
     const customTotal = (from, to, size) => (
@@ -58,13 +66,9 @@ function T_Attendance(){
         paginationTotalRenderer: customTotal
     });
 
-    const modalInfo = {
-        id: 1
-    }
-
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result] = await Request('GET', '/attendanceJustify', modalInfo)
+            const [result, code] = await Request('GET', '/beneficiaries')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()
@@ -75,37 +79,35 @@ function T_Attendance(){
 
     return(
         <ToolkitProvider
-            id='T5'
+            id='T10'
             bootstrap4
             keyField='Id'
             columns={columns}
             data={userList}
             search
-            exportCSV
         >
             {
                 props => (
-                    <div id='container'>
-                        <div id='cont_tabla'>
-                            <p className='title'>Asistencia de beneficiarios</p>
-                            <hr></hr>
-                            <SearchBar { ...props.searchProps } />
-                            <ClearSearchButton { ...props.searchProps }/>
-                            <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
-                            <BootstrapTable
-                                { ...props.baseProps }
-                                pagination ={pagination}
-                                filter={filterFactory()}
-                                striped={true}
-                                bordered={ false }
-                                condensed={true}
-                                hover={true}
-                                headerClasses='TableHead'
-                                bodyClasses='TableBody'
-                                wrapperClasses='pruebaWrapper'
-                            >
-                            </BootstrapTable>
-                        </div>
+                    <div id='cont_tabla'>
+                        <p className='title'>Histórico de asistencia en comunidad</p>
+                        <hr></hr>
+                        <SearchBar { ...props.searchProps } />
+                        <ClearSearchButton { ...props.searchProps }/>
+                        <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                        <BootstrapTable
+                            { ...props.baseProps }
+                            pagination={pagination}
+                            filter={filterFactory()}
+                            striped={true}
+                            bordered={false}
+                            condensed={true}
+                            hover={true}
+                            headerClasses='TableHead'
+                            bodyClasses='TableBody'
+                            wrapperClasses='pruebaWrapper'
+                        >
+                        </BootstrapTable>
+                        <TR_AttendanceHistoric/>
                     </div>
                 )
             }
@@ -114,4 +116,4 @@ function T_Attendance(){
 
 }
 
-export default T_Attendance;
+export default T_BeneficiaryDocuments;

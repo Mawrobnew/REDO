@@ -28,11 +28,16 @@ function T_AbsenceHistoric(){
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
         {dataField:'Telefono', text:'Teléfono', sort:true, key:3},
         {dataField:'Fecha', text:'Fecha', sort:true, key:4},
-        {dataField:'CanFaltas', text:'Num. de falta', sort:true, key:5},
+        {dataField:'CanFaltas', text:'Núm. de falta', sort:true, key:5},
         {dataField:'Razon', text:'Razón', sort:true, key:6},
         {text: 'Motivo', formatter: btnAbsenceReason, key: 7}
     ]
 
+    const customTotal = (from, to, size) => (
+        <span className="react-bootstrap-table-pagination-total">
+            Registros { from } hasta { to } de { size } totales
+        </span>
+    );
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 10,
@@ -49,7 +54,8 @@ function T_AbsenceHistoric(){
         onSizePerPageChange: function(page, sizePerPage){
             console.log('page', page);
             console.log('sizePerPage', sizePerPage)
-        }
+        },
+        paginationTotalRenderer: customTotal
     });
 
     useEffect(() => {

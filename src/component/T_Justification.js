@@ -22,6 +22,11 @@ function T_Justification(){
         {dataField:'Dia', text:'Razon', sort:true, key:6}
     ]
 
+    const customTotal = (from, to, size) => (
+        <span className="react-bootstrap-table-pagination-total">
+            Registros { from } hasta { to } de { size } totales
+        </span>
+    );
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 10,
@@ -38,7 +43,8 @@ function T_Justification(){
         onSizePerPageChange: function(page, sizePerPage){
             console.log('page', page);
             console.log('sizePerPage', sizePerPage)
-        }
+        },
+        paginationTotalRenderer: customTotal
     });
 
     const modalInfo = {

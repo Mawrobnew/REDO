@@ -14,6 +14,7 @@ import { Layout_TS } from './views/Layout_TS';
 import { Layout_SU } from './views/Layout_SU';
 import SearchBar from "./component/SearchBar";
 import Data from "../src/component/SearchbarData.json";
+import TR_CommunityPackageHistoric from "./component/TR_CommunityPackageHistoric";
 
 
 let TrabajoSocial = () => {
@@ -115,7 +116,7 @@ function App() {
                     <Route path="absene" element={<T_Absence/>}/>
                     <Route path="justification" element={<T_Justification/>}/>
                     <Route path="inactive" element={<T_Inactive/>}/>
-                    <Route path="reports" element={<Reports/>}/>
+                    <Route path="reports" element={<TR_CommunityPackageHistoric/>}/>
                 </Route>
                 <Route exact path="*" element={<Navigate to="/login"/>}/>
             </Routes>
