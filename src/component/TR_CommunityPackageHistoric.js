@@ -8,9 +8,9 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import TR_AttendanceHistoric from './TR_AttendanceHistoric';
+import TR_AttendanceHistoric from '../component/TR_AttendanceHistoric';
 
-function T_BeneficiaryDocuments(){
+function TR_CommunityPackageHistoric(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
@@ -91,8 +91,8 @@ function T_BeneficiaryDocuments(){
                     <div id='cont_tabla'>
                         <p className='title'>Histórico de asistencia en comunidad</p>
                         <hr></hr>
-                        <SearchBar { ...props.searchProps } />
-                        <ClearSearchButton { ...props.searchProps }/>
+                        <SearchBar { ...props.searchProps } placeholder="Buscar"/>
+                        <ClearSearchButton { ...props.searchProps }></ClearSearchButton>
                         <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
                         <BootstrapTable
                             { ...props.baseProps }
@@ -116,4 +116,4 @@ function T_BeneficiaryDocuments(){
 
 }
 
-export default T_BeneficiaryDocuments;
+export default TR_CommunityPackageHistoric;

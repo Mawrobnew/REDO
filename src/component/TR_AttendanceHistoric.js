@@ -8,9 +8,8 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import TR_AttendanceHistoric from './TR_AttendanceHistoric';
 
-function T_BeneficiaryDocuments(){
+function TR_AttendanceHistoric(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
@@ -130,4 +129,4 @@ function T_BeneficiaryDocuments(){
 
 }
 
-export default T_BeneficiaryDocuments;
+export default TR_AttendanceHistoric;
