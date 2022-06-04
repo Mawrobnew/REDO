@@ -55,8 +55,13 @@ export default function M_UploadDocsCommunityAttendance() {
                 <p className='title'>Subir documentos</p>
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
+
                         <p>Lista de asistencia</p>
                         <input required type="file" id="" name="" accept=".pdf"/>
+                        /*Este es un campo nuevo, pero el endpoint lo recibe, solo que se me olvidó agregarlo*/
+                        <p>Asistencias</p>
+                        <input required type='number' min='1'/>
+
                         <button className='aceptBtn'>Enviar</button>
                     </div>
                 </form>

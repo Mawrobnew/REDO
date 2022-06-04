@@ -17,13 +17,21 @@
     height: auto;
     max-width: 1200px;
     top: 50%;
-    left: 47%;
+    left: 48%;
     transform: translate(-40%, -50%);
     border-radius: 10px;
     padding: 40px 32px;
     background: var(--blanco);
     box-shadow: 5px 5px 10px 3px rgb(0,0,0,0.2);
 }
+.logoLogin{
+    position: fixed;
+    top: 20px;
+    left: 60px;
+    height: 220px;
+    width: 340px;
+}
+
 .titleL{
     width: 100%;
     text-align: center;
@@ -43,7 +51,7 @@
     z-index: 1;
 }
 
-/*Estilos del formulario, inputs y botones dentro de el*/
+/*Estilos del formulario, inputs y botones dentro de el formulario*/
 .formularioL{
 }
 .formularioL p{
@@ -72,11 +80,4 @@
     color: #ffffff;
     width: 100%;
     box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.2);
-}
-.logoLogin{
-    position: fixed;
-    top: 25px;
-    left: 60px;
-    height: 200px;
-    width: 350px;
 }

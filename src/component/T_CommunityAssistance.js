@@ -28,14 +28,19 @@ function T_CommunityAssistance(){
     };
 
     const columns = [
-        {dataField: 'FechaInicio', text: 'Fecha Inicial', sort: true, filterFactory: textFilter(), key: 1},
-        {dataField: 'FechaFinal', text: 'Fecha Final', sort: true, key: 2},
+        {dataField: 'FechaInicio', text: 'Fecha inicial', sort: true, filterFactory: textFilter(), key: 1},
+        {dataField: 'FechaFinal', text: 'Fecha final', sort: true, key: 2},
         {dataField: 'Comunidad', text: 'Comunidad', sort: true, key: 6},
-        {dataField: 'PaquetesTotales', text: 'Paquetes Totales', sort: true, key: 7},
-        {dataField: 'AsistenciasTotales', text: 'Asistencias Totales', sort: true, key: 8},
+        {dataField: 'PaquetesTotales', text: 'Paquetes totales', sort: true, key: 7},
+        {dataField: 'AsistenciasTotales', text: 'Asistencias totales', sort: true, key: 8},
         {text: 'Listas de asistencia', formatter: btnDocsAttendance, key: 9}
     ]
 
+    const customTotal = (from, to, size) => (
+        <span className="react-bootstrap-table-pagination-total">
+            Registros { from } hasta { to } de { size } totales
+        </span>
+    );
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 10,
@@ -52,7 +57,8 @@ function T_CommunityAssistance(){
         onSizePerPageChange: function(page, sizePerPage){
             console.log('page', page);
             console.log('sizePerPage', sizePerPage)
-        }
+        },
+        paginationTotalRenderer: customTotal
     });
 
     useEffect(() => {

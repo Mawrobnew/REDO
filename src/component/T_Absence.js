@@ -30,6 +30,11 @@ function T_Absence(){
         {dataField:'CantFaltas', text:'Cant. Faltas', sort:true, key:4}
     ]
 
+    const customTotal = (from, to, size) => (
+        <span className="react-bootstrap-table-pagination-total">
+            Registros { from } hasta { to } de { size } totales
+        </span>
+    );
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 10,
@@ -46,7 +51,8 @@ function T_Absence(){
         onSizePerPageChange: function(page, sizePerPage){
             console.log('page', page);
             console.log('sizePerPage', sizePerPage)
-        }
+        },
+        paginationTotalRenderer: customTotal
     });
 
     useEffect(() => {
