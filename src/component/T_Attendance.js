@@ -24,13 +24,13 @@ function T_Attendance(){
     };
 
     const columns = [
-        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:3},
-        {dataField:'Dia', text:'Día', sort:true, key:4},
-        {dataField:'Dia', text:'Asistencia', sort:true, key:5},
-        {dataField:'Dia', text:'Justificación', sort:true, key:6},
-        {dataField:'btn2', text:'Asistencia', formatter: btnModAttendance, key:7}
+        {dataField: 'Folio', text: 'Folio', sort: true, filterFactory: textFilter(), key: 1},
+        {dataField: 'Nombre', text: 'Nombre', sort: true, key: 2},
+        {dataField: 'Frecuencia', text: 'Frecuencia', sort: true, key: 3},
+        {dataField: 'Dia', text: 'Día', sort: true, key: 4},
+        {dataField: 'Asistencia', text: 'Asistencia', sort: true, key: 5},
+        {dataField: 'Justificacion', text: 'Justificación', sort: true, key: 6},
+        {dataField: 'btn2', text: 'Asistencia', formatter: btnModAttendance, key: 7}
     ]
 
     const customTotal = (from, to, size) => (
