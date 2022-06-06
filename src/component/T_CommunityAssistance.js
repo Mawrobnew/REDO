@@ -105,12 +105,10 @@ function T_CommunityAssistance(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
-                            <div>
-                                <M_CreateCommunity/>
-                            </div>
 
+                            <M_CreateCommunity/>
                             <M_CreateCommittee/>
-                            {/*<M_CreatePetition/>*/}
+                            <M_CreatePetition/>
 
                         </div>
                         <T_CommunityHistoric/>
