@@ -51,7 +51,7 @@ function TR_AttendanceHistoric(){
         {dataField:'', text:'Número de asistencias', sort:true, key:2},
         {dataField:'', text:'Número de justificaciones', sort:true, key:3},
         {dataField:'', text:'Número de faltas', sort:true, key:4},
-        {dataField:'btn1', text:'Asitencias', formatter: btnAttendanceList(), key:5},
+        {dataField:'btn1', text:'Asistencias', formatter: btnAttendanceList(), key:5},
         {dataField:'btn2', text:'Justificaciones', formatter: btnJustification(), key:6},
         {dataField:'btn3', text:'Faltas', formatter: btnAbsence(), key:7},
         /*Falta la columna del id oculto*/

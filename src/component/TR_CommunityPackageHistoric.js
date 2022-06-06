@@ -26,17 +26,17 @@ function TR_CommunityPackageHistoric(){
         return (
             <div>
                 <a href={'http://localhost:9000/3'}>Descargar</a>
-                /*Cambiar al endopoint que descarga las listas, solo ocupa el Id como parametro*/
+                {/*Cambiar al endopoint que descarga las listas, solo ocupa el Id como parametro*/}
             </div>
         );
     };
 
     const columns = [
-        {dataField:'', text:'Fecha inicial', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'', text:'Fecha final', sort:true, key:2},
-        {dataField:'', text:'Comunidad', sort:true, key:3},
-        {dataField:'', text:'Paquetes totales', sort:true, key:4},
-        {dataField:'', text:'Asistencias totales', sort:true, key:5},
+        {dataField:'FechaInicio', text:'Fecha inicial', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'FechaFinal', text:'Fecha final', sort:true, key:2},
+        {dataField:'Comunidad', text:'Comunidad', sort:true, key:3},
+        {dataField:'PaquetesTotales', text:'Paquetes totales', sort:true, key:4},
+        {dataField:'AsistenciasTotales', text:'Asistencias totales', sort:true, key:5},
         {dataField:'btn1', text:'Documentos', formatter: btnUploadDo, key:6}
         /*Falta la columna del id oculto*/
     ]
@@ -68,7 +68,7 @@ function TR_CommunityPackageHistoric(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result, code] = await Request('GET', '/beneficiaries')
+            const [result, code] = await Request('GET', '/inCommunityAttendance')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()
