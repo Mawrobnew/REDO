@@ -86,7 +86,7 @@ function T_CommunityHistoric(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Historico de peticiones</p>
+                        <p className='title'>Histórico de peticiones</p>
                         <hr></hr>
                         <SearchBar { ...props.searchProps } />
                         <ClearSearchButton { ...props.searchProps }/>
