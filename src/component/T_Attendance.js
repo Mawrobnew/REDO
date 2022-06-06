@@ -87,11 +87,10 @@ function T_Attendance(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Asistencia de beneficiarios</p>
+                            <p className='titleT'>Asistencia de beneficiarios</p>
                             <hr></hr>
-                            <SearchBar { ...props.searchProps } />
-                            <ClearSearchButton { ...props.searchProps }/>
-                            <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                            <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
+
                             <BootstrapTable
                                 { ...props.baseProps }
                                 pagination ={pagination}
@@ -105,6 +104,7 @@ function T_Attendance(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
+                            <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                         </div>
                     </div>
                 )

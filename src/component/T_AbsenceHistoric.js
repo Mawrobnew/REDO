@@ -81,11 +81,9 @@ function T_AbsenceHistoric(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Historico de faltas</p>
+                        <p className='titleT'>Historico de faltas</p>
                         <hr></hr>
-                        <SearchBar { ...props.searchProps } />
-                        <ClearSearchButton { ...props.searchProps }/>
-                        <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                        <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
                         <BootstrapTable
                             { ...props.baseProps }
                             pagination={pagination}
@@ -99,6 +97,7 @@ function T_AbsenceHistoric(){
                             wrapperClasses='pruebaWrapper'
                         >
                         </BootstrapTable>
+                        <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                     </div>
                 )
             }

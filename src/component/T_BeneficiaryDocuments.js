@@ -106,11 +106,10 @@ function T_BeneficiaryDocuments(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Documentos beneficiarios</p>
+                        <p className='titleT'>Documentos beneficiarios</p>
                         <hr></hr>
-                        <SearchBar { ...props.searchProps } />
-                        <ClearSearchButton { ...props.searchProps }/>
-                        <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                        <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
+
                         <BootstrapTable
                             { ...props.baseProps }
                             pagination={pagination}
@@ -124,6 +123,7 @@ function T_BeneficiaryDocuments(){
                             wrapperClasses='pruebaWrapper'
                         >
                         </BootstrapTable>
+                        <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                     </div>
                 )
             }

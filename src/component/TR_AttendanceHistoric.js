@@ -103,11 +103,10 @@ function TR_AttendanceHistoric(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Histórico de asistencia</p>
+                        <p className='titleT'>Histórico de asistencia</p>
                         <hr></hr>
-                        <SearchBar { ...props.searchProps } />
-                        <ClearSearchButton { ...props.searchProps }/>
-                        <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                        <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
+
                         <BootstrapTable
                             { ...props.baseProps }
                             pagination={pagination}
@@ -121,6 +120,7 @@ function TR_AttendanceHistoric(){
                             wrapperClasses='pruebaWrapper'
                         >
                         </BootstrapTable>
+                        <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                     </div>
                 )
             }

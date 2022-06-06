@@ -112,12 +112,9 @@ function T_User(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <M_InsertUser/>
-                            <p className='title'>Usuarios</p>
+                            <p className='titleT'>Usuarios</p>
                             <hr></hr>
-                            <SearchBar { ...props.searchProps } />
-                            <ClearSearchButton { ...props.searchProps } Classname='btnLimpiar'></ClearSearchButton>
-                            <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                            <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
                             <BootstrapTable
                                 { ...props.baseProps }
                                 pagination ={pagination}
@@ -131,7 +128,9 @@ function T_User(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
+                            <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                         </div>
+                        <M_InsertUser/>
                     </div>
                 )
             }

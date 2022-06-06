@@ -97,6 +97,7 @@ function App() {
                 >
                     <Route index element={<T_User/>}/>
                     <Route exact path="users" element={<T_User/>}/>
+                    <Route path="reports" element={<TR_CommunityPackageHistoric/>}/>
                 </Route>
                 <Route
                     path="/cajero"

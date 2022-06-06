@@ -89,11 +89,10 @@ function T_GlobalBeneficiary(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Beneficiarios</p>
+                            <p className='titleT'>Beneficiarios</p>
                             <hr></hr>
-                            <SearchBar { ...props.searchProps } />
-                            <ClearSearchButton { ...props.searchProps }/>
-                            <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                            <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
+
                             <BootstrapTable
                                 { ...props.baseProps }
                                 pagination ={pagination}
@@ -107,6 +106,7 @@ function T_GlobalBeneficiary(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
+                            <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                             <M_UpdateBeneficiary/>
                         </div>
                         <T_BeneficiaryDocuments/>

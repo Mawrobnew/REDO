@@ -8,6 +8,12 @@ export const SidebarData = [
     icon: <FontAwesomeIcon icon={faGlobe}/> ,
     cName: 'nav-text'
   },
+  {
+    title: 'Reportes',
+    path: 'reports',
+    icon: <FontAwesomeIcon icon={faGlobe}/> ,
+    cName: 'nav-text'
+  }
   
 
 ];

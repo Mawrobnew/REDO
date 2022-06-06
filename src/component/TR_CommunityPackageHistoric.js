@@ -89,11 +89,9 @@ function TR_CommunityPackageHistoric(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Histórico de asistencia en comunidad</p>
+                        <p className='titleT'>Histórico de asistencia en comunidad</p>
                         <hr></hr>
-                        <SearchBar { ...props.searchProps } placeholder="Buscar"/>
-                        <ClearSearchButton { ...props.searchProps }></ClearSearchButton>
-                        <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                        <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
                         <BootstrapTable
                             { ...props.baseProps }
                             pagination={pagination}
@@ -107,6 +105,7 @@ function TR_CommunityPackageHistoric(){
                             wrapperClasses='pruebaWrapper'
                         >
                         </BootstrapTable>
+                        <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                         <TR_AttendanceHistoric/>
                     </div>
                 )

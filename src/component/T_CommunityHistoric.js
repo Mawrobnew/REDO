@@ -86,11 +86,10 @@ function T_CommunityHistoric(){
             {
                 props => (
                     <div id='cont_tabla'>
-                        <p className='title'>Histórico de peticiones</p>
+                        <p className='titleT'>Histórico de peticiones</p>
                         <hr></hr>
-                        <SearchBar { ...props.searchProps } />
-                        <ClearSearchButton { ...props.searchProps }/>
-                        <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                        <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
+
                         <BootstrapTable
                             { ...props.baseProps }
                             pagination={pagination}
@@ -104,6 +103,7 @@ function T_CommunityHistoric(){
                             wrapperClasses='pruebaWrapper'
                         >
                         </BootstrapTable>
+                        <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                     </div>
                 )
             }

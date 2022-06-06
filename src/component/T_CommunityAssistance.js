@@ -87,11 +87,10 @@ function T_CommunityAssistance(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Asistencia de comunidades</p>
+                            <p className='titleT'>Asistencia de comunidades</p>
                             <hr></hr>
-                            <SearchBar { ...props.searchProps } />
-                            <ClearSearchButton { ...props.searchProps }/>
-                            <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                            <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
+
                             <BootstrapTable
                                 { ...props.baseProps }
                                 pagination ={pagination}
@@ -105,6 +104,7 @@ function T_CommunityAssistance(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
+                            <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
 
                             <M_CreateCommunity/>
                             <M_CreateCommittee/>

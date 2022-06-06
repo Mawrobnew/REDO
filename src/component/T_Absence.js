@@ -81,11 +81,9 @@ function T_Absence(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='title'>Faltas</p>
+                            <p className='titleT'>Faltas</p>
                             <hr></hr>
-                            <SearchBar { ...props.searchProps } />
-                            <ClearSearchButton { ...props.searchProps }/>
-                            <ExportCSVButton { ...props.csvProps }>Descargar</ExportCSVButton>
+                            <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
                             <BootstrapTable
                                 { ...props.baseProps }
                                 pagination ={pagination}
@@ -99,6 +97,7 @@ function T_Absence(){
                                 wrapperClasses='pruebaWrapper'
                             >
                             </BootstrapTable>
+                            <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
                         </div>
                         <T_AbsenceHistoric/>
                     </div>
