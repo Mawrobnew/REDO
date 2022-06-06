@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react'
-import {HOST, FileHost, Request} from "../utils/WebRequestMiddleware";
+import {useState} from 'react'
+import {FormDataRequest} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
 import {faFileArchive} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -15,22 +15,13 @@ export default function M_UploadDocuments() {
     })
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
         const formData = new FormData();
         const inputFile = document.getElementById("archivo");
         for (const file of inputFile.files) {
-            console.log(file)
-            formData.append("archivo", file);
+            formData.append("file", file);
         }
-        const response = await fetch("http://localhost:9000/", {
-            method: "POST",
-            body: formData,
-            mode: 'cors'
-        })
-        const json = await response.json()
-        console.log(response.status)
-        if (response.status !== 200) {
-            console.log("Errorrrr")
+        const [, code] = await FormDataRequest('POST', '/beneficiaryDoc', formData)
+        if (code !== 200) {
             setPetitionState({
                 ...petitionState,
                 failed: true
@@ -60,14 +51,11 @@ export default function M_UploadDocuments() {
                 }}>X
                 </button>
                 <p className='title'>Subir documentos</p>
-                <form onSubmit={handleSubmit} action={FileHost} target={HOST + '/trabajoSocial'} method='POST'
-                      enctype='multipart/form-data'>
                     <div className='formulario'>
                         <p>Credencial</p>
                         <input type="file" required id="archivo" name="archivo" accept=".jpg, .jpeg, .png, .pdf"/>
-                        <button className='aceptBtn'>Enviar</button>
+                        <button className='aceptBtn' onClick={handleSubmit}>Enviar</button>
                     </div>
-                </form>
             </div>
             <M_Fail open={petitionState.failed} onClose={() => setPetitionState({...petitionState, failed: false})}/>
         </div>)
