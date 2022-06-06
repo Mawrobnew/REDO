@@ -18,9 +18,9 @@ export default function M_UpdateBeneficiary() {
         const formData = new FormData();
         const inputFile = document.getElementById("archivo");
         for (const file of inputFile.files) {
-            formData.append("BeneficiariesData", file);
+            formData.append("file", file);
         }
-        const [, code] = await FormDataRequest('POST', '/beneficiaryDoc', formData)
+        const [, code] = await FormDataRequest('POST', '/beneficiaryDocs', formData)
         if (code !== 200) {
             setPetitionState({
                 ...petitionState,
