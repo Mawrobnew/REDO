@@ -24,9 +24,10 @@ function T_BeneficiaryDocuments(){
     };
 
     const btnModUStatus = (cell, row, rowIndex, formatExtraData) => {
+        const data = {name: row.Nombre, id: row.Id, status: 0}
         return (
             <div>
-                <M_ChangeStatus open={isOpen} onClose={setIsOpen}></M_ChangeStatus>
+                <M_ChangeStatus beneficiaryInfo={data}/>
             </div>
         );
     };

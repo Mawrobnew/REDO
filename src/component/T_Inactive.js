@@ -15,9 +15,12 @@ function T_Inactive(){
     const [isOpen, setIsOpen] = useState(false)
 
     const btnModBeneficiary = (cell, row, rowIndex, formatExtraData) => {
+        console.log(row)
+        const {Nombre, Id} = row
+        const data = {name: Nombre, id: Id, status: 1}
         return (
             <div>
-                <M_ChangeStatusInactive open={isOpen} onClose={setIsOpen}></M_ChangeStatusInactive>
+                <M_ChangeStatusInactive beneficiaryInfo={data}/>
             </div>
         );
     };
