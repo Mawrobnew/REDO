@@ -86,7 +86,7 @@ function T_BeneficiaryDocuments(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result, code] = await Request('GET', '/beneficiaries')
+            const [result, code] = await Request('GET', '/actBeneficiaries')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()

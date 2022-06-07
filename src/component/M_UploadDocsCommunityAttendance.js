@@ -58,7 +58,7 @@ export default function M_UploadDocsCommunityAttendance() {
 
                         <p>Lista de asistencia</p>
                         <input required type="file" id="" name="" accept=".pdf"/>
-                        /*Este es un campo nuevo, pero el endpoint lo recibe, solo que se me olvidó agregarlo*/
+                        {/*Este es un campo nuevo, pero el endpoint lo recibe, solo que se me olvidó agregarlo*/}
                         <p>Asistencias</p>
                         <input required type='number' min='1'/>
 
