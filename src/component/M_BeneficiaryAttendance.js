@@ -1,66 +1,64 @@
 import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
-import { faUserCheck } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faUserCheck} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import '../css/modal.css';
+import M_Success from "./M_Success";
+import M_Fail from "./M_Fail";
 
 
-export default function M_BeneficiaryAttendance() {
-    const [modalInfo, setModalInfo] = useState({
-        name: '',
-        mail: '',
-        password: '',
-        phone: '',
-        rol: '',
-        branch: '',
-    })
+export default function M_BeneficiaryAttendance({BeneficiaryInfo}) {
+    const {Nombre, Asistencia, Folio} = BeneficiaryInfo
+    const [modalInfo, setModalInfo] = useState(BeneficiaryInfo)
     const [isOpen, setIsOpen] = useState(false)
-    //TODO: FETCH THIS VALUES FROM THE API LATER
-    const rolInventory = [
-        {id:1, label: "Super Usuario"},
-        {id:2, label: "Trabajo Social"},
-        {id:3, label: "Cajero"},
-    ]
-    const branchInventory = [
-        {id:1, label: "Cuernavaca"},
-        {id:2, label: "Jiutepec"},
-        {id:3, label: "Temixco"},
-    ]
-
-    // updates the state on every change of the inputs or the selects
-    const handleInputChange = (event) =>{
-        const {name,value} = event.target
-        setModalInfo({
-            ...modalInfo,
-            [name]:value
-        })
-    }
-
-    //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
-    const handleSubmit = async (event) => {
-        const result = await Request('POST', '/user', modalInfo)
-        const {done} = result
-        if (done) setIsOpen(!isOpen)
-        event.preventDefault()
-    }
-    //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
+    const [petitionState, setPetitionState] = useState({
+        successful: false,
+        failed: false
+    })
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalAttendance'><FontAwesomeIcon icon={faUserCheck} size='1x'/></button>
+        <div>
+            <button onClick={() => setIsOpen(true)} id='btnModalAttendance'><FontAwesomeIcon icon={faUserCheck}
+                                                                                             size='1x'/></button>
+            <M_Success open={petitionState.successful}
+                       onClose={() => setPetitionState({...petitionState, successful: false})}/>
+        </div>
     )
+    const toggleAttendance = () => {
+        // 1 Create attendance 0 Remove attendance
+        return (Asistencia === 'Si') ? 0 : 1; //If there is attendance remove
+    }
+    const handleSubmit = async () => {
+        const requestData = {folio: Folio, attendance: toggleAttendance()}
+        const [, code] = await Request('POST', '/attendance', requestData)
+        if (code === 200) {
+            setIsOpen(false)
+            setPetitionState({
+                ...petitionState,
+                successful: true
+            })
+            window.location.reload();
+            return;
+        }
+        setPetitionState({
+            ...petitionState,
+            failed: true
+        });
+    }
     return (
         <div>
-            <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
+            <div className='wrapper' onClick={() => {
+                setIsOpen(false)
+            }}/>
             <div className='window'>
                 <p className='title'>Asistencia</p>
-                <form onSubmit={handleSubmit}>
-                    <div className='formulario'>
-                        <p>Nombre</p>
-                        <input type='text' onChange={handleInputChange} name="name" autoFocus={true} placeholder={'Nombre'} readOnly/>
-                        <p>Asistencia</p>
-                        <input type='text' onChange={handleInputChange} name="name" placeholder={'Nombre'} readOnly/>
-                        <button className='yesBtn'>Cambiar</button>
-                    </div>
-                </form>
+                <div className='formulario'>
+                    <p>Nombre</p>
+                    <p>{Nombre}</p>
+                    <p>Asistencia</p>
+                    <p>{Asistencia}</p>
+                    <button className='yesBtn' onClick={handleSubmit}>Cambiar</button>
+                </div>
             </div>
+            <M_Fail open={petitionState.failed} onClose={() => setPetitionState({...petitionState, failed: false})}/>
         </div>)
 }

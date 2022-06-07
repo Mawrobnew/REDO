@@ -16,9 +16,11 @@ function T_Attendance(){
     const [isOpen, setIsOpen] = useState(false)
 
     const btnModAttendance = (cell, row, rowIndex, formatExtraData) => {
+        const {Nombre, Folio, Asistencia} = row
+        const bData = {Nombre, Folio, Asistencia}
         return (
             <div>
-                <M_BeneficiaryAttendance open={isOpen} onClose={setIsOpen}></M_BeneficiaryAttendance>
+                <M_BeneficiaryAttendance BeneficiaryInfo={bData}/>
             </div>
         );
     };
