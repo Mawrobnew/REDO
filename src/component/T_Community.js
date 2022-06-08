@@ -8,32 +8,19 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import T_CommunityHistoric from "./T_CommunityHistoric";
+import T_Comitee from './T_Comittee';
 import M_CreateCommunity from "./M_CreateCommunity";
 import M_CreateCommittee from "./M_CreateCommittee";
-import M_UploadDocsCommunityAttendance from "./M_UploadDocsCommunityAttendance";
-import M_CreatePetition from "./M_CreatePetition";
 
+function T_BeneficiaryDocuments(){
+    const [userList, setUserList] = useState([]);
 
-function T_CommunityAssistance(){
-    const [communityAssistanceList, setCommunityAssitanceList] = useState([]);
-    const [isOpen, setIsOpen] = useState(false)
-
-    const btnDocsAttendance = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <M_UploadDocsCommunityAttendance open={isOpen} onClose={setIsOpen}></M_UploadDocsCommunityAttendance>
-            </div>
-        );
-    };
 
     const columns = [
-        {dataField: 'FechaInicio', text: 'Fecha inicial', sort: true, filterFactory: textFilter(), key: 1},
-        {dataField: 'FechaFinal', text: 'Fecha final', sort: true, key: 2},
-        {dataField: 'Comunidad', text: 'Comunidad', sort: true, key: 6},
-        {dataField: 'PaquetesTotales', text: 'Paquetes totales', sort: true, key: 7},
-        {dataField: 'AsistenciasTotales', text: 'Asistencias totales', sort: true, key: 8},
-        {text: 'Listas de asistencia', formatter: btnDocsAttendance, key: 9}
+        {dataField:'Folio', text:'Nombre', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'Nombre', text:'Frecuencia', sort:true, key:2},
+        {dataField:'Status', text:'Municipio', sort:true, key:3},
+        {dataField:'Status', text:'Estado', sort:true, key:4}
     ]
 
     const customTotal = (from, to, size) => (
@@ -63,9 +50,8 @@ function T_CommunityAssistance(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result, code] = await Request('GET', '/actCommunityAttendance')
-            console.log(result, code)
-            if (result.length > 0) setCommunityAssitanceList(result)
+            const [result, code] = await Request('GET', '/actBeneficiaries')
+            if (result.length>0) setUserList(result)
         }
         asyncFetch()
     }, [])
@@ -75,28 +61,27 @@ function T_CommunityAssistance(){
 
     return(
         <ToolkitProvider
-            id='T6'
+            id='T3'
             bootstrap4
             keyField='Id'
             columns={columns}
-            data={communityAssistanceList}
+            data={userList}
             search
-            exportCSV
         >
             {
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='titleT'>Asistencia de comunidades</p>
+                            <p className='titleT'>Comunidades</p>
                             <hr></hr>
                             <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
 
                             <BootstrapTable
                                 { ...props.baseProps }
-                                pagination ={pagination}
+                                pagination={pagination}
                                 filter={filterFactory()}
                                 striped={true}
-                                bordered={ false }
+                                bordered={false}
                                 condensed={true}
                                 hover={true}
                                 headerClasses='TableHead'
@@ -105,16 +90,16 @@ function T_CommunityAssistance(){
                             >
                             </BootstrapTable>
                             <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
-
-                            <M_CreatePetition/>
-
+                            <M_CreateCommunity/>
+                            <M_CreateCommittee/>
                         </div>
-                        <T_CommunityHistoric/>
+                        <T_Comitee/>
                     </div>
                 )
             }
         </ToolkitProvider>
     )
+
 }
 
-export default T_CommunityAssistance;
+export default T_BeneficiaryDocuments;
