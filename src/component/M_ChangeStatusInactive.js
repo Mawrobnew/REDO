@@ -49,9 +49,7 @@ export default function M_ChangeStatus({beneficiaryInfo}) {
                 <p className='title'>Activar beneficiario</p>
                 <div className='formulario'>
                     <p>Nombre</p>
-                    <p>
-                        {name}
-                    </p>
+                    <p>{name}</p>
                     <button className='yesBtn' onClick={handleSubmit}>Si</button>
                     <button className='noBtn' onClick={() => {
                         setIsOpen(false)

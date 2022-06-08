@@ -15,7 +15,7 @@ import { Layout_SU } from './views/Layout_SU';
 import SearchBar from "./component/SearchBar";
 import Data from "../src/component/SearchbarData.json";
 import TR_CommunityPackageHistoric from "./component/TR_CommunityPackageHistoric";
-
+import T_Community from "./component/T_Community";
 
 let TrabajoSocial = () => {
     return <div>
@@ -102,7 +102,6 @@ function App() {
                 <Route
                     path="/cajero"
                     element={<PrivateRoute roles={[CAJERO]} component={Cajero} />}
-
                 >
                     
                 </Route>
@@ -114,6 +113,7 @@ function App() {
                     <Route exact path="globalbeneficiary" element={<T_GlobalBeneficiary/>}/>
                     <Route path="attendance" element={<T_Attendance/>}/>
                     <Route path="communityAssistance" element={<T_CommunityAssistance/>}/>
+                    <Route path="community" element={<T_Community/>}/>
                     <Route path="absene" element={<T_Absence/>}/>
                     <Route path="justification" element={<T_Justification/>}/>
                     <Route path="inactive" element={<T_Inactive/>}/>

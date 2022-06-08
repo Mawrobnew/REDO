@@ -1,5 +1,5 @@
 import React from 'react';
-import { faGlobe} from '@fortawesome/free-solid-svg-icons'
+import {faFileClipboard, faGlobe} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const SidebarData = [
   {
@@ -11,7 +11,7 @@ export const SidebarData = [
   {
     title: 'Reportes',
     path: 'reports',
-    icon: <FontAwesomeIcon icon={faGlobe}/> ,
+    icon: <FontAwesomeIcon icon={faFileClipboard}/>,
     cName: 'nav-text'
   }
   

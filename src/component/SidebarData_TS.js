@@ -4,6 +4,7 @@ import {
   faGlobe,
   faStore,
   faTruckMoving,
+    faHouseUser,
   faPersonCircleExclamation,
   faUsersSlash,
   faFileCircleExclamation,
@@ -28,6 +29,12 @@ export const SidebarData = [
     title: 'Asistencia en comunidad',
     path: 'communityAssistance',
     icon: <FontAwesomeIcon icon={faTruckMoving}/>,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Comunidades y comités',
+    path: 'community',
+    icon: <FontAwesomeIcon icon={faHouseUser}/>,
     cName: 'nav-text'
   },
   {

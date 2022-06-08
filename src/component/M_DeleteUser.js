@@ -27,7 +27,7 @@ export default function M_DeleteUser({userInfo, deleteAction}) {
                 <p className='title'>Eliminar usuario</p>
                     <div className='formulario'>
                         <p>Nombre</p>
-                        <div>{name}</div>
+                        <p>{name}</p>
                         <button className='yesBtn' onClick={handleSubmit}>Si</button>
                         <button className='noBtn' onClick={()=>{setIsOpen(false)}}>No</button>
                     </div>

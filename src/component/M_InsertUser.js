@@ -21,7 +21,7 @@ export default function M_InsertUser() {
             <p className='title'>Agregar un usuario</p>
             <div className='formulario'>
                 <p>Nombre</p>
-                <input required type='text' name="name" autoFocus={true} placeholder={'Nombre y apellidos'}/>
+                <input required type='text' name="name" autoFocus={true} placeholder={'Nombre y apellidos sin acentos'}/>
                 <p>Teléfono</p>
                 <input required type='number' name="phone" placeholder={'Máx. 10 digitos'} maxLength={10} />
                 <p>Correo</p>
