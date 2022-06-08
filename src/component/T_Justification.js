@@ -14,12 +14,12 @@ function T_Justification(){
     const [userList, setUserList] = useState([]);
 
     const columns = [
-        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Telefono', text:'Teléfono', sort:true, key:3},
-        {dataField:'', text:'Fecha', sort:true, key:4},
-        {dataField:'Status', text:'Num. de justificación', sort:true, key:5},
-        {dataField:'Dia', text:'Razon', sort:true, key:6}
+        {dataField: 'Folio', text: 'Folio', sort: true, filterFactory: textFilter(), key: 1},
+        {dataField: 'Nombre', text: 'Nombre', sort: true, key: 2},
+        {dataField: 'Telefono', text: 'Teléfono', sort: true, key: 3},
+        {dataField: 'Fecha', text: 'Fecha', sort: true, key: 4},
+        {dataField: 'CanJustif', text: 'Num. de justificación', sort: true, key: 5},
+        {dataField: 'Razon', text: 'Razon', sort: true, key: 6}
     ]
 
     const customTotal = (from, to, size) => (
@@ -47,13 +47,10 @@ function T_Justification(){
         paginationTotalRenderer: customTotal
     });
 
-    const modalInfo = {
-        id: 1
-    }
     useEffect(() => {
         const asyncFetch = async () => {
-            const result = await Request('POST', '/beneficiaries', modalInfo)
-            if (result.length>0) setUserList(result)
+            const [json, code] = await Request('GET', '/justifications')
+            if (json.length > 0) setUserList(json)
         }
         asyncFetch()
     }, [])
