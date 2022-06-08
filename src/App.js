@@ -16,7 +16,6 @@ import SearchBar from "./component/SearchBar";
 import Data from "../src/component/SearchbarData.json";
 import TR_CommunityPackageHistoric from "./component/TR_CommunityPackageHistoric";
 
-
 let TrabajoSocial = () => {
     return <div>
         {/* <Menu/>
@@ -102,7 +101,6 @@ function App() {
                 <Route
                     path="/cajero"
                     element={<PrivateRoute roles={[CAJERO]} component={Cajero} />}
-
                 >
                     
                 </Route>

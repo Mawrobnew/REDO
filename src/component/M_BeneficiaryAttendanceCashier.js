@@ -14,7 +14,7 @@ export default function M_BeneficiaryAttendance({beneficiary}) {
                           initialState={beneficiary}
     >
         <p>Nombre</p>
-        <div>{beneficiary.name}</div>
+        <p>{beneficiary.name}</p>
         <button className='yesBtn' name='confirmation'>Si</button>
         <button className={'noBtn'} name='cancelation'>No</button>
     </RequestModal>)

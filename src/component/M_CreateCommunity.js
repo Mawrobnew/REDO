@@ -17,7 +17,7 @@ export default function M_CreateCommunity() {
             <p className='title'>Crear una comunidad</p>
             <div className='formulario'>
                 <p>Nombre</p>
-                <input required type='text' name="name" autoFocus={true} placeholder={'Nombre y apellidos'}/>
+                <input required type='text' name="name" autoFocus={true} placeholder={''}/>
                 <p>Frecuencia</p>
                 <Select name="frequency" route="/frequency"/>
                 <p>Municipio</p>

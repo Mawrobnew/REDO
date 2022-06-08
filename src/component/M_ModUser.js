@@ -18,7 +18,7 @@ export default function M_ModUser({userinfo}) {
             <p className='title'>Modificar datos</p>
             <div className='formulario'>
                 <p>Nombre</p>
-                <input required type='text' name="name" autoFocus={true} placeholder={'Nombre'}/>
+                <input required type='text' name="name" autoFocus={true} placeholder={'Nombre y apellidos son acentos'}/>
                 <p>Teléfono</p>
                 <input required type='number' name="phone"/>
                 <p>Correo</p>
