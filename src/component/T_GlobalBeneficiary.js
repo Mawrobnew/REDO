@@ -15,15 +15,6 @@ import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-tool
 
 function T_GlobalBeneficiary(){
     const [userList, setUserList] = useState([]);
-    const [isOpen, setIsOpen] = useState(false)
-
-    const btnModBeneficiary = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <M_ModBeneficiary open={isOpen} onClose={setIsOpen}></M_ModBeneficiary>
-            </div>
-        );
-    };
 
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
@@ -33,7 +24,6 @@ function T_GlobalBeneficiary(){
         {dataField:'Beca', text:'Beca', sort:true, key:5},
         {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:6},
         {dataField:'Dia', text:'Día', sort:true, key:7},
-        {dataField:'btn2', text:'Modificar', formatter: btnModBeneficiary, key:8}
     ]
 
     const customTotal = (from, to, size) => (
