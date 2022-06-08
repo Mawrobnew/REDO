@@ -80,11 +80,12 @@ function SearchBar({placeholder,data}) {
               {filteredData.map((value,key)=>{
                 const {Folio, Nombre, Justificacion, Asistencia} = value
                 //TODO: Tony create here the  component to fix the spaces between components
-                const EmptyComponent = ''
+                const EmptyComponent = <td className={'Lbl'}></td>
                 const renJust = (Justificacion === 'Si') ?
                     <td className={'Lbl'}><p className={'Lbl_justi'}>Justificado</p></td> : EmptyComponent
                 const renAssistance = (Asistencia === 'Si') ?
-                    <td className={'Lbl'}><p className={'Lbl_assistance'}>Asistencia</p></td> : EmptyComponent
+                    <td className={'Lbl'}><p className={'Lbl_assistance'}>Asistencia</p></td> : <td className={'Lbl'}><p className={'Lbl_abcense'}>Asistencia</p></td>
+
                 //const renFalta =
 
                 return (
@@ -94,9 +95,6 @@ function SearchBar({placeholder,data}) {
                           <tr>
                             <td className={'id'}>{Folio}</td>
                             <td className={'name'}>{Nombre}</td>
-                            {/*Agregar falta cuando exista
-                                return <td className={'Lbl'}><p className={'Lbl_abcense'}>Falta</p></td>
-                            */}
                             {renJust}
                             {renAssistance}
                             <td className={'btn'}>
