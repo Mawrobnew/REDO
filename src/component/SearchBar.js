@@ -78,16 +78,27 @@ function SearchBar({placeholder,data}) {
         {filteredData.length!== 0 && (
             <div className='dataResult'>
               {filteredData.map((value,key)=>{
+                const {Folio, Nombre, Justificacion, Asistencia} = value
+                //TODO: Tony create here the  component to fix the spaces between components
+                const EmptyComponent = ''
+                const renJust = (Justificacion === 'Si') ?
+                    <td className={'Lbl'}><p className={'Lbl_justi'}>Justificado</p></td> : EmptyComponent
+                const renAssistance = (Asistencia === 'Si') ?
+                    <td className={'Lbl'}><p className={'Lbl_assistance'}>Asistencia</p></td> : EmptyComponent
+                //const renFalta =
+
                 return (
                     <div>
-                      <div className='dataItem'  target="_blank">
+                      <div className='dataItem' target="_blank">
                         <table>
                           <tr>
-                            <td className={'id'}>{value.Folio}</td>
-                            <td className={'name'}>{value.Nombre}</td>
-                            <td className={'Lbl'}><p className={'Lbl_abcense'}>Falta</p></td>
-                            <td className={'Lbl'}><p className={'Lbl_justi'}>Justificado</p></td>
-                            <td className={'Lbl'}><p className={'Lbl_assistance'}>Asistencia</p></td>
+                            <td className={'id'}>{Folio}</td>
+                            <td className={'name'}>{Nombre}</td>
+                            {/*Agregar falta cuando exista
+                                return <td className={'Lbl'}><p className={'Lbl_abcense'}>Falta</p></td>
+                            */}
+                            {renJust}
+                            {renAssistance}
                             <td className={'btn'}>
                               <M_BeneficiaryAttendanceCashier
                                   beneficiary={{folio: value.Folio, name: value.Nombre, attendance: 1}}/>
@@ -100,7 +111,6 @@ function SearchBar({placeholder,data}) {
               })}
             </div>
         )}
-
       </div>
   )
 }
