@@ -16,7 +16,7 @@ export default function M_CreateJustification() {
         failed: false
     })
     const handleSubmit = async () => {
-        const [json, code] = await Request('POST', '/user', modalInfo)
+        const [json, code] = await Request('POST', '/justification', modalInfo)
         console.log(json);
         if (code === 200) {
             setIsOpen(false)
@@ -80,10 +80,11 @@ export default function M_CreateJustification() {
                 <p className='title'>Crear una justificación</p>
                 <div className='formulario'>
                     <p>Folio</p>
-                    <input type='text' required onChange={handleInputChange} name="idBeneficiary" autoFocus={true}
+                    <input type='text' required onChange={handleInputChange} name="folio" autoFocus={true}
                            placeholder={' ...'} minLength={13} maxLength={13}/>
                     <p>Fecha a justificar</p>
-                    <input type={"date"} name={'date'} required pattern="\d{4}-\d{2}-\d{2}"/>
+                    <input type={"date"} name={'date'} onChange={handleInputChange} required
+                           pattern="\d{4}-\d{2}-\d{2}"/>
                     <p>Motivo</p>
                     <ReasonSelect name={'idReason'} id={1} onChange={handleInputChange}/>
                     {componentRendered}
