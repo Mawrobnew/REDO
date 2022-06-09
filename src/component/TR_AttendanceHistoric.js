@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Request} from "../utils/WebRequestMiddleware";
+import {HOST, Request} from "../utils/WebRequestMiddleware";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
@@ -9,52 +9,42 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 
+
+
 function TR_AttendanceHistoric(){
     const [userList, setUserList] = useState([]);
-    const [isOpen, setIsOpen] = useState(false)
-
-
-    const selectOptions = {
-        0: 'gmail',
-        1: 'hotmail',
-        2: 'outlook',
-        4: 'Shanna@melissa.tv'
-    };
 
     const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
+        //const info = {id: row.Id}
         return (
             <div>
-                <a href={'http://localhost:9000/3'}>Descargar</a>
-                /*Cambiar al endopoint que descarga del reporte*/
+                <a href={HOST+'/attendanceReport/'+row.FechaInicial}>Descargar</a>
             </div>
         );
     };
     const btnJustification = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <a href={'http://localhost:9000/3'}>Descargar</a>
-                /*Cambiar al endopoint que descarga del reporte*/
+                <a href={HOST+'/justificationReport/'+row.FechaInicial}>Descargar</a>
             </div>
         );
     };
     const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <a href={'http://localhost:9000/3'}>Descargar</a>
-                /*Cambiar al endopoint que descarga del reporte*/
+                <a href={HOST+'/absenceReport/'+row.FechaInicial}>Descargar</a>
             </div>
         );
     };
 
     const columns = [
-        {dataField:'', text:'Fecha inicial', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'', text:'Número de asistencias', sort:true, key:2},
-        {dataField:'', text:'Número de justificaciones', sort:true, key:3},
-        {dataField:'', text:'Número de faltas', sort:true, key:4},
-        {dataField:'btn1', text:'Asistencias', formatter: btnAttendanceList(), key:5},
-        {dataField:'btn2', text:'Justificaciones', formatter: btnJustification(), key:6},
-        {dataField:'btn3', text:'Faltas', formatter: btnAbsence(), key:7},
-        /*Falta la columna del id oculto*/
+        {dataField:'FechaInicial', text:'Fecha inicial', sort:true, key:1},
+        {dataField:'NumAsistencias', text:'Número de asistencias', sort:true, key:2},
+        {dataField:'btn1', text:'Asistencias', formatter: btnAttendanceList, key:5},
+        {dataField:'NumJustificaciones', text:'Número de justificaciones', sort:true, key:3},
+        {dataField:'btn2', text:'Justificaciones', formatter: btnJustification, key:6},
+        {dataField:'NumFaltas', text:'Número de faltas', sort:true, key:4},
+        {dataField:'btn3', text:'Faltas', formatter: btnAbsence, key:7}
     ]
     const customTotal = (from, to, size) => (
         <span className="react-bootstrap-table-pagination-total">
@@ -83,7 +73,7 @@ function TR_AttendanceHistoric(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result, code] = await Request('GET', '/beneficiaries')
+            const [result, code] = await Request('GET', '/attendanceRecord')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()
@@ -95,7 +85,7 @@ function TR_AttendanceHistoric(){
         <ToolkitProvider
             id='T11'
             bootstrap4
-            keyField='Id'
+            keyField='Id2'
             columns={columns}
             data={userList}
             search

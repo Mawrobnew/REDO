@@ -14,9 +14,9 @@ function T_BeneficiaryDocuments(){
 
 
     const columns = [
-        {dataField:'Folio', text:'Nombre', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Teléfono', sort:true, key:2},
-        {dataField:'Status', text:'Comunidad', sort:true, key:3}
+        {dataField:'Nombre', text:'Nombre', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'Telefono', text:'Teléfono', sort:true, key:2},
+        {dataField:'Comunidad', text:'Comunidad', sort:true, key:3}
     ]
 
     const customTotal = (from, to, size) => (
@@ -46,7 +46,7 @@ function T_BeneficiaryDocuments(){
 
     useEffect(() => {
         const asyncFetch = async () => {
-            const [result, code] = await Request('GET', '/actBeneficiaries')
+            const [result, code] = await Request('GET', '/committeeMember')
             if (result.length>0) setUserList(result)
         }
         asyncFetch()
@@ -57,7 +57,7 @@ function T_BeneficiaryDocuments(){
 
     return(
         <ToolkitProvider
-            id='T3'
+            id='T13'
             bootstrap4
             keyField='Id'
             columns={columns}

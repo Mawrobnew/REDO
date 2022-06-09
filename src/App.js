@@ -16,6 +16,7 @@ import SearchBar from "./component/SearchBar";
 import Data from "../src/component/SearchbarData.json";
 import TR_CommunityPackageHistoric from "./component/TR_CommunityPackageHistoric";
 import T_Community from "./component/T_Community";
+import AccessDenied from "./component/AccessDenied";
 
 let TrabajoSocial = () => {
     return <div>
@@ -77,9 +78,7 @@ export const PrivateRoute = ({ component: Component , roles }) => {
     if(roles.includes(parseInt(role)))
         return <Component/>
 
-    return <div>
-        Acceso no autorizado
-    </div>
+    return <AccessDenied/>
 }
 
 //THE ID OF THE ROLES

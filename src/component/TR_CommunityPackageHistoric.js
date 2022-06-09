@@ -12,15 +12,6 @@ import TR_AttendanceHistoric from '../component/TR_AttendanceHistoric';
 
 function TR_CommunityPackageHistoric(){
     const [userList, setUserList] = useState([]);
-    const [isOpen, setIsOpen] = useState(false)
-
-
-    const selectOptions = {
-        0: 'gmail',
-        1: 'hotmail',
-        2: 'outlook',
-        4: 'Shanna@melissa.tv'
-    };
 
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
         return (
