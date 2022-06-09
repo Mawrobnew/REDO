@@ -2,69 +2,58 @@ import React, {useState} from 'react'
 import {Request} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
 import {faMagnifyingGlassPlus} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import ReasonSelect from "./API/ReasonSelect";
 
-export default function M_AbsenceReason(){
-    const [modalInfo, setModalInfo] = useState({
-        name: '',
-        mail: '',
-        password: '',
-        phone: '',
-        rol: '',
-        branch: '',
-    })
-
+export default function M_AbsenceReason() {
     const [isOpen, setIsOpen] = useState(false)
-    //TODO: FETCH THIS VALUES FROM THE API LATER
-    const rolInventory = [
-        {id:1, label: "Super Usuario"},
-        {id:2, label: "Trabajo Social"},
-        {id:3, label: "Cajero"},
-    ]
-    const branchInventory = [
-        {id:1, label: "Cuernavaca"},
-        {id:2, label: "Jiutepec"},
-        {id:3, label: "Temixco"},
-    ]
+    const [modalInfo, setModalInfo] = useState();
+    const [renderHidden, setRenderHidden] = useState(false);
+    const handleSubmit = async () => {
+        const [json, code] = await Request('POST', '/user', modalInfo)
+    }
+    // returns true if option with child "OTRO" is selected
+    const OtherIsSelected = ({options, value}) => {
+        return options[Number(value)].text === "OTROS"
+    }
+    const handleInputChange = (event) => {
+        const {name, value} = event.target
+        if (OtherIsSelected(event.target))
+            setRenderHidden(true);
+        else //Erase the values from the otherSelect if needed
+            setRenderHidden(false)
 
-    // updates the state on every change of the inputs or the selects
-    const handleInputChange = (event) =>{
-        const {name,value} = event.target
         setModalInfo({
             ...modalInfo,
-            [name]:value
+            [name]: value
         })
     }
+    const OtherSelect = <div>
+        <p>Otro</p>
+        <input type='text' onChange={handleInputChange} name="" placeholder={' ...'} maxLength={30}/>
+    </div>
+    const componentRendered = (renderHidden) ? OtherSelect : <td/>
 
-    //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        const result = await Request('POST', '/user', modalInfo)
-        const {done, errors} = result
-        if (done) setIsOpen(!isOpen)
-        //TODO: DISPLAY IN RED THE ERRORS OF THE FIELDS
-        console.log("TONY THIS ARE THE ERRORS TO BE DISPLAYED",errors)
-    }
-    //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnAbsenceReason'><FontAwesomeIcon icon={faMagnifyingGlassPlus} size='1x'/></button>
+        <button onClick={() => setIsOpen(true)} id='btnAbsenceReason'><FontAwesomeIcon icon={faMagnifyingGlassPlus}
+                                                                                       size='1x'/></button>
     )
     return (
         <div>
-            <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
+            <div className='wrapper' onClick={() => {
+                setIsOpen(false)
+            }}/>
             <div className='window'>
-                <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
+                <button className='closeBtn' onClick={() => {
+                    setIsOpen(false)
+                }}>X
+                </button>
                 <p className='title'>Descripción de falta</p>
                 <form onSubmit={handleSubmit}>
                     <div className='formulario'>
                         <p>Motivo</p>
-                        <select onChange={handleInputChange} name="rol">
-                            {rolInventory.map((rol)=>(
-                                <option value={rol.id}>{rol.label}</option>
-                            ))}
-                        </select>
-                        <p>Otro</p>
-                        <input type='text' onChange={handleInputChange} name="" autoFocus={true} placeholder={' ...'} maxLength={30}/>
+                        <ReasonSelect name={'somename'} id={1} onChange={handleInputChange}/>
+                        {componentRendered}
                         <button className='aceptBtn'>Crear comunidad</button>
                     </div>
                 </form>
