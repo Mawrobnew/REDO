@@ -15,13 +15,6 @@ function T_Absence(){
     const [absencesList, setAbsencesList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
-    const btnAbsencesReason = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <M_AbsencesReason open={isOpen} onClose={setIsOpen}></M_AbsencesReason>
-            </div>
-        );
-    };
 
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},

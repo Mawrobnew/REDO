@@ -15,22 +15,24 @@ function T_AbsenceHistoric(){
     const [isOpen, setIsOpen] = useState(false)
 
     const btnAbsenceReason = (cell, row, rowIndex, formatExtraData) => {
+        const {IdF} = row;
         return (
             <div>
-                <M_AbsenceReason open={isOpen} onClose={setIsOpen}></M_AbsenceReason>
+                <M_AbsenceReason absenseInfo={{idAbsence: IdF}}/>
             </div>
         );
     };
 
 
     const columns = [
-        {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
-        {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'Telefono', text:'Teléfono', sort:true, key:3},
-        {dataField:'Fecha', text:'Fecha', sort:true, key:4},
-        {dataField:'CanFaltas', text:'Núm. de falta', sort:true, key:5},
-        {dataField:'Razon', text:'Razón', sort:true, key:6},
-        {text: 'Motivo', formatter: btnAbsenceReason, key: 7}
+        {dataField: 'Folio', text: 'Folio', sort: true, filterFactory: textFilter(), key: 1},
+        {dataField: 'Nombre', text: 'Nombre', sort: true, key: 2},
+        {dataField: 'Telefono', text: 'Teléfono', sort: true, key: 3},
+        {dataField: 'Fecha', text: 'Fecha', sort: true, key: 4},
+        {dataField: 'CanFaltas', text: 'Núm. de falta', sort: true, key: 5},
+        {dataField: 'Razon', text: 'Razón', sort: true, key: 6},
+        {text: 'Motivo', formatter: btnAbsenceReason, key: 7},
+        {dataField: 'Id', text: 'Id', sort: true, key: 8, hidden: true},
     ]
 
     const customTotal = (from, to, size) => (
