@@ -28,7 +28,7 @@ export const Layout_TS = () => {
                         <FontAwesomeIcon icon={faBars} onClick={showSidebar}/>
                         <img src={Logo} alt={'logo'} className={'logoSB'}/>
                     </Link>
-                    <p>{sessionStorage.getItem('name')}</p>
+                    <div><h5>{sessionStorage.getItem('name')}</h5></div>
                     <button className='btnCloseSesion' onClick={closeSession}>
                         <FontAwesomeIcon icon={faPowerOff}/>
                         <span>Cerrar sesión</span>

@@ -88,24 +88,26 @@ function TR_CommunityPackageHistoric(){
         >
             {
                 props => (
-                    <div id='cont_tabla'>
-                        <p className='titleT'>Histórico de asistencia en comunidad</p>
-                        <hr></hr>
-                        <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
-                        <BootstrapTable
-                            { ...props.baseProps }
-                            pagination={pagination}
-                            filter={filterFactory()}
-                            striped={true}
-                            bordered={false}
-                            condensed={true}
-                            hover={true}
-                            headerClasses='TableHead'
-                            bodyClasses='TableBody'
-                            wrapperClasses='pruebaWrapper'
-                        >
-                        </BootstrapTable>
-                        <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
+                    <div id='container'>
+                        <div id='cont_tabla'>
+                            <p className='titleT'>Histórico de asistencia en comunidad</p>
+                            <hr></hr>
+                            <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
+                            <BootstrapTable
+                                { ...props.baseProps }
+                                pagination={pagination}
+                                filter={filterFactory()}
+                                striped={true}
+                                bordered={false}
+                                condensed={true}
+                                hover={true}
+                                headerClasses='TableHead'
+                                bodyClasses='TableBody'
+                                wrapperClasses='pruebaWrapper'
+                            >
+                            </BootstrapTable>
+                            <ExportCSVButton { ...props.csvProps} className={'btnDownload'}>Descargar</ExportCSVButton>
+                        </div>
                         <TR_AttendanceHistoric/>
                     </div>
                 )

@@ -1,5 +1,5 @@
-//export const HOST = "http://44.195.187.31:8080/api"
-export const HOST = "http://localhost:8080/api"
+export const HOST = "http://44.195.187.31:8080/api"
+//export const HOST = "http://localhost:8080/api"
 export const Request = async (method = 'POST', route = '/', data = {}) => {
     //Request configuration
     console.log(route, method)

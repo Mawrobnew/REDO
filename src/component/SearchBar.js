@@ -60,7 +60,7 @@ function SearchBar({placeholder,data}) {
       <div className='search'>
         <div className={'navbar'}>
           <img src={Logo} alt={'logo'} className={'logoSB'}/>
-          <div>{sessionStorage.getItem('name')}</div>
+          <div><h5>{sessionStorage.getItem('name')}</h5></div>
           <button className='btnCloseSesion' onClick={closeSession}>
             <FontAwesomeIcon icon={faPowerOff}/>
             <span>Cerrar sesión</span>
@@ -79,7 +79,6 @@ function SearchBar({placeholder,data}) {
             <div className='dataResult'>
               {filteredData.map((value,key)=>{
                 const {Folio, Nombre, Justificacion, Asistencia} = value
-                //TODO: Tony create here the  component to fix the spaces between components
                 const EmptyComponent = <td className={'Lbl'}></td>
                 const renJust = (Justificacion === 'Si') ?
                     <td className={'Lbl'}><p className={'Lbl_justi'}>Justificado</p></td> : EmptyComponent
