@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Request} from "../utils/WebRequestMiddleware";
+import {DownloadFileRequest, Request} from "../utils/WebRequestMiddleware";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
@@ -39,10 +39,14 @@ function T_BeneficiaryDocuments(){
         );
     };
 
+    const downloadFile = () => {
+        DownloadFileRequest('GET', '/beneficiaryDoc/2')
+    }
+
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <a href={'http://localhost:9000/3'}>Descargar</a>
+                <div onClick={downloadFile}>Descargar</div>
                 {/*Aqui es donde se pasa el parametro, Id, para recuperar el documento*/}
             </div>
         );

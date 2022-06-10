@@ -23,3 +23,16 @@ export const FormDataRequest = async (method = 'POST', route = '/', data = {}) =
     const json = await response.json();
     return [json, response.status];
 }
+export const DownloadFileRequest = async (method, route = '/') => {
+    const headers = {"authorization": sessionStorage.getItem("token")}
+    const mode = 'cors'
+    const init = {method, headers, mode};
+    const response = await fetch(HOST + route, init);
+    const blob = await response.blob()
+    const url = window.URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = "file.png";
+    a.click();
+    a.remove();  //afterwards we remove the element again
+}
