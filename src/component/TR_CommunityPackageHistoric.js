@@ -23,13 +23,13 @@ function TR_CommunityPackageHistoric(){
     };
 
     const columns = [
-        {dataField:'FechaInicio', text:'Fecha inicial', sort:true, filterFactory:textFilter(), key:1},
+        {dataField:'FechaInicio', text:'Fecha inicial', sort:true, key:1},
         {dataField:'FechaFinal', text:'Fecha final', sort:true, key:2},
         {dataField:'Comunidad', text:'Comunidad', sort:true, key:3},
         {dataField:'PaquetesTotales', text:'Paquetes totales', sort:true, key:4},
         {dataField:'AsistenciasTotales', text:'Asistencias totales', sort:true, key:5},
-        {dataField:'btn1', text:'Documentos', formatter: btnUploadDo, key:6}
-        /*Falta la columna del id oculto*/
+        {dataField:'btn1', text:'Documentos', formatter: btnUploadDo, key:6},
+        {dataField:'Id', hidden:true}
     ]
 
     const customTotal = (from, to, size) => (

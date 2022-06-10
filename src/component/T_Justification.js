@@ -55,7 +55,7 @@ function T_Justification(){
         asyncFetch()
     }, [])
 
-    const { SearchBar, ClearSearchButton } = Search;
+    const { SearchBar } = Search;
     const { ExportCSVButton } = CSVExport;
 
     return(

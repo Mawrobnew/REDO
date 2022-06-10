@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Outlet} from 'react-router-dom';
 import '../css/Layout.css'
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import {SidebarData} from '../component/SidebarData_TS';
 import { IconContext } from 'react-icons';
 import {faBars, faPowerOff} from '@fortawesome/free-solid-svg-icons'
