@@ -19,10 +19,11 @@ function TR_CommunityPackageHistoric() {
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <div onClick={() => {
+                <button className={'btnDownloadDocs'} onClick={() => {
                     downloadFile(row.Id)
-                }}>Download
-                </div>
+                }}>
+                    Descargar
+                </button>
             </div>
         );
     };

@@ -31,9 +31,9 @@ function TR_AttendanceHistoric(){
 
     const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
         // console.log(row. === 1)
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadAttendanceFile(row.FechaInicial)
-        }}>Descargar</div>
+        }}>Descargar</button>
         const RenderedButton = (row.NumAsistencias !== 0) ? DownloadDiv : ''
         return (
             <div>
@@ -46,9 +46,9 @@ function TR_AttendanceHistoric(){
 
     const btnJustification  = (cell, row, rowIndex, formatExtraData) => {
        // console.log(row.Archivo === 1)
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadJustificationFile(row.FechaInicial)
-        }}>Descargar</div>
+        }}>Descargar</button>
         const RenderedButton = (row.NumJustificaciones !== 0) ? DownloadDiv : ''
         return (
             <div>
@@ -61,9 +61,9 @@ function TR_AttendanceHistoric(){
 
     const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
         // console.log(row.Archivo === 1)
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadAbsenceFile(row.FechaInicial)
-        }}>Descargar</div>
+        }}>Descargar</button>
         const RenderedButton = (row.NumFaltas !== 0) ? DownloadDiv : ''
         return (
             <div>

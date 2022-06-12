@@ -44,9 +44,9 @@ function T_BeneficiaryDocuments(){
     }
 
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadFile(row.Id)
-        }}>Descargar</div>
+        }}>Descargar</button>
         const RenderedButton = (row.Archivo === 1) ? DownloadDiv : ''
         return (
             <div>

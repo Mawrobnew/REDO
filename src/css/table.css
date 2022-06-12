@@ -54,6 +54,15 @@
     margin: 0px 0px 0px 0px;
     float: right;
 }
+.btnDownloadDocs{
+    border-radius: 5px;
+    padding: 4px 0px;
+    width: 100px !important;
+    background-color: var(--bgAzulInput);
+    border: none;
+    margin: 0px 0px 0px 0px;
+    float: left;
+}
 .searchBarTable{
     width: 500px;
     height: 40px;
