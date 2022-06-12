@@ -22,7 +22,7 @@ function T_CommunityAssistance(){
     const btnDocsAttendance = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_UploadDocsCommunityAttendance open={isOpen} onClose={setIsOpen}/>
+                <M_UploadDocsCommunityAttendance idReport={row.Id}/>
             </div>
         );
     };

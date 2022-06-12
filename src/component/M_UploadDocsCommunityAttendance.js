@@ -1,51 +1,68 @@
 import React, {useState} from 'react'
-import {Request} from "../utils/WebRequestMiddleware";
+import {FormDataRequest} from "../utils/WebRequestMiddleware";
 import '../css/modal.css';
-import { faFileArchive } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faFileArchive} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import M_Fail from "./M_Fail";
+import M_Success from "./M_Success";
 
 
-export default function M_UploadDocsCommunityAttendance() {
-    const [modalInfo, setModalInfo] = useState({})
+export default function M_UploadDocsCommunityAttendance({idReport}) {
     const [isOpen, setIsOpen] = useState(false)
-    // updates the state on every change of the inputs or the selects
-    const handleInputChange = (event) =>{
-        const {name,value} = event.target
-        setModalInfo({
-            ...modalInfo,
-            [name]:value
-        })
-    }
+    const [petitionState, setPetitionState] = useState({
+        successful: false,
+        failed: false
+    })
 
-    //When the form is ready post the modal data to the backend and prevents the default behaviour of the form
-    const handleSubmit = async (event) => {
-        const result = await Request('POST', '/user', modalInfo)
-        const {done} = result
-        if (done) setIsOpen(!isOpen)
-        event.preventDefault()
+    const handleSubmit = async () => {
+        const formData = new FormData();
+        const inputFile = document.getElementById("archivo");
+        const petitionNumber = document.getElementById("petitionNumber")
+        for (const file of inputFile.files) {
+            formData.append("file", file);
+        }
+        formData.append('Signatures', petitionNumber.value)
+        formData.append('IdReport', idReport)
+        const [, code] = await FormDataRequest('PUT', '/communityDocs', formData)
+        if (code !== 200) {
+            setPetitionState({
+                ...petitionState,
+                failed: true
+            });
+        }
+        setIsOpen(false)
+        setPetitionState({
+            ...petitionState,
+            successful: true
+        })
+        window.location.reload();
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
-        <button onClick={() => setIsOpen(true)} id='btnModalUploadDocs'><FontAwesomeIcon icon={faFileArchive} size='1x'/></button>
+        <div>
+            <M_Success open={petitionState.successful}
+                       onClose={() => setPetitionState({...petitionState, successful: false})}/>
+            <button onClick={() => setIsOpen(true)} id='btnModalUploadDocs'><FontAwesomeIcon icon={faFileArchive}
+                                                                                             size='1x'/></button>
+        </div>
     )
     return (
         <div>
             <div className='wrapper' onClick={()=>{setIsOpen(false)}}/>
             <div className='window'>
-                <button className='closeBtn' onClick={()=>{setIsOpen(false)}}>X</button>
+                <button className='closeBtn' onClick={() => {
+                    setIsOpen(false)
+                }}>X
+                </button>
                 <p className='title'>Subir documentos</p>
-                <form onSubmit={handleSubmit}>
-                    <div className='formulario'>
-
-                        <p>Lista de asistencia</p>
-                        <input required type="file" id="" name="" accept=".pdf"/>
-                        {/*Este es un campo nuevo, pero el endpoint lo recibe, solo que se me olvidó agregarlo*/}
-                        <p>Asistencias</p>
-                        <input required type='number' min='1'/>
-
-                        <button className='aceptBtn'>Enviar</button>
-                    </div>
-                </form>
+                <div className='formulario'>
+                    <p>Lista de asistencia</p>
+                    <input required type="file" id="archivo" name="archivo" accept=".pdf"/>
+                    <p>Asistencias</p>
+                    <input required type='number' min='1' id="petitionNumber"/>
+                    <button className='aceptBtn' onClick={handleSubmit}>Enviar</button>
+                </div>
             </div>
+            <M_Fail open={petitionState.failed} onClose={() => setPetitionState({...petitionState, failed: false})}/>
         </div>)
 }

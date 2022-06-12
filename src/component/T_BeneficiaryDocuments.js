@@ -40,12 +40,10 @@ function T_BeneficiaryDocuments(){
     };
 
     const downloadFile = (id) => {
-        console.log("Download for ", id)
         DownloadFileRequest('GET', '/beneficiaryDoc/' + id)
     }
 
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
-        console.log(row.Archivo === 1)
         const DownloadDiv = <div onClick={() => {
             downloadFile(row.Id)
         }}>Descargar</div>
