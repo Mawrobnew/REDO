@@ -29,10 +29,13 @@ export const DownloadFileRequest = async (method, route = '/') => {
     const init = {method, headers, mode};
     const response = await fetch(HOST + route, init);
     const blob = await response.blob()
+    console.log(blob)
     const url = window.URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;
-    a.download = "file.png";
+    const date = new Date().toString()
+    const extension = response.headers.get('Content-Type').split('/')[1]
+    a.download = date + "." + extension;
     a.click();
     a.remove();  //afterwards we remove the element again
 }
