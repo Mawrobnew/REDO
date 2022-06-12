@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Request} from "../utils/WebRequestMiddleware";
+import {DownloadFileRequest, Request} from "../utils/WebRequestMiddleware";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
@@ -10,14 +10,19 @@ import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import TR_AttendanceHistoric from '../component/TR_AttendanceHistoric';
 
-function TR_CommunityPackageHistoric(){
+function TR_CommunityPackageHistoric() {
     const [userList, setUserList] = useState([]);
 
+    const downloadFile = (id) => {
+        DownloadFileRequest('POST', '/communityDoc/' + id)
+    }
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <a href={'http://localhost:9000/3'}>Descargar</a>
-                {/*Cambiar al endopoint que descarga las listas, solo ocupa el Id como parametro*/}
+                <div onClick={() => {
+                    downloadFile(row.Id)
+                }}>Download
+                </div>
             </div>
         );
     };
