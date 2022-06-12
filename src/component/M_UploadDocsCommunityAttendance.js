@@ -6,27 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default function M_UploadDocsCommunityAttendance() {
-    const [modalInfo, setModalInfo] = useState({
-        name: '',
-        mail: '',
-        password: '',
-        phone: '',
-        rol: '',
-        branch: '',
-    })
+    const [modalInfo, setModalInfo] = useState({})
     const [isOpen, setIsOpen] = useState(false)
-    //TODO: FETCH THIS VALUES FROM THE API LATER
-    const rolInventory = [
-        {id:1, label: "Super Usuario"},
-        {id:2, label: "Trabajo Social"},
-        {id:3, label: "Cajero"},
-    ]
-    const branchInventory = [
-        {id:1, label: "Cuernavaca"},
-        {id:2, label: "Jiutepec"},
-        {id:3, label: "Temixco"},
-    ]
-
     // updates the state on every change of the inputs or the selects
     const handleInputChange = (event) =>{
         const {name,value} = event.target

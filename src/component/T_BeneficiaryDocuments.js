@@ -34,7 +34,7 @@ function T_BeneficiaryDocuments(){
     const btnUploadDoc = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <M_UploadDocuments open={isOpen} onClose={setIsOpen}></M_UploadDocuments>
+                <M_UploadDocuments IdBeneficiary={row.Id}/>
             </div>
         );
     };

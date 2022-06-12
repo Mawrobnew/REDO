@@ -7,7 +7,7 @@ import M_Fail from "./M_Fail";
 import M_Success from "./M_Success";
 
 
-export default function M_UploadDocuments() {
+export default function M_UploadDocuments({IdBeneficiary}) {
     const [isOpen, setIsOpen] = useState(false)
     const [petitionState, setPetitionState] = useState({
         successful: false,
@@ -20,7 +20,9 @@ export default function M_UploadDocuments() {
         for (const file of inputFile.files) {
             formData.append("file", file);
         }
-        const [, code] = await FormDataRequest('POST', '/beneficiaryDoc', formData)
+        console.log()
+        formData.append('IdBeneficiary', IdBeneficiary)
+        const [, code] = await FormDataRequest('PUT', '/beneficiaryDocs', formData)
         if (code !== 200) {
             setPetitionState({
                 ...petitionState,
@@ -32,6 +34,7 @@ export default function M_UploadDocuments() {
             ...petitionState,
             successful: true
         })
+        window.location.reload();
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
