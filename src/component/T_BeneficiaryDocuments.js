@@ -45,13 +45,16 @@ function T_BeneficiaryDocuments(){
     }
 
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
+        console.log(row.Archivo === 1)
+        const DownloadDiv = <div onClick={() => {
+            downloadFile(row.Id)
+        }}>Descargar</div>
+        const RenderedButton = (row.Archivo === 1) ? DownloadDiv : ''
         return (
             <div>
-                <div onClick={() => {
-                    downloadFile(row.Id)
-                }}>Descargar
-                </div>
-                {/*Aqui es donde se pasa el parametro, Id, para recuperar el documento*/}
+                {
+                    RenderedButton
+                }
             </div>
         );
     };
