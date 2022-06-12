@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {HOST, Request} from "../utils/WebRequestMiddleware";
+import {HOST, DownloadFileRequest, Request} from "../utils/WebRequestMiddleware";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
@@ -14,6 +14,68 @@ import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-tool
 function TR_AttendanceHistoric(){
     const [userList, setUserList] = useState([]);
 
+    const downloadAttendanceFile = (date) => {
+        console.log("Download attendance report ", date)
+        DownloadFileRequest('GET', '/attendanceReport/' + date)
+    }
+
+    const downloadJustificationFile = (date) => {
+        console.log("Download justification report ", date)
+        DownloadFileRequest('GET', '/justificationReport/' + date)
+    }
+
+    const downloadAbsenceFile = (date) => {
+        console.log("Download absence report ", date)
+        DownloadFileRequest('GET', '/absenceReport/' + date)
+    }
+
+    const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
+        // console.log(row. === 1)
+        const DownloadDiv = <div onClick={() => {
+            downloadAttendanceFile(row.FechaInicial)
+        }}>Descargar</div>
+        const RenderedButton = (row.NumAsistencias !== 0) ? DownloadDiv : ''
+        return (
+            <div>
+                {
+                    RenderedButton
+                }
+            </div>
+        );
+    };
+
+    const btnJustification  = (cell, row, rowIndex, formatExtraData) => {
+       // console.log(row.Archivo === 1)
+        const DownloadDiv = <div onClick={() => {
+            downloadJustificationFile(row.FechaInicial)
+        }}>Descargar</div>
+        const RenderedButton = (row.NumJustificaciones !== 0) ? DownloadDiv : ''
+        return (
+            <div>
+                {
+                    RenderedButton
+                }
+            </div>
+        );
+    };
+
+    const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
+        // console.log(row.Archivo === 1)
+        const DownloadDiv = <div onClick={() => {
+            downloadAbsenceFile(row.FechaInicial)
+        }}>Descargar</div>
+        const RenderedButton = (row.NumFaltas !== 0) ? DownloadDiv : ''
+        return (
+            <div>
+                {
+                    RenderedButton
+                }
+            </div>
+        );
+    };
+
+
+    /*
     const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
         //const info = {id: row.Id}
         return (
@@ -22,6 +84,7 @@ function TR_AttendanceHistoric(){
             </div>
         );
     };
+
     const btnJustification = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
@@ -29,6 +92,7 @@ function TR_AttendanceHistoric(){
             </div>
         );
     };
+
     const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
@@ -36,6 +100,7 @@ function TR_AttendanceHistoric(){
             </div>
         );
     };
+    */
 
     const columns = [
         {dataField:'FechaInicial', text:'Fecha inicial', sort:true, key:1},

@@ -32,7 +32,7 @@ export const DownloadFileRequest = async (method, route = '/') => {
     const url = window.URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;
-    a.download = "file.png";
+    a.download = "file.pdf";
     a.click();
     a.remove();  //afterwards we remove the element again
 }
