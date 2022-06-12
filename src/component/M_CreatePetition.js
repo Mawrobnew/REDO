@@ -49,6 +49,7 @@ export default function M_CreatePetition() {
             ...petitionState,
             successful: true
         })
+        window.location.reload();
     }
     //TODO: CREATE FIELD AND SELECT COMPONENTS THAT HANDLE REPEATED LOGIC
     if (!isOpen) return (
