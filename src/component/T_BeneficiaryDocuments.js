@@ -39,14 +39,18 @@ function T_BeneficiaryDocuments(){
         );
     };
 
-    const downloadFile = () => {
-        DownloadFileRequest('GET', '/beneficiaryDoc/2')
+    const downloadFile = (id) => {
+        console.log("Download for ", id)
+        DownloadFileRequest('GET', '/beneficiaryDoc/' + id)
     }
 
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <div onClick={downloadFile}>Descargar</div>
+                <div onClick={() => {
+                    downloadFile(row.Id)
+                }}>Descargar
+                </div>
                 {/*Aqui es donde se pasa el parametro, Id, para recuperar el documento*/}
             </div>
         );
