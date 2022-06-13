@@ -8,6 +8,8 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+import {faDownload} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 
@@ -33,7 +35,7 @@ function TR_AttendanceHistoric(){
         // console.log(row. === 1)
         const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadAttendanceFile(row.FechaInicial)
-        }}>Descargar</button>
+        }}><FontAwesomeIcon icon={faDownload}/></button>
         const RenderedButton = (row.NumAsistencias !== 0) ? DownloadDiv : ''
         return (
             <div>
@@ -48,7 +50,7 @@ function TR_AttendanceHistoric(){
        // console.log(row.Archivo === 1)
         const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadJustificationFile(row.FechaInicial)
-        }}>Descargar</button>
+        }}><FontAwesomeIcon icon={faDownload}/></button>
         const RenderedButton = (row.NumJustificaciones !== 0) ? DownloadDiv : ''
         return (
             <div>
@@ -63,7 +65,7 @@ function TR_AttendanceHistoric(){
         // console.log(row.Archivo === 1)
         const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadAbsenceFile(row.FechaInicial)
-        }}>Descargar</button>
+        }}><FontAwesomeIcon icon={faDownload}/></button>
         const RenderedButton = (row.NumFaltas !== 0) ? DownloadDiv : ''
         return (
             <div>
