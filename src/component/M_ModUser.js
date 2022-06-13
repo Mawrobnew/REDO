@@ -28,7 +28,7 @@ export default function M_ModUser({userinfo}) {
                 <p>Sucursal</p>
                 <Select name="branch" route="/branch"/>
                 <Alert variant="danger" name="alert"/>
-                <button className='aceptBtn' name="formButton">Modificar usuairo</button>
+                <button className='aceptBtn' name="formButton">Modificar usuario</button>
             </div>
         </ValidationModal>
     )
