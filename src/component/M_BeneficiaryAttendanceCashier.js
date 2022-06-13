@@ -13,9 +13,11 @@ export default function M_BeneficiaryAttendance({beneficiary}) {
                           method='POST'
                           initialState={beneficiary}
     >
-        <p>Nombre</p>
-        <p>{beneficiary.name}</p>
-        <button className='yesBtn' name='confirmation'>Si</button>
-        <button className={'noBtn'} name='cancelation'>No</button>
+        <div className='formulario'>
+            <p>Nombre</p>
+            <p>{beneficiary.name}</p>
+            <button className='yesBtn' name='confirmation'>Si</button>
+            <button className={'noBtn'} name='cancelation'>No</button>
+        </div>
     </RequestModal>)
 }
