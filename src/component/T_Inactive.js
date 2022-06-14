@@ -86,7 +86,7 @@ function T_Inactive(){
                 props => (
                     <div id='container'>
                         <div id='cont_tabla'>
-                            <p className='titleT'>Beneficiarios ináctivos</p>
+                            <p className='titleT'>Beneficiarios inactivos</p>
                             <hr></hr>
                             <SearchBar { ...props.searchProps } placeholder="Buscar" className={'searchBarTable'}/>
 
