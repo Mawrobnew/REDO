@@ -19,11 +19,15 @@ function T_GlobalBeneficiary(){
     const columns = [
         {dataField:'Folio', text:'Folio', sort:true, filterFactory:textFilter(), key:1},
         {dataField:'Nombre', text:'Nombre', sort:true, key:2},
-        {dataField:'FechaRegistro', text:'F. registro', sort:true, key:3},
-        {dataField:'FechaVencimiento', text:'F. vencimiento', sort:true, key:4},
-        {dataField:'Beca', text:'Beca', sort:true, key:5},
-        {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:6},
-        {dataField:'Dia', text:'Día', sort:true, key:7},
+        {dataField:'Colonia', text:'Colonia', sort:true, key:3},
+        {dataField:'Dia', text:'Día', sort:true, key:8},
+        {dataField:'FechaRegistro', text:'F. registro', sort:true, key:4},
+        {dataField:'FechaVencimiento', text:'F. vencimiento', sort:true, key:5},
+        {dataField:'IdStatus', text:'Estado', sort:true, key:9, hidden:true},
+        {dataField:'Beca', text:'Beca', sort:true, key:6},
+        {dataField:'Frecuencia', text:'Frecuencia', sort:true, key:7},
+        {dataField:'Telefono', text:'Teléfono', sort:true, key:10},
+        {dataField:'IdSucursal', text:'Sucursal', sort:true, key:11, hidden:true}
     ]
 
     const customTotal = (from, to, size) => (

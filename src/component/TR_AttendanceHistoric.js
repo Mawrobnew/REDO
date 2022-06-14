@@ -76,34 +76,6 @@ function TR_AttendanceHistoric(){
         );
     };
 
-
-    /*
-    const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
-        //const info = {id: row.Id}
-        return (
-            <div>
-                <a href={HOST+'/attendanceReport/'+row.FechaInicial}>Descargar</a>
-            </div>
-        );
-    };
-
-    const btnJustification = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <a href={HOST+'/justificationReport/'+row.FechaInicial}>Descargar</a>
-            </div>
-        );
-    };
-
-    const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <a href={HOST+'/absenceReport/'+row.FechaInicial}>Descargar</a>
-            </div>
-        );
-    };
-    */
-
     const columns = [
         {dataField:'FechaInicial', text:'Fecha inicial', sort:true, key:1},
         {dataField:'NumAsistencias', text:'Número de asistencias', sort:true, key:2},

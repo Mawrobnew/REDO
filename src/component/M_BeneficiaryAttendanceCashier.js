@@ -14,7 +14,7 @@ export default function M_BeneficiaryAttendance({beneficiary}) {
                           initialState={beneficiary}
     >
         <div className='formulario'>
-            <p>Poner asistencia</p>
+            <p>Poner asistencia a:</p>
             <p>{beneficiary.name}</p>
             <button className='yesBtn' name='confirmation'>Si</button>
             <button className={'noBtn'} name='cancelation'>No</button>
