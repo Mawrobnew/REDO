@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import ReasonSelect from "./API/ReasonSelect";
 import M_Success from "./M_Success";
 import M_Fail from "./M_Fail";
+import MessageModal from "./API/MessageModal";
 
 export default function M_CreateJustification() {
     const [isOpen, setIsOpen] = useState(false)
@@ -13,12 +14,21 @@ export default function M_CreateJustification() {
     const [renderHidden, setRenderHidden] = useState(false);
     const [petitionState, setPetitionState] = useState({
         successful: false,
-        failed: false
+        failed: false,
+        message: ''
     })
     const handleSubmit = async () => {
         const [json, code] = await Request('POST', '/justification', modalInfo)
-        console.log(json);
-        if (code === 200) {
+        if (code !== 200) {
+            setPetitionState({
+                ...petitionState,
+                failed: true,
+                message: 'La operación ha fallado'
+            });
+            return
+        }
+        const {message, done} = json[0];
+        if (done === 1) {
             setIsOpen(false)
             setPetitionState({
                 ...petitionState,
@@ -29,7 +39,8 @@ export default function M_CreateJustification() {
         }
         setPetitionState({
             ...petitionState,
-            failed: true
+            failed: true,
+            message
         });
     }
     // returns true if option with child "OTRO" is selected
@@ -91,6 +102,8 @@ export default function M_CreateJustification() {
                     <button className='aceptBtn' onClick={handleSubmit}>Crear justificación</button>
                 </div>
             </div>
-            <M_Fail open={petitionState.failed} onClose={() => setPetitionState({...petitionState, failed: false})}/>
+            <MessageModal open={petitionState.failed}
+                          onClose={() => setPetitionState({...petitionState, failed: false})}
+                          message={petitionState.message}/>
         </div>)
 }
