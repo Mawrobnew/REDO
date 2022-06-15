@@ -10,7 +10,8 @@ import M_ChangeStatus from './M_ChangeStatus';
 import M_UploadDocuments from './M_UploadDocuments'
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faDownload} from '@fortawesome/free-solid-svg-icons'
 function T_BeneficiaryDocuments(){
     const [userList, setUserList] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
@@ -44,9 +45,9 @@ function T_BeneficiaryDocuments(){
     }
 
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadFile(row.Id)
-        }}>Descargar</div>
+        }}><FontAwesomeIcon icon={faDownload}/></button>
         const RenderedButton = (row.Archivo === 1) ? DownloadDiv : ''
         return (
             <div>

@@ -9,6 +9,8 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import TR_AttendanceHistoric from '../component/TR_AttendanceHistoric';
+import {faDownload} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function TR_CommunityPackageHistoric() {
     const [userList, setUserList] = useState([]);
@@ -19,10 +21,11 @@ function TR_CommunityPackageHistoric() {
     const btnUploadDo = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <div onClick={() => {
+                <button className={'btnDownloadDocs'} onClick={() => {
                     downloadFile(row.Id)
-                }}>Download
-                </div>
+                }}>
+                    <FontAwesomeIcon icon={faDownload}/>
+                </button>
             </div>
         );
     };

@@ -8,6 +8,8 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import '../css/table.css';
 import ToolkitProvider, { Search, CSVExport }  from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+import {faDownload} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 
@@ -31,9 +33,9 @@ function TR_AttendanceHistoric(){
 
     const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
         // console.log(row. === 1)
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadAttendanceFile(row.FechaInicial)
-        }}>Descargar</div>
+        }}><FontAwesomeIcon icon={faDownload}/></button>
         const RenderedButton = (row.NumAsistencias !== 0) ? DownloadDiv : ''
         return (
             <div>
@@ -46,9 +48,9 @@ function TR_AttendanceHistoric(){
 
     const btnJustification  = (cell, row, rowIndex, formatExtraData) => {
        // console.log(row.Archivo === 1)
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadJustificationFile(row.FechaInicial)
-        }}>Descargar</div>
+        }}><FontAwesomeIcon icon={faDownload}/></button>
         const RenderedButton = (row.NumJustificaciones !== 0) ? DownloadDiv : ''
         return (
             <div>
@@ -61,9 +63,9 @@ function TR_AttendanceHistoric(){
 
     const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
         // console.log(row.Archivo === 1)
-        const DownloadDiv = <div onClick={() => {
+        const DownloadDiv = <button className={'btnDownloadDocs'} onClick={() => {
             downloadAbsenceFile(row.FechaInicial)
-        }}>Descargar</div>
+        }}><FontAwesomeIcon icon={faDownload}/></button>
         const RenderedButton = (row.NumFaltas !== 0) ? DownloadDiv : ''
         return (
             <div>
@@ -73,34 +75,6 @@ function TR_AttendanceHistoric(){
             </div>
         );
     };
-
-
-    /*
-    const btnAttendanceList = (cell, row, rowIndex, formatExtraData) => {
-        //const info = {id: row.Id}
-        return (
-            <div>
-                <a href={HOST+'/attendanceReport/'+row.FechaInicial}>Descargar</a>
-            </div>
-        );
-    };
-
-    const btnJustification = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <a href={HOST+'/justificationReport/'+row.FechaInicial}>Descargar</a>
-            </div>
-        );
-    };
-
-    const btnAbsence = (cell, row, rowIndex, formatExtraData) => {
-        return (
-            <div>
-                <a href={HOST+'/absenceReport/'+row.FechaInicial}>Descargar</a>
-            </div>
-        );
-    };
-    */
 
     const columns = [
         {dataField:'FechaInicial', text:'Fecha inicial', sort:true, key:1},
