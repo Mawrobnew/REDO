@@ -34,10 +34,14 @@ export default function M_AbsenceReason({absenseInfo}) {
     }
     // returns true if option with child "OTRO" is selected
     const OtherIsSelected = ({options, value}) => {
-        return options[Number(value)].text === "OTROS"
+        let selectedOption = ''
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].value === value) selectedOption = options[i].innerHTML;
+        }
+        return selectedOption === 'OTROS'
     }
     const handleInputChange = (event) => {
-        const {name, value, type} = event.target
+        const {name, value} = event.target
         if (event.target.type === 'select-one') {
             if (OtherIsSelected(event.target))
                 setRenderHidden(true);
