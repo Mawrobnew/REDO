@@ -17,6 +17,7 @@ import Data from "../src/component/SearchbarData.json";
 import TR_CommunityPackageHistoric from "./component/TR_CommunityPackageHistoric";
 import T_Community from "./component/T_Community";
 import AccessDenied from "./component/AccessDenied";
+import ExpiredSession from "./component/ExpiredSession";
 
 let TrabajoSocial = () => {
     return <div>
@@ -71,11 +72,14 @@ const NotFound = () => {
 export const PrivateRoute = ({ component: Component , roles }) => {
     const token = sessionStorage.getItem('token');
     const role = sessionStorage.getItem('role')
+    const isTokenExpired = sessionStorage.getItem('tokenExpired')
     const location = useLocation()
-    if(token === null && location.pathname !== '/login')
+    if (isTokenExpired === 'true')
+        return <Navigate to='/expired'/>
+    if (token === null && location.pathname !== '/login') {
         return <Navigate to='/login'/>
-
-    if(roles.includes(parseInt(role)))
+    }
+    if (roles.includes(parseInt(role)))
         return <Component/>
 
     return <AccessDenied/>
@@ -118,6 +122,7 @@ function App() {
                     <Route path="inactive" element={<T_Inactive/>}/>
                     <Route path="reports" element={<TR_CommunityPackageHistoric/>}/>
                 </Route>
+                <Route path="expired" element={<ExpiredSession/>}/>
                 <Route exact path="*" element={<Navigate to="/login"/>}/>
             </Routes>
         </Router>

@@ -23,6 +23,7 @@ function Login(){
         const [result, code] = await Request('POST', "/login", formInfo)
         const {done, token, IdRole, IdBranch, Name, UserRole} =result
         if(done){
+            sessionStorage.clear();
             sessionStorage.setItem('token', token)
             sessionStorage.setItem('role', IdRole)
             sessionStorage.setItem('name', Name)
