@@ -77,7 +77,7 @@ export default function M_AbsenceReason({absenseInfo}) {
                 <p className='title'>Descripción de falta</p>
                 <div className='formulario'>
                     <p>Motivo</p>
-                    <ReasonSelect name={'idReason'} id={1} onChange={handleInputChange}/>
+                    <ReasonSelect name={'idReason'} id={2} onChange={handleInputChange}/>
                     {componentRendered}
                     <button className='aceptBtn' onClick={handleSubmit}>Guardar Motivo</button>
                 </div>

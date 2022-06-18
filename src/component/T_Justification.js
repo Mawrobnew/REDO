@@ -16,10 +16,11 @@ function T_Justification(){
     const columns = [
         {dataField: 'Folio', text: 'Folio', sort: true, filterFactory: textFilter(), key: 1},
         {dataField: 'Nombre', text: 'Nombre', sort: true, key: 2},
-        {dataField: 'Telefono', text: 'Teléfono', sort: true, key: 3},
-        {dataField: 'Fecha', text: 'Fecha', sort: true, key: 4},
-        {dataField: 'CanJustif', text: 'Num. de justificación', sort: true, key: 5},
-        {dataField: 'Razon', text: 'Razon', sort: true, key: 6}
+        {dataField: 'Status', text: 'Estado', sort: true, key: 3},
+        {dataField: 'Telefono', text: 'Teléfono', sort: true, key: 4},
+        {dataField: 'Fecha', text: 'Fecha', sort: true, key: 5},
+        {dataField: 'CanJustif', text: 'Num. de justificación', sort: true, key: 6},
+        {dataField: 'Razon', text: 'Razon', sort: true, key: 7}
     ]
 
     const customTotal = (from, to, size) => (
